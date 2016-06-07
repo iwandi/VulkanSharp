@@ -9,110 +9,37 @@
 */
 
 using System;
-using System.Runtime.InteropServices;
 
 namespace Vulkan.Interop
 {
-    internal struct Offset2D
-	{
-		internal Int32 X;
-		internal Int32 Y;
-	}
-
-	internal struct Offset3D
-	{
-		internal Int32 X;
-		internal Int32 Y;
-		internal Int32 Z;
-	}
-
-	internal struct Extent2D
-	{
-		internal UInt32 Width;
-		internal UInt32 Height;
-	}
-
-	internal struct Extent3D
-	{
-		internal UInt32 Width;
-		internal UInt32 Height;
-		internal UInt32 Depth;
-	}
-
-	internal struct Viewport
-	{
-		internal float X;
-		internal float Y;
-		internal float Width;
-		internal float Height;
-		internal float MinDepth;
-		internal float MaxDepth;
-	}
-
-	internal struct Rect2D
-	{
-		internal IntPtr Offset;
-		internal IntPtr Extent;
-	}
-
-	internal struct Rect3D
-	{
-		internal IntPtr Offset;
-		internal IntPtr Extent;
-	}
-
-	internal struct ClearRect
-	{
-		internal IntPtr Rect;
-		internal UInt32 BaseArrayLayer;
-		internal UInt32 LayerCount;
-	}
-
-	internal struct ComponentMapping
-	{
-		internal ComponentSwizzle R;
-		internal ComponentSwizzle G;
-		internal ComponentSwizzle B;
-		internal ComponentSwizzle A;
-	}
-
-	internal struct PhysicalDeviceProperties
+	internal partial struct PhysicalDeviceProperties
 	{
 		internal UInt32 ApiVersion;
 		internal UInt32 DriverVersion;
 		internal UInt32 VendorID;
 		internal UInt32 DeviceID;
 		internal PhysicalDeviceType DeviceType;
-		internal char DeviceName;
+		internal unsafe fixed byte DeviceName[256];
 		internal Byte PipelineCacheUUID;
-		internal IntPtr Limits;
-		internal IntPtr SparseProperties;
+		internal PhysicalDeviceLimits Limits;
+		internal PhysicalDeviceSparseProperties SparseProperties;
 	}
 
-	internal struct ExtensionProperties
+	internal partial struct ExtensionProperties
 	{
-		internal char ExtensionName;
+		internal unsafe fixed byte ExtensionName[256];
 		internal UInt32 SpecVersion;
 	}
 
-    internal unsafe struct LayerProperties
+	internal partial struct LayerProperties
 	{
-        // TODO : Generate this
-        public const int SizeOf = 8 + VK_MAX_EXTENSION_NAME_SIZE + VK_MAX_DESCRIPTION_SIZE;
-
-        // TODO : get this in the generator enums -> API Constants
-        public const int VK_MAX_EXTENSION_NAME_SIZE = 256;
-        public const int VK_MAX_DESCRIPTION_SIZE = 256;
-        
-        // TODO : UPdate generator to emit this
-        internal fixed byte LayerName[VK_MAX_EXTENSION_NAME_SIZE];
-        internal UInt32 SpecVersion;
+		internal unsafe fixed byte LayerName[256];
+		internal UInt32 SpecVersion;
 		internal UInt32 ImplementationVersion;
-        internal fixed byte Description[VK_MAX_DESCRIPTION_SIZE];
-
+		internal unsafe fixed byte Description[256];
 	}
 
-	internal struct ApplicationInfo
+	internal partial struct ApplicationInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -123,7 +50,7 @@ namespace Vulkan.Interop
 		internal UInt32 ApiVersion;
 	}
 
-	internal struct AllocationCallbacks
+	internal partial struct AllocationCallbacks
 	{
 		internal IntPtr UserData;
 		internal IntPtr PfnAllocation;
@@ -133,17 +60,17 @@ namespace Vulkan.Interop
 		internal IntPtr PfnInternalFree;
 	}
 
-	internal struct DeviceQueueCreateInfo
+	internal partial struct DeviceQueueCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal UInt32 QueueFamilyIndex;
 		internal UInt32 QueueCount;
-		internal float QueuePriorities;
+		internal IntPtr QueuePriorities;
 	}
 
-	internal struct DeviceCreateInfo
+	internal partial struct DeviceCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -151,41 +78,33 @@ namespace Vulkan.Interop
 		internal UInt32 QueueCreateInfoCount;
 		internal IntPtr QueueCreateInfos;
 		internal UInt32 EnabledLayerCount;
-		internal IntPtr PEnabledLayerNames;
+		internal IntPtr EnabledLayerNames;
 		internal UInt32 EnabledExtensionCount;
-		internal IntPtr PEnabledExtensionNames;
+		internal IntPtr EnabledExtensionNames;
 		internal IntPtr EnabledFeatures;
 	}
 
-	internal struct InstanceCreateInfo
+	internal partial struct InstanceCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal IntPtr ApplicationInfo;
 		internal UInt32 EnabledLayerCount;
-		internal IntPtr PEnabledLayerNames;
+		internal IntPtr EnabledLayerNames;
 		internal UInt32 EnabledExtensionCount;
-		internal IntPtr PEnabledExtensionNames;
+		internal IntPtr EnabledExtensionNames;
 	}
 
-	internal struct QueueFamilyProperties
-	{
-		internal UInt32 QueueFlags;
-		internal UInt32 QueueCount;
-		internal UInt32 TimestampValidBits;
-		internal IntPtr MinImageTransferGranularity;
-	}
-
-	internal struct PhysicalDeviceMemoryProperties
+	internal partial struct PhysicalDeviceMemoryProperties
 	{
 		internal UInt32 MemoryTypeCount;
-		internal IntPtr MemoryTypes;
+		internal MemoryType MemoryTypes;
 		internal UInt32 MemoryHeapCount;
-		internal IntPtr MemoryHeaps;
+		internal MemoryHeap MemoryHeaps;
 	}
 
-	internal struct MemoryAllocateInfo
+	internal partial struct MemoryAllocateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -193,85 +112,20 @@ namespace Vulkan.Interop
 		internal UInt32 MemoryTypeIndex;
 	}
 
-	internal struct MemoryRequirements
-	{
-		internal DeviceSize Size;
-		internal DeviceSize Alignment;
-		internal UInt32 MemoryTypeBits;
-	}
-
-	internal struct SparseImageFormatProperties
-	{
-		internal UInt32 AspectMask;
-		internal IntPtr ImageGranularity;
-		internal UInt32 Flags;
-	}
-
-	internal struct SparseImageMemoryRequirements
-	{
-		internal IntPtr FormatProperties;
-		internal UInt32 ImageMipTailFirstLod;
-		internal DeviceSize ImageMipTailSize;
-		internal DeviceSize ImageMipTailOffset;
-		internal DeviceSize ImageMipTailStride;
-	}
-
-	internal struct MemoryType
-	{
-		internal UInt32 PropertyFlags;
-		internal UInt32 HeapIndex;
-	}
-
-	internal struct MemoryHeap
-	{
-		internal DeviceSize Size;
-		internal UInt32 Flags;
-	}
-
-	internal struct MappedMemoryRange
+	internal partial struct MappedMemoryRange
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal IntPtr Memory;
+		internal UInt64 Memory;
 		internal DeviceSize Offset;
 		internal DeviceSize Size;
 	}
 
-	internal struct FormatProperties
-	{
-		internal UInt32 LinearTilingFeatures;
-		internal UInt32 OptimalTilingFeatures;
-		internal UInt32 BufferFeatures;
-	}
-
-	internal struct ImageFormatProperties
-	{
-		internal IntPtr MaxExtent;
-		internal UInt32 MaxMipLevels;
-		internal UInt32 MaxArrayLayers;
-		internal UInt32 SampleCounts;
-		internal DeviceSize MaxResourceSize;
-	}
-
-	internal struct DescriptorBufferInfo
-	{
-		internal IntPtr Buffer;
-		internal DeviceSize Offset;
-		internal DeviceSize Range;
-	}
-
-	internal struct DescriptorImageInfo
-	{
-		internal IntPtr Sampler;
-		internal IntPtr ImageView;
-		internal ImageLayout ImageLayout;
-	}
-
-	internal struct WriteDescriptorSet
+	internal partial struct WriteDescriptorSet
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal IntPtr DstSet;
+		internal UInt64 DstSet;
 		internal UInt32 DstBinding;
 		internal UInt32 DstArrayElement;
 		internal UInt32 DescriptorCount;
@@ -281,20 +135,20 @@ namespace Vulkan.Interop
 		internal IntPtr TexelBufferView;
 	}
 
-	internal struct CopyDescriptorSet
+	internal partial struct CopyDescriptorSet
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal IntPtr SrcSet;
+		internal UInt64 SrcSet;
 		internal UInt32 SrcBinding;
 		internal UInt32 SrcArrayElement;
-		internal IntPtr DstSet;
+		internal UInt64 DstSet;
 		internal UInt32 DstBinding;
 		internal UInt32 DstArrayElement;
 		internal UInt32 DescriptorCount;
 	}
 
-	internal struct BufferCreateInfo
+	internal partial struct BufferCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -303,45 +157,21 @@ namespace Vulkan.Interop
 		internal UInt32 Usage;
 		internal SharingMode SharingMode;
 		internal UInt32 QueueFamilyIndexCount;
-		internal UInt32 QueueFamilyIndices;
+		internal IntPtr QueueFamilyIndices;
 	}
 
-	internal struct BufferViewCreateInfo
+	internal partial struct BufferViewCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal IntPtr Buffer;
+		internal UInt64 Buffer;
 		internal Format Format;
 		internal DeviceSize Offset;
 		internal DeviceSize Range;
 	}
 
-	internal struct ImageSubresource
-	{
-		internal UInt32 AspectMask;
-		internal UInt32 MipLevel;
-		internal UInt32 ArrayLayer;
-	}
-
-	internal struct ImageSubresourceLayers
-	{
-		internal UInt32 AspectMask;
-		internal UInt32 MipLevel;
-		internal UInt32 BaseArrayLayer;
-		internal UInt32 LayerCount;
-	}
-
-	internal struct ImageSubresourceRange
-	{
-		internal UInt32 AspectMask;
-		internal UInt32 BaseMipLevel;
-		internal UInt32 LevelCount;
-		internal UInt32 BaseArrayLayer;
-		internal UInt32 LayerCount;
-	}
-
-	internal struct MemoryBarrier
+	internal partial struct MemoryBarrier
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -349,7 +179,7 @@ namespace Vulkan.Interop
 		internal UInt32 DstAccessMask;
 	}
 
-	internal struct BufferMemoryBarrier
+	internal partial struct BufferMemoryBarrier
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -357,12 +187,12 @@ namespace Vulkan.Interop
 		internal UInt32 DstAccessMask;
 		internal UInt32 SrcQueueFamilyIndex;
 		internal UInt32 DstQueueFamilyIndex;
-		internal IntPtr Buffer;
+		internal UInt64 Buffer;
 		internal DeviceSize Offset;
 		internal DeviceSize Size;
 	}
 
-	internal struct ImageMemoryBarrier
+	internal partial struct ImageMemoryBarrier
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -372,18 +202,18 @@ namespace Vulkan.Interop
 		internal ImageLayout NewLayout;
 		internal UInt32 SrcQueueFamilyIndex;
 		internal UInt32 DstQueueFamilyIndex;
-		internal IntPtr Image;
-		internal IntPtr SubresourceRange;
+		internal UInt64 Image;
+		internal ImageSubresourceRange SubresourceRange;
 	}
 
-	internal struct ImageCreateInfo
+	internal partial struct ImageCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal ImageType ImageType;
 		internal Format Format;
-		internal IntPtr Extent;
+		internal Extent3D Extent;
 		internal UInt32 MipLevels;
 		internal UInt32 ArrayLayers;
 		internal UInt32 Samples;
@@ -391,79 +221,44 @@ namespace Vulkan.Interop
 		internal UInt32 Usage;
 		internal SharingMode SharingMode;
 		internal UInt32 QueueFamilyIndexCount;
-		internal UInt32 QueueFamilyIndices;
+		internal IntPtr QueueFamilyIndices;
 		internal ImageLayout InitialLayout;
 	}
 
-	internal struct SubresourceLayout
-	{
-		internal DeviceSize Offset;
-		internal DeviceSize Size;
-		internal DeviceSize RowPitch;
-		internal DeviceSize ArrayPitch;
-		internal DeviceSize DepthPitch;
-	}
-
-	internal struct ImageViewCreateInfo
+	internal partial struct ImageViewCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal IntPtr Image;
+		internal UInt64 Image;
 		internal ImageViewType ViewType;
 		internal Format Format;
-		internal IntPtr Components;
-		internal IntPtr SubresourceRange;
+		internal ComponentMapping Components;
+		internal ImageSubresourceRange SubresourceRange;
 	}
 
-	internal struct BufferCopy
+	internal partial struct SparseBufferMemoryBindInfo
 	{
-		internal DeviceSize SrcOffset;
-		internal DeviceSize DstOffset;
-		internal DeviceSize Size;
-	}
-
-	internal struct SparseMemoryBind
-	{
-		internal DeviceSize ResourceOffset;
-		internal DeviceSize Size;
-		internal IntPtr Memory;
-		internal DeviceSize MemoryOffset;
-		internal UInt32 Flags;
-	}
-
-	internal struct SparseImageMemoryBind
-	{
-		internal IntPtr Subresource;
-		internal IntPtr Offset;
-		internal IntPtr Extent;
-		internal IntPtr Memory;
-		internal DeviceSize MemoryOffset;
-		internal UInt32 Flags;
-	}
-
-	internal struct SparseBufferMemoryBindInfo
-	{
-		internal IntPtr Buffer;
+		internal UInt64 Buffer;
 		internal UInt32 BindCount;
 		internal IntPtr Binds;
 	}
 
-	internal struct SparseImageOpaqueMemoryBindInfo
+	internal partial struct SparseImageOpaqueMemoryBindInfo
 	{
-		internal IntPtr Image;
+		internal UInt64 Image;
 		internal UInt32 BindCount;
 		internal IntPtr Binds;
 	}
 
-	internal struct SparseImageMemoryBindInfo
+	internal partial struct SparseImageMemoryBindInfo
 	{
-		internal IntPtr Image;
+		internal UInt64 Image;
 		internal UInt32 BindCount;
 		internal IntPtr Binds;
 	}
 
-	internal struct BindSparseInfo
+	internal partial struct BindSparseInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -479,52 +274,24 @@ namespace Vulkan.Interop
 		internal IntPtr SignalSemaphores;
 	}
 
-	internal struct ImageCopy
+	internal partial struct ImageBlit
 	{
-		internal IntPtr SrcSubresource;
-		internal IntPtr SrcOffset;
-		internal IntPtr DstSubresource;
-		internal IntPtr DstOffset;
-		internal IntPtr Extent;
+		internal ImageSubresourceLayers SrcSubresource;
+		internal Offset3D SrcOffsets;
+		internal ImageSubresourceLayers DstSubresource;
+		internal Offset3D DstOffsets;
 	}
 
-	internal struct ImageBlit
-	{
-		internal IntPtr SrcSubresource;
-		internal IntPtr SrcOffsets;
-		internal IntPtr DstSubresource;
-		internal IntPtr DstOffsets;
-	}
-
-	internal struct BufferImageCopy
-	{
-		internal DeviceSize BufferOffset;
-		internal UInt32 BufferRowLength;
-		internal UInt32 BufferImageHeight;
-		internal IntPtr ImageSubresource;
-		internal IntPtr ImageOffset;
-		internal IntPtr ImageExtent;
-	}
-
-	internal struct ImageResolve
-	{
-		internal IntPtr SrcSubresource;
-		internal IntPtr SrcOffset;
-		internal IntPtr DstSubresource;
-		internal IntPtr DstOffset;
-		internal IntPtr Extent;
-	}
-
-	internal struct ShaderModuleCreateInfo
+	internal partial struct ShaderModuleCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal UIntPtr CodeSize;
-		internal UInt32 Code;
+		internal IntPtr Code;
 	}
 
-	internal struct DescriptorSetLayoutBinding
+	internal partial struct DescriptorSetLayoutBinding
 	{
 		internal UInt32 Binding;
 		internal DescriptorType DescriptorType;
@@ -533,7 +300,7 @@ namespace Vulkan.Interop
 		internal IntPtr ImmutableSamplers;
 	}
 
-	internal struct DescriptorSetLayoutCreateInfo
+	internal partial struct DescriptorSetLayoutCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -542,13 +309,7 @@ namespace Vulkan.Interop
 		internal IntPtr Bindings;
 	}
 
-	internal struct DescriptorPoolSize
-	{
-		internal DescriptorType Type;
-		internal UInt32 DescriptorCount;
-	}
-
-	internal struct DescriptorPoolCreateInfo
+	internal partial struct DescriptorPoolCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -558,23 +319,16 @@ namespace Vulkan.Interop
 		internal IntPtr PoolSizes;
 	}
 
-	internal struct DescriptorSetAllocateInfo
+	internal partial struct DescriptorSetAllocateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal IntPtr DescriptorPool;
+		internal UInt64 DescriptorPool;
 		internal UInt32 DescriptorSetCount;
 		internal IntPtr SetLayouts;
 	}
 
-	internal struct SpecializationMapEntry
-	{
-		internal UInt32 ConstantID;
-		internal UInt32 Offset;
-		internal UIntPtr Size;
-	}
-
-	internal struct SpecializationInfo
+	internal partial struct SpecializationInfo
 	{
 		internal UInt32 MapEntryCount;
 		internal IntPtr MapEntries;
@@ -582,44 +336,29 @@ namespace Vulkan.Interop
 		internal IntPtr Data;
 	}
 
-	internal struct PipelineShaderStageCreateInfo
+	internal partial struct PipelineShaderStageCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal UInt32 Stage;
-		internal IntPtr Module;
+		internal UInt64 Module;
 		internal IntPtr Name;
 		internal IntPtr SpecializationInfo;
 	}
 
-	internal struct ComputePipelineCreateInfo
+	internal partial struct ComputePipelineCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal IntPtr Stage;
-		internal IntPtr Layout;
-		internal IntPtr BasePipelineHandle;
+		internal PipelineShaderStageCreateInfo Stage;
+		internal UInt64 Layout;
+		internal UInt64 BasePipelineHandle;
 		internal Int32 BasePipelineIndex;
 	}
 
-	internal struct VertexInputBindingDescription
-	{
-		internal UInt32 Binding;
-		internal UInt32 Stride;
-		internal VertexInputRate InputRate;
-	}
-
-	internal struct VertexInputAttributeDescription
-	{
-		internal UInt32 Location;
-		internal UInt32 Binding;
-		internal Format Format;
-		internal UInt32 Offset;
-	}
-
-	internal struct PipelineVertexInputStateCreateInfo
+	internal partial struct PipelineVertexInputStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -630,7 +369,7 @@ namespace Vulkan.Interop
 		internal IntPtr VertexAttributeDescriptions;
 	}
 
-	internal struct PipelineInputAssemblyStateCreateInfo
+	internal partial struct PipelineInputAssemblyStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -639,7 +378,7 @@ namespace Vulkan.Interop
 		internal Bool32 PrimitiveRestartEnable;
 	}
 
-	internal struct PipelineTessellationStateCreateInfo
+	internal partial struct PipelineTessellationStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -647,7 +386,7 @@ namespace Vulkan.Interop
 		internal UInt32 PatchControlPoints;
 	}
 
-	internal struct PipelineViewportStateCreateInfo
+	internal partial struct PipelineViewportStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -658,7 +397,7 @@ namespace Vulkan.Interop
 		internal IntPtr Scissors;
 	}
 
-	internal struct PipelineRasterizationStateCreateInfo
+	internal partial struct PipelineRasterizationStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -675,7 +414,7 @@ namespace Vulkan.Interop
 		internal float LineWidth;
 	}
 
-	internal struct PipelineMultisampleStateCreateInfo
+	internal partial struct PipelineMultisampleStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -683,24 +422,12 @@ namespace Vulkan.Interop
 		internal UInt32 RasterizationSamples;
 		internal Bool32 SampleShadingEnable;
 		internal float MinSampleShading;
-		internal UInt32 SampleMask;
+		internal IntPtr SampleMask;
 		internal Bool32 AlphaToCoverageEnable;
 		internal Bool32 AlphaToOneEnable;
 	}
 
-	internal struct PipelineColorBlendAttachmentState
-	{
-		internal Bool32 BlendEnable;
-		internal BlendFactor SrcColorBlendFactor;
-		internal BlendFactor DstColorBlendFactor;
-		internal BlendOp ColorBlendOp;
-		internal BlendFactor SrcAlphaBlendFactor;
-		internal BlendFactor DstAlphaBlendFactor;
-		internal BlendOp AlphaBlendOp;
-		internal UInt32 ColorWriteMask;
-	}
-
-	internal struct PipelineColorBlendStateCreateInfo
+	internal partial struct PipelineColorBlendStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -709,30 +436,19 @@ namespace Vulkan.Interop
 		internal LogicOp LogicOp;
 		internal UInt32 AttachmentCount;
 		internal IntPtr Attachments;
-		internal float BlendConstants;
+		internal unsafe fixed float BlendConstants[4];
 	}
 
-	internal struct PipelineDynamicStateCreateInfo
+	internal partial struct PipelineDynamicStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal UInt32 DynamicStateCount;
-		internal DynamicState DynamicStates;
+		internal IntPtr DynamicStates;
 	}
 
-	internal struct StencilOpState
-	{
-		internal StencilOp FailOp;
-		internal StencilOp PassOp;
-		internal StencilOp DepthFailOp;
-		internal CompareOp CompareOp;
-		internal UInt32 CompareMask;
-		internal UInt32 WriteMask;
-		internal UInt32 Reference;
-	}
-
-	internal struct PipelineDepthStencilStateCreateInfo
+	internal partial struct PipelineDepthStencilStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -742,13 +458,13 @@ namespace Vulkan.Interop
 		internal CompareOp DepthCompareOp;
 		internal Bool32 DepthBoundsTestEnable;
 		internal Bool32 StencilTestEnable;
-		internal IntPtr Front;
-		internal IntPtr Back;
+		internal StencilOpState Front;
+		internal StencilOpState Back;
 		internal float MinDepthBounds;
 		internal float MaxDepthBounds;
 	}
 
-	internal struct GraphicsPipelineCreateInfo
+	internal partial struct GraphicsPipelineCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -764,14 +480,14 @@ namespace Vulkan.Interop
 		internal IntPtr DepthStencilState;
 		internal IntPtr ColorBlendState;
 		internal IntPtr DynamicState;
-		internal IntPtr Layout;
-		internal IntPtr RenderPass;
+		internal UInt64 Layout;
+		internal UInt64 RenderPass;
 		internal UInt32 Subpass;
-		internal IntPtr BasePipelineHandle;
+		internal UInt64 BasePipelineHandle;
 		internal Int32 BasePipelineIndex;
 	}
 
-	internal struct PipelineCacheCreateInfo
+	internal partial struct PipelineCacheCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -780,14 +496,7 @@ namespace Vulkan.Interop
 		internal IntPtr InitialData;
 	}
 
-	internal struct PushConstantRange
-	{
-		internal UInt32 StageFlags;
-		internal UInt32 Offset;
-		internal UInt32 Size;
-	}
-
-	internal struct PipelineLayoutCreateInfo
+	internal partial struct PipelineLayoutCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -798,7 +507,7 @@ namespace Vulkan.Interop
 		internal IntPtr PushConstantRanges;
 	}
 
-	internal struct SamplerCreateInfo
+	internal partial struct SamplerCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -820,7 +529,7 @@ namespace Vulkan.Interop
 		internal Bool32 UnnormalizedCoordinates;
 	}
 
-	internal struct CommandPoolCreateInfo
+	internal partial struct CommandPoolCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -828,28 +537,28 @@ namespace Vulkan.Interop
 		internal UInt32 QueueFamilyIndex;
 	}
 
-	internal struct CommandBufferAllocateInfo
+	internal partial struct CommandBufferAllocateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal IntPtr CommandPool;
+		internal UInt64 CommandPool;
 		internal CommandBufferLevel Level;
 		internal UInt32 CommandBufferCount;
 	}
 
-	internal struct CommandBufferInheritanceInfo
+	internal partial struct CommandBufferInheritanceInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal IntPtr RenderPass;
+		internal UInt64 RenderPass;
 		internal UInt32 Subpass;
-		internal IntPtr Framebuffer;
+		internal UInt64 Framebuffer;
 		internal Bool32 OcclusionQueryEnable;
 		internal UInt32 QueryFlags;
 		internal UInt32 PipelineStatistics;
 	}
 
-	internal struct CommandBufferBeginInfo
+	internal partial struct CommandBufferBeginInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -857,50 +566,18 @@ namespace Vulkan.Interop
 		internal IntPtr InheritanceInfo;
 	}
 
-	internal struct RenderPassBeginInfo
+	internal partial struct RenderPassBeginInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal IntPtr RenderPass;
-		internal IntPtr Framebuffer;
-		internal IntPtr RenderArea;
+		internal UInt64 RenderPass;
+		internal UInt64 Framebuffer;
+		internal Rect2D RenderArea;
 		internal UInt32 ClearValueCount;
 		internal IntPtr ClearValues;
 	}
 
-	internal struct ClearDepthStencilValue
-	{
-		internal float Depth;
-		internal UInt32 Stencil;
-	}
-
-	internal struct ClearAttachment
-	{
-		internal UInt32 AspectMask;
-		internal UInt32 ColorAttachment;
-		internal IntPtr ClearValue;
-	}
-
-	internal struct AttachmentDescription
-	{
-		internal UInt32 Flags;
-		internal Format Format;
-		internal UInt32 Samples;
-		internal AttachmentLoadOp LoadOp;
-		internal AttachmentStoreOp StoreOp;
-		internal AttachmentLoadOp StencilLoadOp;
-		internal AttachmentStoreOp StencilStoreOp;
-		internal ImageLayout InitialLayout;
-		internal ImageLayout FinalLayout;
-	}
-
-	internal struct AttachmentReference
-	{
-		internal UInt32 Attachment;
-		internal ImageLayout Layout;
-	}
-
-	internal struct SubpassDescription
+	internal partial struct SubpassDescription
 	{
 		internal UInt32 Flags;
 		internal PipelineBindPoint PipelineBindPoint;
@@ -911,21 +588,10 @@ namespace Vulkan.Interop
 		internal IntPtr ResolveAttachments;
 		internal IntPtr DepthStencilAttachment;
 		internal UInt32 PreserveAttachmentCount;
-		internal UInt32 PreserveAttachments;
+		internal IntPtr PreserveAttachments;
 	}
 
-	internal struct SubpassDependency
-	{
-		internal UInt32 SrcSubpass;
-		internal UInt32 DstSubpass;
-		internal UInt32 SrcStageMask;
-		internal UInt32 DstStageMask;
-		internal UInt32 SrcAccessMask;
-		internal UInt32 DstAccessMask;
-		internal UInt32 DependencyFlags;
-	}
-
-	internal struct RenderPassCreateInfo
+	internal partial struct RenderPassCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -938,89 +604,21 @@ namespace Vulkan.Interop
 		internal IntPtr Dependencies;
 	}
 
-	internal struct EventCreateInfo
+	internal partial struct EventCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 	}
 
-	internal struct FenceCreateInfo
+	internal partial struct FenceCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 	}
 
-	internal struct PhysicalDeviceFeatures
-	{
-		internal Bool32 RobustBufferAccess;
-		internal Bool32 FullDrawIndexUint32;
-		internal Bool32 ImageCubeArray;
-		internal Bool32 IndependentBlend;
-		internal Bool32 GeometryShader;
-		internal Bool32 TessellationShader;
-		internal Bool32 SampleRateShading;
-		internal Bool32 DualSrcBlend;
-		internal Bool32 LogicOp;
-		internal Bool32 MultiDrawIndirect;
-		internal Bool32 DrawIndirectFirstInstance;
-		internal Bool32 DepthClamp;
-		internal Bool32 DepthBiasClamp;
-		internal Bool32 FillModeNonSolid;
-		internal Bool32 DepthBounds;
-		internal Bool32 WideLines;
-		internal Bool32 LargePoints;
-		internal Bool32 AlphaToOne;
-		internal Bool32 MultiViewport;
-		internal Bool32 SamplerAnisotropy;
-		internal Bool32 TextureCompressionETC2;
-		internal Bool32 TextureCompressionASTCLdr;
-		internal Bool32 TextureCompressionBC;
-		internal Bool32 OcclusionQueryPrecise;
-		internal Bool32 PipelineStatisticsQuery;
-		internal Bool32 VertexPipelineStoresAndAtomics;
-		internal Bool32 FragmentStoresAndAtomics;
-		internal Bool32 ShaderTessellationAndGeometryPointSize;
-		internal Bool32 ShaderImageGatherExtended;
-		internal Bool32 ShaderStorageImageExtendedFormats;
-		internal Bool32 ShaderStorageImageMultisample;
-		internal Bool32 ShaderStorageImageReadWithoutFormat;
-		internal Bool32 ShaderStorageImageWriteWithoutFormat;
-		internal Bool32 ShaderUniformBufferArrayDynamicIndexing;
-		internal Bool32 ShaderSampledImageArrayDynamicIndexing;
-		internal Bool32 ShaderStorageBufferArrayDynamicIndexing;
-		internal Bool32 ShaderStorageImageArrayDynamicIndexing;
-		internal Bool32 ShaderClipDistance;
-		internal Bool32 ShaderCullDistance;
-		internal Bool32 ShaderFloat64;
-		internal Bool32 ShaderInt64;
-		internal Bool32 ShaderInt16;
-		internal Bool32 ShaderResourceResidency;
-		internal Bool32 ShaderResourceMinLod;
-		internal Bool32 SparseBinding;
-		internal Bool32 SparseResidencyBuffer;
-		internal Bool32 SparseResidencyImage2D;
-		internal Bool32 SparseResidencyImage3D;
-		internal Bool32 SparseResidency2Samples;
-		internal Bool32 SparseResidency4Samples;
-		internal Bool32 SparseResidency8Samples;
-		internal Bool32 SparseResidency16Samples;
-		internal Bool32 SparseResidencyAliased;
-		internal Bool32 VariableMultisampleRate;
-		internal Bool32 InheritedQueries;
-	}
-
-	internal struct PhysicalDeviceSparseProperties
-	{
-		internal Bool32 ResidencyStandard2DBlockShape;
-		internal Bool32 ResidencyStandard2DMultisampleBlockShape;
-		internal Bool32 ResidencyStandard3DBlockShape;
-		internal Bool32 ResidencyAlignedMipSize;
-		internal Bool32 ResidencyNonResidentStrict;
-	}
-
-	internal struct PhysicalDeviceLimits
+	internal partial struct PhysicalDeviceLimits
 	{
 		internal UInt32 MaxImageDimension1D;
 		internal UInt32 MaxImageDimension2D;
@@ -1074,9 +672,9 @@ namespace Vulkan.Interop
 		internal UInt32 MaxFragmentDualSrcAttachments;
 		internal UInt32 MaxFragmentCombinedOutputResources;
 		internal UInt32 MaxComputeSharedMemorySize;
-		internal UInt32 MaxComputeWorkGroupCount;
+		internal unsafe fixed UInt32 MaxComputeWorkGroupCount[3];
 		internal UInt32 MaxComputeWorkGroupInvocations;
-		internal UInt32 MaxComputeWorkGroupSize;
+		internal unsafe fixed UInt32 MaxComputeWorkGroupSize[3];
 		internal UInt32 SubPixelPrecisionBits;
 		internal UInt32 SubTexelPrecisionBits;
 		internal UInt32 MipmapPrecisionBits;
@@ -1085,8 +683,8 @@ namespace Vulkan.Interop
 		internal float MaxSamplerLodBias;
 		internal float MaxSamplerAnisotropy;
 		internal UInt32 MaxViewports;
-		internal UInt32 MaxViewportDimensions;
-		internal float ViewportBoundsRange;
+		internal unsafe fixed UInt32 MaxViewportDimensions[2];
+		internal unsafe fixed float ViewportBoundsRange[2];
 		internal UInt32 ViewportSubPixelBits;
 		internal UIntPtr MinMemoryMapAlignment;
 		internal DeviceSize MinTexelBufferOffsetAlignment;
@@ -1119,8 +717,8 @@ namespace Vulkan.Interop
 		internal UInt32 MaxCullDistances;
 		internal UInt32 MaxCombinedClipAndCullDistances;
 		internal UInt32 DiscreteQueuePriorities;
-		internal float PointSizeRange;
-		internal float LineWidthRange;
+		internal unsafe fixed float PointSizeRange[2];
+		internal unsafe fixed float LineWidthRange[2];
 		internal float PointSizeGranularity;
 		internal float LineWidthGranularity;
 		internal Bool32 StrictLines;
@@ -1130,14 +728,14 @@ namespace Vulkan.Interop
 		internal DeviceSize NonCoherentAtomSize;
 	}
 
-	internal struct SemaphoreCreateInfo
+	internal partial struct SemaphoreCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 	}
 
-	internal struct QueryPoolCreateInfo
+	internal partial struct QueryPoolCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1147,12 +745,12 @@ namespace Vulkan.Interop
 		internal UInt32 PipelineStatistics;
 	}
 
-	internal struct FramebufferCreateInfo
+	internal partial struct FramebufferCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal IntPtr RenderPass;
+		internal UInt64 RenderPass;
 		internal UInt32 AttachmentCount;
 		internal IntPtr Attachments;
 		internal UInt32 Width;
@@ -1160,159 +758,84 @@ namespace Vulkan.Interop
 		internal UInt32 Layers;
 	}
 
-	internal struct DrawIndirectCommand
-	{
-		internal UInt32 VertexCount;
-		internal UInt32 InstanceCount;
-		internal UInt32 FirstVertex;
-		internal UInt32 FirstInstance;
-	}
-
-	internal struct DrawIndexedIndirectCommand
-	{
-		internal UInt32 IndexCount;
-		internal UInt32 InstanceCount;
-		internal UInt32 FirstIndex;
-		internal Int32 VertexOffset;
-		internal UInt32 FirstInstance;
-	}
-
-	internal struct DispatchIndirectCommand
-	{
-		internal UInt32 X;
-		internal UInt32 Y;
-		internal UInt32 Z;
-	}
-
-	internal struct SubmitInfo
+	internal partial struct SubmitInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 WaitSemaphoreCount;
 		internal IntPtr WaitSemaphores;
-		internal UInt32 WaitDstStageMask;
+		internal IntPtr WaitDstStageMask;
 		internal UInt32 CommandBufferCount;
 		internal IntPtr CommandBuffers;
 		internal UInt32 SignalSemaphoreCount;
 		internal IntPtr SignalSemaphores;
 	}
 
-	internal struct DisplayPropertiesKhr
+	internal partial struct DisplayPropertiesKhr
 	{
-		internal IntPtr Display;
+		internal UInt64 Display;
 		internal IntPtr DisplayName;
-		internal IntPtr PhysicalDimensions;
-		internal IntPtr PhysicalResolution;
+		internal Extent2D PhysicalDimensions;
+		internal Extent2D PhysicalResolution;
 		internal SurfaceTransformFlagsKhr SupportedTransforms;
 		internal Bool32 PlaneReorderPossible;
 		internal Bool32 PersistentContent;
 	}
 
-	internal struct DisplayPlanePropertiesKhr
-	{
-		internal IntPtr CurrentDisplay;
-		internal UInt32 CurrentStackIndex;
-	}
-
-	internal struct DisplayModeParametersKhr
-	{
-		internal IntPtr VisibleRegion;
-		internal UInt32 RefreshRate;
-	}
-
-	internal struct DisplayModePropertiesKhr
-	{
-		internal IntPtr DisplayMode;
-		internal IntPtr Parameters;
-	}
-
-	internal struct DisplayModeCreateInfoKhr
+	internal partial struct DisplayModeCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal IntPtr Parameters;
+		internal DisplayModeParametersKhr Parameters;
 	}
 
-	internal struct DisplayPlaneCapabilitiesKhr
-	{
-		internal DisplayPlaneAlphaFlagsKhr SupportedAlpha;
-		internal IntPtr MinSrcPosition;
-		internal IntPtr MaxSrcPosition;
-		internal IntPtr MinSrcExtent;
-		internal IntPtr MaxSrcExtent;
-		internal IntPtr MinDstPosition;
-		internal IntPtr MaxDstPosition;
-		internal IntPtr MinDstExtent;
-		internal IntPtr MaxDstExtent;
-	}
-
-	internal struct DisplaySurfaceCreateInfoKhr
+	internal partial struct DisplaySurfaceCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal IntPtr DisplayMode;
+		internal UInt64 DisplayMode;
 		internal UInt32 PlaneIndex;
 		internal UInt32 PlaneStackIndex;
 		internal SurfaceTransformFlagsKhr Transform;
 		internal float GlobalAlpha;
 		internal DisplayPlaneAlphaFlagsKhr AlphaMode;
-		internal IntPtr ImageExtent;
+		internal Extent2D ImageExtent;
 	}
 
-	internal struct DisplayPresentInfoKhr
+	internal partial struct DisplayPresentInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal IntPtr SrcRect;
-		internal IntPtr DstRect;
+		internal Rect2D SrcRect;
+		internal Rect2D DstRect;
 		internal Bool32 Persistent;
 	}
 
-	internal struct SurfaceCapabilitiesKhr
-	{
-		internal UInt32 MinImageCount;
-		internal UInt32 MaxImageCount;
-		internal IntPtr CurrentExtent;
-		internal IntPtr MinImageExtent;
-		internal IntPtr MaxImageExtent;
-		internal UInt32 MaxImageArrayLayers;
-		internal SurfaceTransformFlagsKhr SupportedTransforms;
-		internal SurfaceTransformFlagsKhr CurrentTransform;
-		internal CompositeAlphaFlagsKhr SupportedCompositeAlpha;
-		internal UInt32 SupportedUsageFlags;
-	}
-
-	internal struct SurfaceFormatKhr
-	{
-		internal Format Format;
-		internal ColorSpaceKhr ColorSpace;
-	}
-
-	internal struct SwapchainCreateInfoKhr
+	internal partial struct SwapchainCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal IntPtr Surface;
+		internal UInt64 Surface;
 		internal UInt32 MinImageCount;
 		internal Format ImageFormat;
 		internal ColorSpaceKhr ImageColorSpace;
-		internal IntPtr ImageExtent;
+		internal Extent2D ImageExtent;
 		internal UInt32 ImageArrayLayers;
 		internal UInt32 ImageUsage;
 		internal SharingMode ImageSharingMode;
 		internal UInt32 QueueFamilyIndexCount;
-		internal UInt32 QueueFamilyIndices;
+		internal IntPtr QueueFamilyIndices;
 		internal SurfaceTransformFlagsKhr PreTransform;
 		internal CompositeAlphaFlagsKhr CompositeAlpha;
 		internal PresentModeKhr PresentMode;
 		internal Bool32 Clipped;
-		internal IntPtr OldSwapchain;
+		internal UInt64 OldSwapchain;
 	}
 
-	internal struct PresentInfoKhr
+	internal partial struct PresentInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1320,16 +843,51 @@ namespace Vulkan.Interop
 		internal IntPtr WaitSemaphores;
 		internal UInt32 SwapchainCount;
 		internal IntPtr Swapchains;
-		internal UInt32 ImageIndices;
-		internal Result Results;
+		internal IntPtr ImageIndices;
+		internal IntPtr Results;
 	}
 
-	internal struct DebugReportCallbackCreateInfoExt
+	internal partial struct DebugReportCallbackCreateInfoExt
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal DebugReportFlagsExt Flags;
 		internal IntPtr PfnCallback;
 		internal IntPtr UserData;
+	}
+
+	internal partial struct PipelineRasterizationStateRasterizationOrderAmd
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal RasterizationOrderAmd RasterizationOrder;
+	}
+
+	internal partial struct DebugMarkerObjectNameInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DebugReportObjectTypeExt ObjectType;
+		internal UInt64 Object;
+		internal IntPtr ObjectName;
+	}
+
+	internal partial struct DebugMarkerObjectTagInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DebugReportObjectTypeExt ObjectType;
+		internal UInt64 Object;
+		internal UInt64 TagName;
+		internal UIntPtr TagSize;
+		internal IntPtr Tag;
+	}
+
+	internal partial struct DebugMarkerMarkerInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal IntPtr MarkerName;
+		internal unsafe fixed float Color[4];
 	}
 }

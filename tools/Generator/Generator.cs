@@ -14,11 +14,31 @@ namespace VulkanSharp.Generator
 		StreamWriter writer;
 		bool isUnion;
 		bool isInterop;
+		bool needsMarshalling;
 
-		Dictionary<string, string> typesTranslation = new Dictionary<string, string> ();
-		HashSet<string> structures = new HashSet<string> ();
+		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }, { "HWND", "IntPtr" }, { "HINSTANCE", "IntPtr" } };
+		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
+
+		string platform;
+		HashSet<string> requiredTypes = null;
+		HashSet<string> requiredCommands = null;
+
+		[Flags]
+		enum UsingNamespaceFlags
+		{
+			Interop = 1,
+			Collections = 2,
+			Vulkan = 4,
+			VulkanInterop = 8
+		}
+
+		class StructInfo
+		{
+			public string name;
+			public bool needsMarshalling;
+		}
 
 		class HandleInfo
 		{
@@ -30,7 +50,7 @@ namespace VulkanSharp.Generator
 		class EnumExtensionInfo
 		{
 			public string name;
-			public int value;
+			public string value;
 		}
 
 		public Generator (string filename, string outputDir)
@@ -54,6 +74,7 @@ namespace VulkanSharp.Generator
 			GenerateCommands ();
 			GenerateHandles ();
 			GenerateRemainingCommands ();
+			GenerateExtensions ();
 		}
 
 		void LoadSpecification ()
@@ -67,6 +88,7 @@ namespace VulkanSharp.Generator
 		}
 
 		static Dictionary<string, string> specialParts = new Dictionary<string, string> {
+			{ "AMD", "Amd" },
 			{ "API", "Api" },
 			{ "EXT", "Ext" },
 			{ "KHR", "Khr" },
@@ -84,6 +106,7 @@ namespace VulkanSharp.Generator
 			{ "size_t", "UIntPtr" },
 			{ "xcb_connection_t", "IntPtr" },
 			{ "xcb_window_t", "IntPtr" },
+			{ "xcb_visualid_t", "Int32" }
 		};
 
 		string TranslateCName (string name)
@@ -144,7 +167,9 @@ namespace VulkanSharp.Generator
 		}
 
 		static Dictionary<string, string> extensions = new Dictionary<string, string> {
+			{ "AMD", "Amd" },
 			{ "EXT", "Ext" },
+			{ "IMG", "Img" },
 			{ "KHR", "Khr" }
 		};
 
@@ -152,12 +177,18 @@ namespace VulkanSharp.Generator
 		{
 			string fName = TranslateCName (name);
 			string prefix = csEnumName, suffix = null;
+			bool isExtensionField = false;
+			string extension = null;
 
-			foreach (var ext in extensions)
+			foreach (var ext in extensions) {
 				if (prefix.EndsWith (ext.Value)) {
 					prefix = prefix.Substring (0, prefix.Length - ext.Value.Length);
 					suffix = ext.Value;
+				} else if (fName.EndsWith (ext.Value)) {
+					isExtensionField = true;
+					extension = ext.Value;
 				}
+			}
 
 			if (prefix.EndsWith ("Flags")) {
 				prefix = prefix.Substring (0, prefix.Length - 5);
@@ -183,21 +214,26 @@ namespace VulkanSharp.Generator
 					break;
 				}
 			}
-
-			if (suffix != null && fName.EndsWith (suffix))
-				fName = fName.Substring (0, fName.Length - suffix.Length);
-
+			if (suffix != null) {
+				if (fName.EndsWith (suffix))
+					fName = fName.Substring (0, fName.Length - suffix.Length);
+				else if (isExtensionField && fName.EndsWith (suffix + extension))
+					fName = fName.Substring (0, fName.Length - suffix.Length - extension.Length) + extension;
+			}
 			IndentWriteLine ("{0} = {1},", fName, value);
+		}
+
+		string FormatFlagValue (int pos)
+		{
+			return string.Format ("0x{0:X}", 1 << pos);
 		}
 
 		void WriteEnumField (XElement e, string csEnumName)
 		{
 			var valueAttr = e.Attribute ("value");
 			string value;
-			if (valueAttr == null) {
-				int pos = Convert.ToInt32 (e.Attribute ("bitpos").Value);
-				value = string.Format ("0x{0:X}", 1 << pos);
-			}
+			if (valueAttr == null)
+				value = FormatFlagValue (Convert.ToInt32 (e.Attribute ("bitpos").Value));
 			else
 				value = valueAttr.Value;
 
@@ -292,10 +328,11 @@ namespace VulkanSharp.Generator
 			WriteLine ("   See LICENSE file for licensing details.");
 		}
 
-		void CreateFile (string typeName, bool usingInterop = false, string nspace = "Vulkan", string subDirectory = null)
+		void CreateFile (string typeName, UsingNamespaceFlags namespaces = 0, string nspace = "Vulkan", string subDirectory = null)
 		{
 			string path = subDirectory != null ? string.Format ("{0}{1}{2}", outputPath, Path.DirectorySeparatorChar, subDirectory) : outputPath;
 			string filename = string.Format ("{0}{1}{2}.cs", path, Path.DirectorySeparatorChar, typeName);
+			Directory.CreateDirectory (Path.GetDirectoryName (filename));
 			writer = File.CreateText (filename);
 			IndentLevel = 0;
 
@@ -305,8 +342,14 @@ namespace VulkanSharp.Generator
 			WriteLine ("*/");
 			WriteLine ();
 			WriteLine ("using System;");
-			if (usingInterop)
+			if ((namespaces & UsingNamespaceFlags.Interop) != 0)
 				WriteLine ("using System.Runtime.InteropServices;");
+			if ((namespaces & UsingNamespaceFlags.Collections) != 0)
+				WriteLine ("using System.Collections.Generic;");
+			if ((namespaces & UsingNamespaceFlags.Vulkan) != 0)
+				WriteLine ("using Vulkan;");
+			if ((namespaces & UsingNamespaceFlags.VulkanInterop) != 0)
+				WriteLine ("using Vulkan.Interop;");
 			WriteLine ();
 
 			WriteLine ("namespace {0}\n{{", nspace);
@@ -399,7 +442,249 @@ namespace VulkanSharp.Generator
 			GenerateType ("bitmask", AddBitmask);
 		}
 
-		#region Structs generation
+		void WriteMemberCharArray (string csMemberName, string sec)
+		{
+			IndentWriteLine ("{0} string {1} {{", sec, csMemberName);
+			IndentLevel++;
+			IndentWriteLine ("get {{ return Marshal.PtrToStringAnsi ((IntPtr)m->{0}); }}", csMemberName);
+			IndentWriteLine ("set {{ Interop.Structure.MarshalFixedSizeString (m->{0}, value, 256); }}", csMemberName);
+			IndentLevel--;
+			IndentWriteLine ("}");
+		}
+
+		static Dictionary<string, string> fieldCounterMap = new Dictionary<string, string> {
+			{ "Code", "CodeSize" },
+			{ "SampleMask", "RasterizationSamples" }
+		};
+
+		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement)
+		{
+			int len = GetArrayLength (memberElement.Value);
+			IndentWriteLine ("public {0}[] {1} {{", csMemberType, csMemberName);
+			IndentLevel++;
+			IndentWriteLine ("get {");
+			IndentLevel++;
+			IndentWriteLine ("var arr = new {0} [{1}];", csMemberType, len);
+			IndentWriteLine ("for (int i = 0; i < {0}; i++)", len);
+			IndentLevel++;
+			IndentWriteLine ("arr [i] = m->{0} [i];", csMemberName);
+			IndentLevel--;
+			IndentWriteLine ("return arr;");
+			IndentLevel--;
+			IndentWriteLine ("}");
+			WriteLine ();
+
+			IndentWriteLine ("set {");
+			IndentLevel++;
+			IndentWriteLine ("if (value.Length > {0})", len);
+			IndentLevel++;
+			IndentWriteLine ("throw new Exception (\"array too long\");");
+			IndentLevel--;
+			IndentWriteLine ("for (int i = 0; i < value.Length; i++)");
+			IndentLevel++;
+			IndentWriteLine ("m->{0} [i] = value [i];", csMemberName);
+			IndentLevel--;
+			IndentWriteLine ("for (int i = value.Length; i < {0}; i++)", len);
+			IndentLevel++;
+			IndentWriteLine ("m->{0} [i] = 0;", csMemberName);
+			IndentLevel--;
+
+			IndentLevel--;
+			IndentWriteLine ("}");
+			IndentLevel--;
+			IndentWriteLine ("}");
+		}
+
+		void WriteMemberArray (string csMemberType, string csMemberName, string sec, XElement memberElement)
+		{
+			string countName;
+
+			var lenAttribute = memberElement.Attribute ("len");
+			var structNeedsMarshalling = structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling;
+			var isHandle = handles.ContainsKey (csMemberType);
+			var ptrType = isHandle ? GetHandleType (handles [csMemberType]) : csMemberType;
+			if (fieldCounterMap.ContainsKey (csMemberName))
+				countName = fieldCounterMap [csMemberName];
+			else if (lenAttribute != null) {
+				countName = TranslateCName (lenAttribute.Value);
+			} else
+				throw new Exception (string.Format ("do not know the counter for {0}", csMemberName));
+			// fixme: handle size_t sized arrays better
+			string zero, cast, len, lenFromValue;
+			if (csMemberName == "Code") {
+				cast = "(UIntPtr)";
+				zero = "UIntPtr.Zero";
+				len = string.Format ("((uint)m->{0} >> 2)", countName);
+				lenFromValue = string.Format ("(value.Length << 2)");
+			} else {
+				cast = "(uint)";
+				zero = "0";
+				len = string.Format ("m->{0}", countName);
+				lenFromValue = "value.Length";
+			}
+			IndentWriteLine ("{0} {1}[] {2} {{", sec, csMemberType, csMemberName);
+			IndentLevel++;
+			IndentWriteLine ("get {");
+			IndentLevel++;
+			IndentWriteLine ("if (m->{0} == {1})", countName, zero);
+			IndentLevel++;
+			IndentWriteLine ("return null;");
+			IndentLevel--;
+			IndentWriteLine ("var values = new {0} [{1}];", csMemberType, len);
+			IndentWriteLine ("unsafe");
+			IndentWriteLine ("{");
+			IndentLevel++;
+			IndentWriteLine ("{0}{1}* ptr = ({0}{1}*)m->{2};", structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType, csMemberName);
+			IndentWriteLine ("for (int i = 0; i < values.Length; i++) {0}", (structNeedsMarshalling || isHandle) ? "{" : "");
+			IndentLevel++;
+			if (structNeedsMarshalling) {
+				IndentWriteLine ("values [i] = new {0} ();", csMemberType);
+				IndentWriteLine ("*values [i].m = ptr [i];", csMemberType);
+			} else if (isHandle) {
+				IndentWriteLine ("values [i] = new {0} ();", csMemberType);
+				IndentWriteLine ("values [i].m = ptr [i];", csMemberType);
+			} else
+				IndentWriteLine ("values [i] = ptr [i];");
+			IndentLevel--;
+			if (structNeedsMarshalling || isHandle)
+				IndentWriteLine ("}");
+			IndentLevel --;
+			IndentWriteLine ("}");
+			IndentWriteLine ("return values;");
+			IndentLevel--;
+			IndentWriteLine ("}");
+			WriteLine ();
+
+			IndentWriteLine ("set {");
+			IndentLevel++;
+			IndentWriteLine ("if (value == null) {");
+			IndentLevel++;
+			IndentWriteLine ("m->{0} = {1};", countName, zero);
+			IndentWriteLine ("m->{0} = IntPtr.Zero;", csMemberName);
+			IndentWriteLine ("return;");
+			IndentLevel--;
+			IndentWriteLine ("}");
+			IndentWriteLine ("m->{0} = {1}{2};", countName, cast, lenFromValue);
+			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1}{2})*value.Length));", csMemberName, structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType);
+			IndentWriteLine ("unsafe");
+			IndentWriteLine ("{");
+			IndentLevel++;
+			IndentWriteLine ("{0}{1}* ptr = ({0}{1}*)m->{2};", structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType, csMemberName);
+			IndentWriteLine ("for (int i = 0; i < value.Length; i++)");
+			IndentLevel++;
+			if (structNeedsMarshalling)
+				IndentWriteLine ("ptr [i] = *value [i].m;");
+			else
+				IndentWriteLine ("ptr [i] = value [i]{0};", isHandle ? ".m" : "");
+			IndentLevel -= 2;
+			IndentWriteLine ("}");
+			IndentLevel--;
+			IndentWriteLine ("}");
+			IndentLevel--;
+			IndentWriteLine ("}");
+		}
+
+		void WriteMemberStructOrHandle (string csMemberType, string csMemberName, string sec, bool isPointer)
+		{
+			var isHandle = handles.ContainsKey (csMemberType);
+			bool isMarshalled = true;
+			if (structures.ContainsKey (csMemberType))
+				isMarshalled = structures [csMemberType].needsMarshalling;
+
+			if (isMarshalled) {
+				IndentWriteLine ("{0} l{1};", csMemberType, csMemberName);
+				initializeMembers.Add (new StructMemberInfo () { csName = csMemberName, csType = csMemberType, isPointer = isPointer, isHandle = isHandle });
+			}
+			IndentWriteLine ("{0} {1}{2} {3} {{", sec, csMemberType, (isPointer && !needsMarshalling) ? "?" : "", csMemberName);
+			IndentLevel++;
+			if (isMarshalled) {
+				IndentWriteLine ("get {{ return l{0}; }}", csMemberName);
+				var castType = isHandle ? GetHandleType (handles [csMemberType]) : "IntPtr";
+				IndentWriteLine ("set {{ l{0} = value; m->{0} = {1}value.m; }}", csMemberName, (isPointer || isHandle) ? string.Format ("({0})", castType) : "*");
+			} else if (isPointer) {
+				IndentWriteLine ("get {{ return ({0})Interop.Structure.MarshalPointerToObject (m->{1}, typeof ({0})); }}", csMemberType ,csMemberName);
+				IndentWriteLine ("set {{ m->{0} = Interop.Structure.MarshalObjectToPointer (m->{0}, value); }}", csMemberName);
+			} else {
+				IndentWriteLine ("get {{ return m->{0}; }}", csMemberName);
+				IndentWriteLine ("set {{ m->{0} = value; }}", csMemberName);
+			}
+			IndentLevel--;
+			IndentWriteLine ("}");
+		}
+
+		void WriteMemberString (string csMemberType, string csMemberName, string sec)
+		{
+			IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
+			IndentLevel++;
+			IndentWriteLine ("get {{ return Marshal.PtrToStringAnsi (m->{0}); }}", csMemberName);
+			IndentWriteLine ("set {{ m->{0} = Marshal.StringToHGlobalAnsi (value); }}", csMemberName);
+			IndentLevel--;
+			IndentWriteLine ("}");
+		}
+
+		void WriteMemberStringArray (string csMemberType, string csMemberName, string sec)
+		{
+			IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
+			IndentLevel++;
+			IndentWriteLine ("get {");
+			IndentLevel++;
+			string countName;
+			if (!csMemberName.EndsWith ("Names"))
+				throw new Exception (string.Format ("unable to handle member {0} {1}", csMemberType, csMemberName));
+			countName = csMemberName.Substring (0, csMemberName.Length - 5) + "Count";
+			IndentWriteLine ("if (m->{0} == 0)", countName);
+			IndentLevel++;
+			IndentWriteLine ("return null;");
+			IndentLevel--;
+			IndentWriteLine ("var strings = new string [m->{0}];", countName);
+			IndentWriteLine ("unsafe");
+			IndentWriteLine ("{");
+			IndentLevel++;
+			IndentWriteLine ("void** ptr = (void**)m->{0};", csMemberName);
+			IndentWriteLine ("for (int i = 0; i < m->{0}; i++)", countName);
+			IndentLevel++;
+			IndentWriteLine ("strings [i] = Marshal.PtrToStringAnsi ((IntPtr)ptr [i]);");
+			IndentLevel -= 2;
+			IndentWriteLine ("}");
+			IndentWriteLine ("return strings;");
+			IndentLevel--;
+			IndentWriteLine ("}");
+			WriteLine ();
+
+			IndentWriteLine ("set {");
+			IndentLevel++;
+			IndentWriteLine ("if (value == null) {");
+			IndentLevel++;
+			IndentWriteLine ("m->{0} = 0;", countName);
+			IndentWriteLine ("m->{0} = IntPtr.Zero;", csMemberName);
+			IndentWriteLine ("return;");
+			IndentLevel--;
+			IndentWriteLine ("}");
+			IndentWriteLine ("m->{0} = (uint)value.Length;", countName);
+			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->{1}));", csMemberName, countName);
+			IndentWriteLine ("unsafe");
+			IndentWriteLine ("{");
+			IndentLevel++;
+			IndentWriteLine ("void** ptr = (void**)m->{0};", csMemberName);
+			IndentWriteLine ("for (int i = 0; i < m->{0}; i++)", countName);
+			IndentLevel++;
+			IndentWriteLine ("ptr [i] = (void*) Marshal.StringToHGlobalAnsi (value [i]);");
+			IndentLevel -= 2;
+			IndentWriteLine ("}");
+			IndentLevel--;
+			IndentWriteLine ("}");
+			IndentLevel--;
+			IndentWriteLine ("}");
+		}
+
+		class StructMemberInfo
+		{
+			public string csType;
+			public string csName;
+			public bool isPointer;
+			public bool isHandle;
+		}
+		List<StructMemberInfo> initializeMembers;
 
 		bool WriteMember (XElement memberElement)
 		{
@@ -422,24 +707,45 @@ namespace VulkanSharp.Generator
 
 			string name = nameElement.Value;
 
-			if (!isInterop && csMemberType == "StructureType" && name == "sType")
+			if (!isInterop && needsMarshalling && csMemberType == "StructureType" && name == "sType")
 				return false;
 
+			var isArray = false;
+			var isFixedArray = false;
 			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
+			bool isDoublePointer = memberElement.Value.Contains (typeElement.Value + "**") || memberElement.Value.Contains (typeElement.Value + "* const*");
 			if (isPointer) {
+				if (name.StartsWith ("p"))
+					name = name.Substring (1);
+				if (name.StartsWith ("p"))
+					name = name.Substring (1);
+
 				switch (csMemberType) {
 				case "void":
-					if (!isInterop && name == "pNext")
+					if (!isInterop && name == "Next")
 						return false;
 					csMemberType = "IntPtr";
 					break;
 				case "char":
-					csMemberType = "string";
+					csMemberType = isDoublePointer ? (isInterop ? "IntPtr" : "string[]") : "string";
+					break;
+				case "float":
+					csMemberType = isInterop ? "IntPtr" : "float";
+					isArray = true;
+					break;
+				case "SampleMask":
+				case "UInt32":
+					csMemberType = isInterop ? "IntPtr" : "UInt32";
+					isArray = true;
+					break;
+				default:
+					var lenAttribute = memberElement.Attribute ("len");
+					if (lenAttribute != null || fieldCounterMap.ContainsKey (TranslateCName (name)))
+						isArray = true;
 					break;
 				}
-				if (name.StartsWith ("p"))
-					name = name.Substring (1);
-			}
+			} else if (memberElement.Value.Contains ('[') && GetArrayLength (memberElement.Value) > 0 && !structures.ContainsKey (csMemberType))
+				isFixedArray = true;
 			var csMemberName = TranslateCName (name);
 
 			// TODO: fixed arrays of structs
@@ -449,6 +755,13 @@ namespace VulkanSharp.Generator
 				// temporarily disable arrays csMemberType += "[]";
 			}
 
+			var isCharArray = false;
+			if (csMemberType == "char" && memberElement.Value.EndsWith ("]")) {
+				isCharArray = true;
+				//todo: handle max size, use 256 for now
+				if (isInterop)
+					csMemberName += "[256]";
+			}
 			string mod = "";
 			if (csMemberName.EndsWith ("]"))
 				mod = "unsafe fixed ";
@@ -465,35 +778,49 @@ namespace VulkanSharp.Generator
 			if (csMemberType == "SampleMask")
 				csMemberType = "UInt32";
 
-			if (csMemberType == "Bool32" && !isInterop)
+			if (csMemberType == "Bool32" && !isInterop && needsMarshalling)
 				csMemberType = "bool";
+
+			if (csMemberType == "char" && (isInterop || !needsMarshalling))
+				csMemberType = "byte";
 
 			string attr = "";
 			string sec = isInterop ? "internal" : "public";
 			if (isUnion)
 				attr = "[FieldOffset (0)] ";
 
-			if (isInterop) {
-				if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType) || csMemberType == "string")
+			if (isInterop || !needsMarshalling) {
+				string member = memberElement.Value;
+				string arrayPart = "";
+				string fixedPart = "";
+				if (member.Contains ('[') && !structures.ContainsKey (csMemberType)) {
+					int len = GetArrayLength (member);
+					if (len > 0) {
+						arrayPart = string.Format ("[{0}]", len);
+						fixedPart = "unsafe fixed ";
+					}
+				}
+				if (structures.ContainsKey (csMemberType))
+					Console.WriteLine ("struct member type: {0} needs marshalling: {1}", csMemberType, structures [csMemberType].needsMarshalling);
+				if (handles.ContainsKey (csMemberType) && !isPointer) {
+					csMemberType = GetHandleType (handles [csMemberType]);
+				} else if ((!isInterop && structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
 					csMemberType = "IntPtr";
-				IndentWriteLine ("{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
+				IndentWriteLine ("{0}{1} {2}{3}{4} {5}{6};", attr, sec, fixedPart, mod, csMemberType, csMemberName, arrayPart);
 			} else {
-				if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType)) {
-					IndentWriteLine ("{0} l{1};", csMemberType, csMemberName);
-					IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
-					IndentLevel++;
-					IndentWriteLine ("get {{ return l{0}; }}", csMemberName);
-					IndentWriteLine ("set {{ l{0} = value; m->{0} = (IntPtr) value.m; }}", csMemberName);
-					IndentLevel--;
-					IndentWriteLine ("}");
-				} else if (csMemberType == "string") {
-					IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
-					IndentLevel++;
-					IndentWriteLine ("get {{ return Marshal.PtrToStringAnsi (m->{0}); }}", csMemberName);
-					IndentWriteLine ("set {{ m->{0} = Marshal.StringToHGlobalAnsi (value); }}", csMemberName);
-					IndentLevel--;
-					IndentWriteLine ("}");
-				} else {
+				if (isCharArray)
+					WriteMemberCharArray (csMemberName, sec);
+				else if (isFixedArray)
+					WriteMemberFixedArray (csMemberType, csMemberName, memberElement);
+				else if (isArray)
+					WriteMemberArray (csMemberType, csMemberName, sec, memberElement);
+				else if (structures.ContainsKey (csMemberType) || handles.ContainsKey (csMemberType))
+					WriteMemberStructOrHandle (csMemberType, csMemberName, sec, isPointer);
+				else if (csMemberType == "string")
+					WriteMemberString (csMemberType, csMemberName, sec);
+				else if (csMemberType == "string[]")
+					WriteMemberStringArray (csMemberType, csMemberName, sec);
+				else {
 					IndentWriteLine ("public {0} {1} {{", csMemberType, csMemberName);
 					IndentLevel++;
 					IndentWriteLine ("get {{ return m->{0}; }}", csMemberName);
@@ -503,7 +830,7 @@ namespace VulkanSharp.Generator
 				}
 			}
 
-			return !isInterop;
+			return !isInterop && needsMarshalling;
 		}
 
 		HashSet<string> disabledStructs = new HashSet<string> {
@@ -515,22 +842,48 @@ namespace VulkanSharp.Generator
 			"Win32SurfaceCreateInfoKhr",
 		};
 
+		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, bool hasSType)
+		{
+			WriteLine ();
+			IndentWriteLine ("internal void Initialize ()");
+			IndentWriteLine ("{");
+			IndentLevel++;
+			if (hasSType)
+				IndentWriteLine ("m->SType = StructureType.{0};", csName);
+
+			foreach (var info in members)
+				if (handles.ContainsKey (info.csType) || (structures.ContainsKey (info.csType) && structures [info.csType].needsMarshalling))
+					if (!info.isPointer && !info.isHandle)
+						IndentWriteLine ("l{0} = new {1} (&m->{0});", info.csName, info.csType);
+
+			IndentLevel--;
+			IndentWriteLine ("}\n");
+		}
+
 		bool WriteStructOrUnion (XElement structElement)
 		{
 			string name = structElement.Attribute ("name").Value;
-			if (!typesTranslation.ContainsKey (name))
+			if (!typesTranslation.ContainsKey (name) || (requiredTypes != null && !requiredTypes.Contains (name)))
 				return false;
 
 			string csName = typesTranslation [name];
+			var info = structures [csName];
+			needsMarshalling = info.needsMarshalling;
+
+			if (isInterop && !needsMarshalling)
+				return false;
 
 			string mod = "";
-			if (isUnion && isInterop)
+			if (isUnion && (isInterop || !needsMarshalling))
 				IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
 			if (!isInterop)
 				mod = "unsafe ";
-			IndentWriteLine ("{0}{1} {2} {3}", mod, isInterop ? "internal" : "public", isInterop ? "struct" : "class", csName);
+			IndentWriteLine ("{0}{1} partial {2} {3}", mod, isInterop ? "internal" : "public", (isInterop || !needsMarshalling) ? "struct" : "class", csName);
 			IndentWriteLine ("{");
 			IndentLevel++;
+
+			initializeMembers = new List<StructMemberInfo> ();
+			GenerateMembers (structElement, WriteMember);
 
 			if (!isInterop) {
 				bool hasSType = false;
@@ -543,19 +896,31 @@ namespace VulkanSharp.Generator
 						hasSType = true;
 				}
 
-				IndentWriteLine ("internal Interop.{0}* m;\n", csName);
-				IndentWriteLine ("public {0} ()", csName);
-				IndentWriteLine ("{");
-				IndentLevel++;
-				IndentWriteLine ("m = (Interop.{0}*) Interop.Structure.Allocate (typeof (Interop.{0}));", csName);
-				if (hasSType) {
-					IndentWriteLine ("m->SType = StructureType.{0};", csName == "DebugReportCallbackCreateInfoExt" ? "DebugReportCreateInfoExt" : csName);
-				}
-				IndentLevel--;
-				IndentWriteLine ("}\n");
-			}
+				if (info.needsMarshalling) {
+					var needsInitialize = hasSType || initializeMembers.Count > 0;
+					IndentWriteLine ("internal {0}.{1}* m;\n", InteropNamespace, csName);
+					IndentWriteLine ("public {0} ()", csName);
+					IndentWriteLine ("{");
+					IndentLevel++;
+					IndentWriteLine ("m = ({0}.{1}*) Interop.Structure.Allocate (typeof ({0}.{1}));", InteropNamespace, csName);
+					if (needsInitialize)
+						IndentWriteLine ("Initialize ();");
+					IndentLevel--;
+					IndentWriteLine ("}");
+					WriteLine ();
+					IndentWriteLine ("internal {0} ({1}.{0}* ptr)", csName, InteropNamespace);
+					IndentWriteLine ("{");
+					IndentLevel++;
+					IndentWriteLine ("m = ptr;");
+					if (needsInitialize)
+						IndentWriteLine ("Initialize ();");
+					IndentLevel--;
+					IndentWriteLine ("}\n");
 
-			GenerateMembers (structElement, WriteMember);
+					if (needsInitialize)
+						WriteStructureInitializeMethod (initializeMembers, csName, hasSType);
+				}
+			}
 
 			IndentLevel--;
 			IndentWriteLine ("}");
@@ -563,16 +928,44 @@ namespace VulkanSharp.Generator
 			return true;
 		}
 
+		int GetArrayLength (string member)
+		{
+			string len = member.Substring (member.IndexOf ('[') + 1);
+			len = len.Substring (0, len.IndexOf (']'));
+			try {
+				return Convert.ToInt32 (len);
+			} catch (FormatException) {
+				return -1;
+			}
+		}
+
+		bool LearnStructureMembers (XElement structElement)
+		{
+			foreach (var memberElement in structElement.Elements ("member")) {
+				string member = memberElement.Value;
+				var typeElement = memberElement.Element ("type");
+				var csMemberType = GetTypeCsName (typeElement.Value, "member");
+
+				if (member.Contains ("*") || member.Contains ("[") || (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling))
+					return true;
+			}
+
+			return false;
+		}
+
 		bool LearnStructure (XElement structElement)
 		{
 			string name = structElement.Attribute ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
 
-			if (disabledStructs.Contains (csName))
+			if (requiredTypes != null) {
+				if (!requiredTypes.Contains (name))
+					return false;
+			} else if (disabledStructs.Contains (csName))
 				return false;
 
 			typesTranslation [name] = csName;
-			structures.Add (csName);
+			structures [csName] = new StructInfo () { name = name, needsMarshalling = LearnStructureMembers (structElement) };
 
 			return false;
 		}
@@ -585,12 +978,12 @@ namespace VulkanSharp.Generator
 
 		void GenerateStructs ()
 		{
-			CreateFile ("Structs", true);
+			CreateFile ("Structs", UsingNamespaceFlags.Interop);
 			isUnion = false;
 			GenerateType ("struct", WriteStructOrUnion);
 			FinalizeFile ();
 
-			CreateFile ("MarshalStructs", false, "Vulkan.Interop", "Interop");
+			CreateFile ("MarshalStructs", 0, "Vulkan." + InteropNamespace, "Interop");
 			isUnion = false;
 			isInterop = true;
 			GenerateType ("struct", WriteStructOrUnion);
@@ -598,16 +991,14 @@ namespace VulkanSharp.Generator
 			FinalizeFile ();
 		}
 
-		#endregion
-
 		void GenerateUnions ()
 		{
-			CreateFile ("Unions");
+			CreateFile ("Unions", UsingNamespaceFlags.Interop);
 			isUnion = true;
 			GenerateType ("union", WriteStructOrUnion);
 			FinalizeFile ();
 
-			CreateFile ("MarshalUnions", true, "Vulkan.Interop", "Interop");
+			CreateFile ("MarshalUnions", UsingNamespaceFlags.Interop, "Vulkan." + InteropNamespace, "Interop");
 			isInterop = true;
 			GenerateType ("union", WriteStructOrUnion);
 			isInterop = false;
@@ -631,109 +1022,153 @@ namespace VulkanSharp.Generator
 			GenerateType ("handle", LearnHandle);
 		}
 
-		string GetParamName (string name, bool isPointer)
+		string GetParamName (XElement param)
 		{
-			if (isPointer && name.StartsWith ("p"))
+			var name = param.Element ("name").Value;
+			if (param.Value.Contains (param.Element ("name").Value + "*") && name.StartsWith ("p"))
 				name = name.Substring (1);
 
 			return name;
 		}
 
-		struct FixedParamInfo
+		class ParamInfo
 		{
-			public bool containsMHandle;
+			public string csName;
 			public string csType;
+			public bool isOut;
+			public bool isStruct;
+			public bool isHandle;
+			public bool isFixed;
+			public bool isPointer;
+			public bool isConst;
+			public bool needsMarshalling;
 		}
 
-		Dictionary<string, FixedParamInfo> FindFixedParams (XElement commandElement, bool isForHandle, bool passToNative = false)
+		string GetParamCsType (string type, ref bool isPointer, out bool isHandle)
+		{
+			string csType = GetTypeCsName (type);
+			isHandle = handles.ContainsKey (csType);
+
+			if (!isPointer)
+				return csType;
+
+			if (!isHandle) {
+				switch (csType) {
+				case "void":
+					csType = "IntPtr";
+					break;
+				case "char":
+					csType = "string";
+					isPointer = false;
+					break;
+				}
+			}
+
+			return csType;
+		}
+
+		Dictionary<string, ParamInfo> LearnParams (XElement commandElement, bool isInstance, out int fixedCount, out int outCount, bool passToNative = false)
 		{
 			bool first = true;
-			var fixedParams = new Dictionary<string, FixedParamInfo> ();
+			var paramsDict = new Dictionary<string, ParamInfo> ();
 
+			fixedCount = 0;
+			outCount = 0;
 			foreach (var param in commandElement.Elements ("param")) {
-				if (first && isForHandle) {
+				if (first && isInstance) {
 					first = false;
 					continue;
 				}
+				var csName = GetParamName (param);
+				var info = new ParamInfo () { csName = csName };
 				string type = param.Element ("type").Value;
-				string csType = GetTypeCsName (type);
 				bool isPointer = param.Value.Contains (type + "*");
+				info.csType = GetParamCsType (type, ref isPointer, out info.isHandle);
+				paramsDict.Add (csName, info);
+				info.isPointer = isPointer;
+				info.isConst = info.isPointer && param.Value.Contains ("const ");
+				if (info.isPointer && !info.isConst) {
+					info.isOut = true;
+					outCount++;
+				}
+				info.isStruct = structures.ContainsKey (info.csType);
+				if (info.isStruct) {
+					info.needsMarshalling = structures [info.csType].needsMarshalling;
+				}
 				if (isPointer && type == "void" && !param.Value.Contains ("**"))
 					continue;
-				if (!isPointer || structures.Contains (csType))
+				if (!isPointer || info.isStruct)
 					continue;
-				bool isHandle = handles.ContainsKey (csType);
-				bool isStruct = structures.Contains (csType);
-				if (isHandle || isStruct || !param.Value.Contains ("const "))
-					fixedParams.Add (GetParamName (param.Element ("name").Value, isPointer), new FixedParamInfo () { containsMHandle = isHandle || isStruct, csType = csType });
+				if (info.isHandle || !param.Value.Contains ("const ")) {
+					info.isFixed = true;
+					fixedCount++;
+				}
 			}
 
-			return fixedParams;
+			return paramsDict;
 		}
 
-		Dictionary<string, string> WriteCommandParameters (XElement commandElement, bool isForHandle = false, bool passToNative = false, Dictionary<string, FixedParamInfo> fixedParams = null)
+		void WriteCommandParameters (XElement commandElement, List<ParamInfo> ignoredParameters = null, ParamInfo nullParameter = null, ParamInfo ptrParam = null, bool isInstance = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null, bool isExtension = false)
 		{
 			bool first = true;
 			bool previous = false;
-			var outParams = new Dictionary<string, string> ();
 
 			foreach (var param in commandElement.Elements ("param")) {
-				if (first && isForHandle) {
-					if (passToNative) {
-						Write ("this.m");
-						previous = true;
-					}
+				string name = GetParamName (param);
+
+				if (first) {
 					first = false;
-					continue;
+					if (passToNative && (isInstance || isExtension)) {
+						Write ("{0}.m", isExtension ? name : "this");
+						previous = true;
+						continue;
+					}
+					if (isInstance)
+						continue;
+					if (isExtension)
+						Write ("this ");
 				}
 
 				string type = param.Element ("type").Value;
-				string name = param.Element ("name").Value;
-				string csType = GetTypeCsName (type);
+				var info = paramsDict [name];
 
-				bool isPointer = param.Value.Contains (type + "*");
+				if (ignoredParameters != null && ignoredParameters.Contains (info))
+					continue;
+
+				var optional = param.Attribute ("optional");
+				bool isOptionalParam = (optional != null && optional.Value == "true");
 				bool isDoublePointer = param.Value.Contains (type + "**");
-				bool isConst = false;
-				bool isStruct = structures.Contains (csType);
-				bool isHandle = handles.ContainsKey (csType);
-				if (isPointer) {
-					if (!isHandle) {
-						switch (csType) {
-						case "void":
-							csType = "IntPtr";
-							break;
-						case "char":
-							csType = "string";
-							isPointer = false;
-							break;
-						}
-					}
-					if (param.Value.Contains ("const "))
-						isConst = true;
+				if (!isDoublePointer && info.isPointer && info.csType == "IntPtr") {
+					info.isPointer = false;
+					info.isOut = false;
 				}
-				name = GetParamName (name, isPointer);
-				if (!isDoublePointer && isPointer && csType == "IntPtr")
-					isPointer = false;
 
 				if (previous)
 					Write (", ");
 				else
 					previous = true;
 
-				bool isOut = isPointer && !isConst;
-				if (isOut)
-					outParams [name] = csType;
-
 				if (passToNative) {
-					bool isFixed = fixedParams != null &&  fixedParams.ContainsKey (name);
-					string paramName = isFixed ? "ptr" + name : name;
+					string paramName = info.isFixed ? "ptr" + name : name;
+					bool useHandlePtr = !info.isFixed && ((info.isStruct && info.needsMarshalling) || info.isHandle);
 
-					Write ("{0}{1}{2}", (isPointer && !isStruct && !isFixed) ? "&" : "", keywords.Contains (paramName) ? "@" + paramName : paramName, (!isFixed && (isStruct || isHandle)) ? ".m" : "");
+					if (info == nullParameter)
+						Write ("null");
+					else if (info == ptrParam)
+						Write ("({0}{1}*)ptr{2}", (info.isStruct && info.needsMarshalling) ? "Interop." : "", info.isHandle ? GetHandleType (handles [info.csType]) : info.csType, info.csName);
+					else if (isOptionalParam && info.isPointer && !info.isOut)
+						Write ("{0} != null ? {0}{1} : null", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
+					else
+						Write ("{0}{1}{2}", (info.isPointer && (!info.isStruct || !info.needsMarshalling) && !info.isFixed) ? "&" : "", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
 				} else
-					Write ("{0}{1} {2}", isOut ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
+					Write ("{0}{1} {2}", info.isOut ? "out " : "", info.csType, keywords.Contains (name) ? "@" + name : name);
 			}
+		}
 
-			return outParams;
+		string GetSafeParameterName(string paramName)
+		{
+			// if paramName is a reserved name
+			return keywords.Contains (paramName) ? "@" + paramName : paramName;
 		}
 
 		string GetManagedHandleType (string handleType)
@@ -743,7 +1178,7 @@ namespace VulkanSharp.Generator
 
 		string GetManagedType (string csType)
 		{
-			if (structures.Contains (csType))
+			if (structures.ContainsKey (csType))
 				return "IntPtr";
 
 			if (handles.ContainsKey (csType))
@@ -761,14 +1196,52 @@ namespace VulkanSharp.Generator
 			"vkCreateInstance"
 		};
 
-		bool WriteCommand (XElement commandElement, bool prependNewLine, bool isForHandle = false, string handleName = null)
+		bool CommandShouldCreateArray (XElement commandElement, Dictionary<string, ParamInfo> paramsDict, ref ParamInfo intParam, ref ParamInfo dataParam)
+		{
+			ParamInfo outUInt = null;
+			foreach (var param in commandElement.Elements ("param")) {
+				string name = GetParamName (param);
+				if (!paramsDict.ContainsKey (name))
+					continue;
+
+				var info = paramsDict [name];
+				if (info.csType == "UInt32")
+					outUInt = info;
+				else {
+					if (outUInt != null && info.isOut && (info.isStruct || info.isHandle || info.isPointer)) {
+						intParam = outUInt;
+						dataParam = info;
+
+						return true;
+					}
+					outUInt = null;
+				}
+			}
+
+			return false;
+		}
+
+		void CommandHandleResult (bool hasResult)
+		{
+			if (hasResult) {
+				IndentWriteLine ("if (result != Result.Success)");
+				IndentLevel++;
+				IndentWriteLine ("throw new ResultException (result);");
+				IndentLevel--;
+			}
+		}
+
+		bool WriteCommand (XElement commandElement, bool prependNewLine, bool isForHandle = false, string handleName = null, bool isExtension = false)
 		{
 			string function = commandElement.Element ("proto").Element ("name").Value;
 			string type = commandElement.Element ("proto").Element ("type").Value;
 			string csType = GetTypeCsName (type);
 
 			// todo: extensions support
-			if (disabledUnmanagedCommands.Contains (function) || disabledCommands.Contains (function))
+			if (requiredCommands != null) {
+				if (!requiredCommands.Contains (function))
+					return false;
+			} else if (disabledUnmanagedCommands.Contains (function) || disabledCommands.Contains (function))
 				return false;
 
 			if (prependNewLine)
@@ -791,20 +1264,80 @@ namespace VulkanSharp.Generator
 					csFunction = csFunction.Substring (0, csFunction.Length - handleName.Length);
 			}
 
-			var fixedParams = FindFixedParams (commandElement, isForHandle);
+			int fixedCount, outCount;
+			var paramsDict = LearnParams (commandElement, isForHandle && !isExtension, out fixedCount, out outCount);
 
-			IndentWrite ("public {0}{1} {2} (", isForHandle ? "" : "static ", csType, csFunction);
-			var outParams = WriteCommandParameters (commandElement, isForHandle);
+			var hasResult = csType == "Result";
+			if (hasResult)
+				csType = "void";
+
+			ParamInfo firstOutParam = null;
+			ParamInfo intParam = null;
+			ParamInfo dataParam = null;
+			var ignoredParameters = new List<ParamInfo> ();
+			bool createArray = false;
+			if (csType == "void") {
+				if (outCount == 1) {
+					foreach (var param in paramsDict) {
+						if (param.Value.isOut) {
+							firstOutParam = param.Value;
+							switch (firstOutParam.csType) {
+							case "Bool32":
+							case "IntPtr":
+							case "UInt32":
+							case "DeviceSize":
+								firstOutParam.isFixed = false;
+								break;
+							}
+							ignoredParameters.Add (param.Value);
+							break;
+						}
+					}
+					csType = firstOutParam.csType;
+				} else if (outCount > 1) {
+					createArray = CommandShouldCreateArray (commandElement, paramsDict, ref intParam, ref dataParam);
+					if (createArray) {
+						ignoredParameters.Add (intParam);
+						ignoredParameters.Add (dataParam);
+						intParam.isFixed = false;
+						dataParam.isFixed = false;
+						intParam.isOut = false;
+						dataParam.isOut = false;
+						csType = string.Format ("{0}[]", dataParam.csType);
+					}
+				}
+			}
+
+			IndentWrite ("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
+			WriteCommandParameters (commandElement, ignoredParameters, null, null, isForHandle && !isExtension, false, paramsDict, isExtension);
 			WriteLine (")");
 			IndentWriteLine ("{");
 			IndentLevel++;
+			if (hasResult)
+				IndentWriteLine ("Result result;");
+			if (firstOutParam != null)
+				IndentWriteLine ("{0} {1};", csType, firstOutParam.csName);
 			IndentWriteLine ("unsafe {");
 			IndentLevel++;
 
-			if (fixedParams.Count > 0) {
+			bool isInInterop = false;
+			if (createArray) {
+				isInInterop = dataParam.isStruct && dataParam.needsMarshalling;
+
+				IndentWriteLine ("UInt32 {0};", intParam.csName);
+				IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", function);
+				WriteCommandParameters (commandElement, null, dataParam, null, isForHandle && !isExtension, true, paramsDict, isExtension);
+				WriteLine (");");
+				CommandHandleResult (hasResult);
+				WriteLine ();
+				IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
+				IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, intParam.csName);
+			}
+
+			if (fixedCount > 0) {
 				int count = 0;
-				foreach (var param in fixedParams) {
-					if (param.Value.containsMHandle) {
+				foreach (var param in paramsDict) {
+					if (param.Value.isFixed && param.Value.isHandle && !param.Value.isConst) {
 						IndentWriteLine ("{0} = new {1} ();", param.Key, param.Value.csType);
 						count++;
 					}
@@ -812,26 +1345,59 @@ namespace VulkanSharp.Generator
 				if (count > 0)
 					WriteLine ();
 
-				foreach (var param in fixedParams) {
-					IndentWriteLine ("fixed ({0}* ptr{1} = &{1}{2}) {{", GetManagedType (param.Value.csType), param.Key, param.Value.containsMHandle ? ".m" : "");
-					IndentLevel++;
+				foreach (var param in paramsDict) {
+					if (param.Value.isFixed) {
+						IndentWriteLine ("fixed ({0}* ptr{1} = &{2}{3}) {{", GetManagedType (param.Value.csType), param.Key, param.Key, param.Value.isHandle ? ".m" : "");
+						IndentLevel++;
+					}
 				}
 			}
-			if (outParams.Count > 0) {
-				foreach (var param in outParams)
-					if (!fixedParams.ContainsKey (param.Key))
-						IndentWriteLine ("{0} = new {1} ();", param.Key, param.Value);
-			}
+			if (outCount > 0)
+				foreach (var param in paramsDict) {
+					var info = param.Value;
+					if (info.isOut && !info.isFixed) // && (ignoredParameters == null || !ignoredParameters.Contains (info)))
+						IndentWriteLine ("{0} = new {1} ();", param.Key, info.csType);
+				}
 
-			IndentWrite ("{0}Interop.NativeMethods.{1} (", csType != "void" ? "return " : "", function);
-			WriteCommandParameters (commandElement, isForHandle, true, fixedParams);
+			IndentWrite ("{0}{1}{2}.NativeMethods.{3} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", InteropNamespace, function);
+			WriteCommandParameters (commandElement, null, null, dataParam, isForHandle && !isExtension, true, paramsDict, isExtension);
 			WriteLine (");");
 
-			if (fixedParams.Count > 0) {
-				foreach (var param in fixedParams) {
-					IndentLevel--;
-					IndentWriteLine ("}");
+			if (fixedCount > 0) {
+				foreach (var param in paramsDict) {
+					if (param.Value.isFixed) {
+						IndentLevel--;
+						IndentWriteLine ("}");
+					}
 				}
+			}
+
+			CommandHandleResult (hasResult);
+			if (firstOutParam != null) {
+				WriteLine ();
+				IndentWriteLine ("return {0};", firstOutParam.csName);
+			} else if (createArray) {
+				WriteLine ();
+				IndentWriteLine ("if ({0} <= 0)", intParam.csName);
+				IndentLevel++;
+				IndentWriteLine ("return null;");
+				IndentLevel--;
+				IndentWriteLine ("var arr = new {0} [{1}];", dataParam.csType, intParam.csName);
+				IndentWriteLine ("for (int i = 0; i < {0}; i++) {{", intParam.csName);
+				IndentLevel++;
+				if (isInInterop || !dataParam.isStruct) {
+					if (dataParam.isStruct)
+						IndentWriteLine ("arr [i] = new {0} ({1}(({2}{3}*)ptr{4}) [i]);", dataParam.csType, dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
+					else {
+						IndentWriteLine ("arr [i] = new {0} ();", dataParam.csType);
+						IndentWriteLine ("arr [i]{0} = {1}(({2}{3}*)ptr{4}) [i];", (dataParam.isStruct || dataParam.isHandle) ? ".m" : "", dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
+					}
+				} else
+					IndentWriteLine ("arr [i] = ((({0}*)ptr{1}) [i]);", dataParam.csType, dataParam.csName);
+				IndentLevel--;
+				IndentWriteLine ("}");
+				WriteLine ();
+				IndentWriteLine ("return arr;");
 			}
 
 			IndentLevel--;
@@ -842,32 +1408,50 @@ namespace VulkanSharp.Generator
 			return true;
 		}
 
+		string GetHandleType (HandleInfo info)
+		{
+			switch (info.type) {
+			case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
+				return "UInt64";
+			case "VK_DEFINE_HANDLE":
+				return "IntPtr";
+			default:
+				throw new Exception ("unknown handle type: " + info.type);
+			}
+		}
+
 		bool WriteHandle (XElement handleElement)
 		{
 			string csName = GetTypeCsName (handleElement.Element ("name").Value, "handle");
 			HandleInfo info = handles [csName];
+			bool isRequired = false;
 
-			IndentWriteLine ("public partial class {0}", csName);
+			if (requiredCommands != null) {
+				foreach (var commandElement in info.commands)
+					if (requiredCommands.Contains (commandElement.Element ("proto").Element ("name").Value)) {
+						isRequired = true;
+						break;
+					}
+
+				if (!isRequired)
+					return false;
+			}
+
+			IndentWriteLine ("public {0} class {1}{2}", isRequired ? "static" : "partial", csName, isRequired ? "Extension" : "");
 			IndentWriteLine ("{");
 			IndentLevel++;
 
 			//// todo: implement marshalling
-			switch (info.type) {
-			case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
-				IndentWriteLine ("internal UInt64 m;", csName);
-				break;
-			case "VK_DEFINE_HANDLE":
-				IndentWriteLine ("internal IntPtr m;", csName);
-				break;
-			default:
-				throw new Exception ("unknown handle type: " + info.type);
+			bool written = false;
+			if (requiredCommands == null) {
+				IndentWriteLine ("internal {0} m;", GetHandleType (info));
+				written = true;
 			}
 
 			if (info.commands.Count > 0) {
-				WriteLine ();
-				bool written = false;
-				foreach (var element in info.commands)
-					written = WriteCommand (element, written, true, csName);
+				foreach (var element in info.commands) {
+					written = WriteCommand (element, written, true, csName, isRequired);
+				}
 			}
 
 			IndentLevel--;
@@ -878,7 +1462,7 @@ namespace VulkanSharp.Generator
 
 		void GenerateHandles ()
 		{
-			CreateFile ("Handles");
+			CreateFile ("Handles", UsingNamespaceFlags.Interop | UsingNamespaceFlags.Collections, Namespace);
 			GenerateType ("handle", WriteHandle);
 			FinalizeFile ();
 		}
@@ -904,6 +1488,8 @@ namespace VulkanSharp.Generator
 						handle.commands.Add (commandElement);
 					csType = handle.type == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
 				}
+				bool isStruct = structures.ContainsKey (csType);
+				bool isRequired = requiredTypes != null && requiredTypes.Contains (type);
 				if (isPointer) {
 					switch (csType) {
 					case "void":
@@ -920,7 +1506,7 @@ namespace VulkanSharp.Generator
 				} else if (first && handles.ContainsKey (csType))
 					handles [csType].commands.Add (commandElement);
 
-				name = GetParamName (name, isPointer);
+				name = GetParamName (param);
 
 				if (previous)
 					Write (", ");
@@ -930,7 +1516,7 @@ namespace VulkanSharp.Generator
 				if (param.Value.Contains (type + "**"))
 					csType += "*";
 
-				Write ("{0} {1}", csType, keywords.Contains (name) ? "@" + name : name);
+				Write ("{0}{1} {2}", (isStruct && requiredCommands != null && !isRequired) ? "Vulkan.Interop." : "", csType, keywords.Contains (name) ? "@" + name : name);
 				first = false;
 			}
 		}
@@ -942,6 +1528,7 @@ namespace VulkanSharp.Generator
 			"vkCreateWaylandSurfaceKHR",
 			"vkGetPhysicalDeviceWaylandPresentationSupportKHR",
 			"vkCreateWin32SurfaceKHR",
+			"vkGetPhysicalDeviceWin32PresentationSupportKHR",
 			"vkCreateXlibSurfaceKHR",
 			"vkGetPhysicalDeviceXlibPresentationSupportKHR",
 			"vkCreateXcbSurfaceKHR",
@@ -955,14 +1542,17 @@ namespace VulkanSharp.Generator
 			string csType = GetTypeCsName (type);
 
 			// todo: extensions support
-			if (disabledUnmanagedCommands.Contains (function))
+			if (requiredCommands != null) {
+				if (!requiredCommands.Contains (function))
+					return false;
+			} else if (disabledUnmanagedCommands.Contains (function))
 				return false;
 
 			// todo: function pointers
 			if (csType.StartsWith ("PFN_"))
 				csType = "IntPtr";
 
-			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Cdecl)]");
+			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
 			IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
 			WriteUnmanagedCommandParameters (commandElement);
 			WriteLine (");");
@@ -970,14 +1560,26 @@ namespace VulkanSharp.Generator
 			return true;
 		}
 
+		string InteropNamespace {
+			get {
+				return string.Format ("{0}Interop", platform == null ? "" : (platform + "."));
+			}
+		}
+
+		string Namespace {
+			get {
+				return string.Format ("Vulkan{0}", platform == null ? "" : ("." + platform));
+			}
+		}
+
 		void GenerateCommands ()
 		{
-			CreateFile ("ImportedCommands", true, "Vulkan.Interop", "Interop");
+			CreateFile ("ImportedCommands", UsingNamespaceFlags.Interop | (requiredCommands == null ? 0 : UsingNamespaceFlags.VulkanInterop), "Vulkan." + InteropNamespace, "Interop");
 
 			IndentWriteLine ("internal static class NativeMethods");
 			IndentWriteLine ("{");
 			IndentLevel++;
-			IndentWriteLine ("const string VulkanLibrary = \"vulkan\";\n");
+			IndentWriteLine ("const string VulkanLibrary = \"{0}\";\n", (platform == null || platform == "Windows") ? "vulkan-1" : "vulkan");
 
 			bool written = false;
 			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
@@ -994,9 +1596,9 @@ namespace VulkanSharp.Generator
 
 		void GenerateRemainingCommands ()
 		{
-			CreateFile ("Commands");
+			CreateFile ("Commands", UsingNamespaceFlags.Interop | UsingNamespaceFlags.Collections);
 
-			IndentWriteLine ("internal static partial class Commands");
+			IndentWriteLine ("public static partial class Commands");
 			IndentWriteLine ("{");
 			IndentLevel++;
 
@@ -1019,21 +1621,43 @@ namespace VulkanSharp.Generator
 			FinalizeFile ();
 		}
 
+		string EnumExtensionValue (XElement element, int number, ref string csEnumName)
+		{
+			var offsetAttribute = element.Attribute ("offset");
+			if (offsetAttribute != null) {
+				int direction = 1;
+				var dirAttr = element.Attribute ("dir");
+				if (dirAttr != null && dirAttr.Value == "-")
+					direction = -1;
+				int offset = Int32.Parse (offsetAttribute.Value);
+
+				return (direction*(1000000000 + (number - 1)*1000 + offset)).ToString ();
+			}
+			var valueAttribute = element.Attribute ("value");
+			if (valueAttribute != null)
+				return valueAttribute.Value;
+
+			var bitposAttribute = element.Attribute ("bitpos");
+			if (bitposAttribute != null) {
+				if (csEnumName.EndsWith ("FlagBits"))
+					csEnumName = csEnumName.Substring (0, csEnumName.Length - 4) + "s";
+
+				return FormatFlagValue (Int32.Parse (bitposAttribute.Value));
+			}
+
+			throw new Exception (string.Format ("unexpected extension enum value in: {0}", element));
+		}
+
 		void LearnExtension (XElement extensionElement)
 		{
 			var extensions = from e in extensionElement.Element ("require").Elements ("enum") where e.Attribute ("extends") != null select e;
 			int number = Int32.Parse (extensionElement.Attribute ("number").Value);
 			foreach (var element in extensions) {
 				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
+				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number, ref enumName) };
 				if (!enumExtensions.ContainsKey (enumName))
 					enumExtensions [enumName] = new List<EnumExtensionInfo> ();
 
-				int direction = 1;
-				var dirAttr = element.Attribute ("dir");
-				if (dirAttr != null && dirAttr.Value == "-")
-					direction = -1;
-				int offset = Int32.Parse (element.Attribute ("offset").Value);
-				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = direction*(1000000000 + (number - 1)*1000 + offset) };
 				enumExtensions [enumName].Add (info);
 			}
 		}
@@ -1044,6 +1668,63 @@ namespace VulkanSharp.Generator
 
 			foreach (var element in elements)
 				LearnExtension (element);
+		}
+
+		void PrepareExtensionSets (string[] extensionNames)
+		{
+			requiredTypes = new HashSet<string> ();
+			requiredCommands = new HashSet<string> ();
+
+			foreach (var name in extensionNames)
+				PrepareExtensionSets (name);
+		}
+
+		void PrepareExtensionSets (string extensionName)
+		{
+			var elements = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("name").Value == extensionName select e.Element ("require");
+
+			foreach (var element in elements.Elements ()) {
+				switch (element.Name.ToString ()) {
+				case "type":
+					requiredTypes.Add (element.Attribute ("name").Value);
+					break;
+				case "command":
+					requiredCommands.Add (element.Attribute ("name").Value);
+					break;
+				}
+			}
+		}
+
+		void GeneratePlatformExtension (string name, string extensionName)
+		{
+			GeneratePlatformExtension (name, new string [] { extensionName });
+		}
+
+		void GeneratePlatformExtension (string name, string[] extensionNames)
+		{
+			platform = name;
+			var currentPath = outputPath;
+			outputPath += string.Format ("{0}..{0}Platforms{0}{1}", Path.DirectorySeparatorChar, name);
+
+			PrepareExtensionSets (extensionNames);
+
+			LearnStructsAndUnions ();
+			GenerateStructs ();
+			GenerateCommands ();
+			GenerateHandles ();
+
+			outputPath = currentPath;
+		}
+
+		void GenerateExtensions ()
+		{
+			GeneratePlatformExtension ("Android", "VK_KHR_android_surface");
+			GeneratePlatformExtension ("Linux", new string[] {
+				"VK_KHR_xlib_surface",
+				"VK_KHR_xcb_surface",
+				"VK_KHR_wayland_surface",
+				"VK_KHR_mir_surface" } );
+			GeneratePlatformExtension ("Windows", "VK_KHR_win32_surface");
 		}
 	}
 }
