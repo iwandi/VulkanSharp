@@ -504,13 +504,6 @@ namespace Vulkan
 				return arr;
 			}
 		}
-
-		public Bool32 GetWin32PresentationSupportKHR (UInt32 queueFamilyIndex)
-		{
-			unsafe {
-				return Interop.NativeMethods.vkGetPhysicalDeviceWin32PresentationSupportKHR (this.m, queueFamilyIndex);
-			}
-		}
 	}
 
 	public partial class Device
