@@ -459,7 +459,59 @@ namespace VulkanSharp.Generator
 			{ "SampleMask", "RasterizationSamples" }
 		};
 
-		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement, int len)
+        void WriteMenberFixedArrayStruct (string csMemberType, string csMemberName, XElement memberElement, int len)
+        {
+            IndentWriteLine("public {0}[] {1} {{", csMemberType, csMemberName);
+            IndentLevel++;
+            IndentWriteLine("get {");
+            IndentLevel++;
+
+            IndentWriteLine("var arr = new {0} [] {{", csMemberType);
+            IndentLevel++;
+            for(int i = 0; i < len; i++ )
+            {
+                IndentWriteLine("m->{0}{1},", csMemberName, i);
+            }
+            IndentLevel--;
+            IndentWriteLine("};");
+
+            IndentWriteLine("return arr;");
+
+            IndentLevel--;
+            IndentWriteLine("}");
+            WriteLine();
+
+            IndentWriteLine("set {");
+            IndentLevel++;
+
+            // SET
+            
+            IndentWriteLine("switch(value.Length) {{", csMemberType);
+            IndentLevel++;
+            for (int i = len-1; i >= 0; i--)
+            {
+                IndentWriteLine("case {0}:", i);
+                IndentLevel++;
+                IndentWriteLine("m->{0}{1} = value[{1}];", csMemberName, i);
+                if (i == 0)
+                {
+                    IndentWriteLine("break;");
+                }
+                else
+                {
+                    IndentWriteLine("goto case {0};", (i - 1));
+                }
+                IndentLevel--;
+            }
+            IndentWriteLine("}");
+
+            IndentLevel--;
+            IndentWriteLine("}");
+            IndentLevel--;
+            IndentWriteLine("}");
+        }
+
+        void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement, int len)
 		{
 			//int len = GetArrayLength (memberElement.Value);
 			IndentWriteLine ("public {0}[] {1} {{", csMemberType, csMemberName);
@@ -714,6 +766,7 @@ namespace VulkanSharp.Generator
 
 			var isArray = false;
 			var isFixedArray = false;
+            var isFixedArrayStruct = false;
 			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
 			bool isDoublePointer = memberElement.Value.Contains (typeElement.Value + "**") || memberElement.Value.Contains (typeElement.Value + "* const*");
 			if (isPointer) {
@@ -765,13 +818,15 @@ namespace VulkanSharp.Generator
                 string constantValue;
                 if (constants.TryGetValue(constantName, out constantValue)) {
                     arrayFixedLenght = int.Parse(constantValue);
-                }
-                else {
+                } else {
                     int.TryParse(constantName, out arrayFixedLenght);
                 }
-                if(!structures.ContainsKey(csMemberType))
+                if (!structures.ContainsKey(csMemberType)) {
                     isFixedArray = true;
-                // TODO : handle the else case for fixed arrays with struct type
+                } else { 
+                    // TODO : handle the else case for fixed arrays with struct type
+                    isFixedArrayStruct = true;
+                }
             }
 
             string mod = "";
@@ -813,28 +868,37 @@ namespace VulkanSharp.Generator
 					csMemberType = GetHandleType (handles [csMemberType]);
 				} else if ((!isInterop && structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
 					csMemberType = "IntPtr";
-				IndentWriteLine ("{0}{1} {2}{3}{4} {5}{6};", attr, sec, fixedPart, mod, csMemberType, csMemberName, arrayPart);
+                if (isFixedArrayStruct) {
+                    for(int i = 0; i < arrayFixedLenght; i++) {
+                        IndentWriteLine("{0}{1} {2}{3}{4} {5}{6};", attr, sec, fixedPart, mod, csMemberType, csMemberName+i, arrayPart);
+                    }
+                } else {
+                    IndentWriteLine("{0}{1} {2}{3}{4} {5}{6};", attr, sec, fixedPart, mod, csMemberType, csMemberName, arrayPart);
+                }
 			} else {
-				if (isFixedArray && csMemberType == "char")
-					WriteMemberCharArray (csMemberName, sec, arrayFixedLenght);
-				else if (isFixedArray)
-					WriteMemberFixedArray (csMemberType, csMemberName, memberElement, arrayFixedLenght);
-				else if (isArray)
-					WriteMemberArray (csMemberType, csMemberName, sec, memberElement);
-				else if (structures.ContainsKey (csMemberType) || handles.ContainsKey (csMemberType))
-					WriteMemberStructOrHandle (csMemberType, csMemberName, sec, isPointer);
-				else if (csMemberType == "string")
-					WriteMemberString (csMemberType, csMemberName, sec);
-				else if (csMemberType == "string[]")
-					WriteMemberStringArray (csMemberType, csMemberName, sec);
-				else {
-					IndentWriteLine ("public {0} {1} {{", csMemberType, csMemberName);
-					IndentLevel++;
-					IndentWriteLine ("get {{ return m->{0}; }}", csMemberName);
-					IndentWriteLine ("set {{ m->{0} = value; }}", csMemberName);
-					IndentLevel--;
-					IndentWriteLine ("}");
-				}
+                if (isFixedArray && csMemberType == "char")
+                    WriteMemberCharArray(csMemberName, sec, arrayFixedLenght);
+                else if (isFixedArrayStruct)
+                    WriteMenberFixedArrayStruct(csMemberType, csMemberName, memberElement, arrayFixedLenght); // TODO count element
+                else if (isFixedArray)
+                    WriteMemberFixedArray(csMemberType, csMemberName, memberElement, arrayFixedLenght);
+                else if (isArray)
+                    WriteMemberArray(csMemberType, csMemberName, sec, memberElement);
+                else if (structures.ContainsKey(csMemberType) || handles.ContainsKey(csMemberType))
+                    WriteMemberStructOrHandle(csMemberType, csMemberName, sec, isPointer);
+                else if (csMemberType == "string")
+                    WriteMemberString(csMemberType, csMemberName, sec);
+                else if (csMemberType == "string[]")
+                    WriteMemberStringArray(csMemberType, csMemberName, sec);
+                else
+                {
+                    IndentWriteLine("public {0} {1} {{", csMemberType, csMemberName);
+                    IndentLevel++;
+                    IndentWriteLine("get {{ return m->{0}; }}", csMemberName);
+                    IndentWriteLine("set {{ m->{0} = value; }}", csMemberName);
+                    IndentLevel--;
+                    IndentWriteLine("}");
+                }
 			}
 
 			return !isInterop && needsMarshalling;
