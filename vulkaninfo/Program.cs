@@ -13,7 +13,7 @@ namespace vulkaninfo
         static void Main(string[] args)
         {            
             InfoGenerator gen = new InfoGenerator();
-            gen.WriteInfo(new System.IO.StreamWriter(Console.OpenStandardOutput()));
+            gen.DumpInfo(new System.IO.StreamWriter(Console.OpenStandardOutput()));
 
             Console.ReadLine();
         }
