@@ -20,8 +20,9 @@ namespace VulkanSharp.Generator
 		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
+        Dictionary<string, string> constants = new Dictionary<string, string>();
 
-		string platform;
+        string platform;
 		HashSet<string> requiredTypes = null;
 		HashSet<string> requiredCommands = null;
 
@@ -65,6 +66,7 @@ namespace VulkanSharp.Generator
 			Directory.CreateDirectory ("Interop");
 
 			LearnExtensions ();
+            LearnConstants();
 			GenerateEnums ();
 			GenerateBitmasks ();
 			LearnHandles ();
@@ -442,12 +444,12 @@ namespace VulkanSharp.Generator
 			GenerateType ("bitmask", AddBitmask);
 		}
 
-		void WriteMemberCharArray (string csMemberName, string sec)
+		void WriteMemberCharArray (string csMemberName, string sec, int fixedSize)
 		{
-			IndentWriteLine ("{0} string {1} {{", sec, csMemberName);
+			IndentWriteLine ("{0} string {1} {{", sec, csMemberName, fixedSize);
 			IndentLevel++;
 			IndentWriteLine ("get {{ return Marshal.PtrToStringAnsi ((IntPtr)m->{0}); }}", csMemberName);
-			IndentWriteLine ("set {{ Interop.Structure.MarshalFixedSizeString (m->{0}, value, 256); }}", csMemberName);
+			IndentWriteLine ("set {{ Interop.Structure.MarshalFixedSizeString (m->{0}, value, {1}); }}", csMemberName, fixedSize);
 			IndentLevel--;
 			IndentWriteLine ("}");
 		}
@@ -457,9 +459,9 @@ namespace VulkanSharp.Generator
 			{ "SampleMask", "RasterizationSamples" }
 		};
 
-		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement)
+		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement, int len)
 		{
-			int len = GetArrayLength (memberElement.Value);
+			//int len = GetArrayLength (memberElement.Value);
 			IndentWriteLine ("public {0}[] {1} {{", csMemberType, csMemberName);
 			IndentLevel++;
 			IndentWriteLine ("get {");
@@ -752,19 +754,27 @@ namespace VulkanSharp.Generator
 			if (csMemberName.EndsWith ("]")) {
 				string array = csMemberName.Substring (csMemberName.IndexOf ('['));
 				csMemberName = csMemberName.Substring (0, csMemberName.Length - array.Length);
-				// temporarily disable arrays csMemberType += "[]";
+                // temporarily disable arrays csMemberType += "[]";
+                
 			}
 
-			var isCharArray = false;
-			if (csMemberType == "char" && memberElement.Value.EndsWith ("]")) {
-				isCharArray = true;
-				//todo: handle max size, use 256 for now
-				if (isInterop)
-					csMemberName += "[256]";
-			}
-			string mod = "";
-			if (csMemberName.EndsWith ("]"))
-				mod = "unsafe fixed ";
+            int arrayFixedLenght = 0;
+            if(memberElement.Value.EndsWith("]")) {
+                int constantStart = memberElement.Value.IndexOf('[') + 1;
+                string constantName = memberElement.Value.Substring(constantStart, memberElement.Value.Length - constantStart - 1);
+                string constantValue;
+                if (constants.TryGetValue(constantName, out constantValue)) {
+                    arrayFixedLenght = int.Parse(constantValue);
+                }
+                else {
+                    int.TryParse(constantName, out arrayFixedLenght);
+                }
+                if(!structures.ContainsKey(csMemberType))
+                    isFixedArray = true;
+                // TODO : handle the else case for fixed arrays with struct type
+            }
+
+            string mod = "";
 
 			if (csMemberType.EndsWith ("Flags"))
 				csMemberType = "UInt32";
@@ -781,8 +791,8 @@ namespace VulkanSharp.Generator
 			if (csMemberType == "Bool32" && !isInterop && needsMarshalling)
 				csMemberType = "bool";
 
-			if (csMemberType == "char" && (isInterop || !needsMarshalling))
-				csMemberType = "byte";
+			if (csMemberType == "char" && (isInterop || !needsMarshalling)) 
+                csMemberType = "byte";
 
 			string attr = "";
 			string sec = isInterop ? "internal" : "public";
@@ -793,13 +803,10 @@ namespace VulkanSharp.Generator
 				string member = memberElement.Value;
 				string arrayPart = "";
 				string fixedPart = "";
-				if (member.Contains ('[') && !structures.ContainsKey (csMemberType)) {
-					int len = GetArrayLength (member);
-					if (len > 0) {
-						arrayPart = string.Format ("[{0}]", len);
-						fixedPart = "unsafe fixed ";
-					}
-				}
+                if ( isFixedArray ) {
+                    fixedPart = "unsafe fixed ";
+                    arrayPart = "[" + arrayFixedLenght + "]";
+                }
 				if (structures.ContainsKey (csMemberType))
 					Console.WriteLine ("struct member type: {0} needs marshalling: {1}", csMemberType, structures [csMemberType].needsMarshalling);
 				if (handles.ContainsKey (csMemberType) && !isPointer) {
@@ -808,10 +815,10 @@ namespace VulkanSharp.Generator
 					csMemberType = "IntPtr";
 				IndentWriteLine ("{0}{1} {2}{3}{4} {5}{6};", attr, sec, fixedPart, mod, csMemberType, csMemberName, arrayPart);
 			} else {
-				if (isCharArray)
-					WriteMemberCharArray (csMemberName, sec);
+				if (isFixedArray && csMemberType == "char")
+					WriteMemberCharArray (csMemberName, sec, arrayFixedLenght);
 				else if (isFixedArray)
-					WriteMemberFixedArray (csMemberType, csMemberName, memberElement);
+					WriteMemberFixedArray (csMemberType, csMemberName, memberElement, arrayFixedLenght);
 				else if (isArray)
 					WriteMemberArray (csMemberType, csMemberName, sec, memberElement);
 				else if (structures.ContainsKey (csMemberType) || handles.ContainsKey (csMemberType))
@@ -1726,5 +1733,21 @@ namespace VulkanSharp.Generator
 				"VK_KHR_mir_surface" } );
 			GeneratePlatformExtension ("Windows", "VK_KHR_win32_surface");
 		}
+
+        // TODO : Export this into code instad of lookup
+        void LearnConstants()
+        {
+            var values = from el in specTree.Elements("enums")
+                         where (string)el.Attribute("name") == "API Constants"
+                         select el;
+
+            foreach (var constantNone in values) {
+                foreach(var constant in constantNone.Elements("enum")) {
+                    string name = constant.Attribute("name").Value;
+                    string value = constant.Attribute("value").Value;
+                    constants.Add(name, value);
+                }
+            }
+        }
 	}
 }
