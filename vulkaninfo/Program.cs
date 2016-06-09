@@ -1,21 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Vulkan;
+using System.IO;
 
 namespace vulkaninfo
 {
     class Program
     {
         static void Main(string[] args)
-        {            
-            InfoGenerator gen = new InfoGenerator();
-            gen.DumpInfo(new System.IO.StreamWriter(Console.OpenStandardOutput()));
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
 
-            Console.ReadLine();
+            if (!Console.IsOutputRedirected)
+            {
+                Console.WindowWidth = 130;
+                Console.WindowHeight = 50;
+                Console.BufferWidth = 130;
+                Console.BufferHeight = 20000;
+            }
+
+            InfoGenerator gen = new InfoGenerator();
+                           
+            StreamWriter sw = new StreamWriter(Console.OpenStandardOutput());
+            gen.DumpInfo(sw);
+            sw.Close();
+
+            if (!Console.IsOutputRedirected)
+            {
+                Console.ReadLine();
+            }
         }
     }
 }
