@@ -34,7 +34,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pPhysicalDeviceCount <= 0)
-					return new PhysicalDevice[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (IntPtr));
 				var ptrpPhysicalDevices = Marshal.AllocHGlobal ((int)(size * pPhysicalDeviceCount));
@@ -138,7 +138,7 @@ namespace Vulkan
 				UInt32 pQueueFamilyPropertyCount;
 				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties (this.m, &pQueueFamilyPropertyCount, null);
 				if (pQueueFamilyPropertyCount <= 0)
-					return new QueueFamilyProperties[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (QueueFamilyProperties));
 				var ptrpQueueFamilyProperties = Marshal.AllocHGlobal ((int)(size * pQueueFamilyPropertyCount));
@@ -228,7 +228,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pPropertyCount <= 0)
-					return new LayerProperties[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.LayerProperties));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
@@ -256,7 +256,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pPropertyCount <= 0)
-					return new ExtensionProperties[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.ExtensionProperties));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
@@ -281,7 +281,7 @@ namespace Vulkan
 				UInt32 pPropertyCount;
 				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties (this.m, format, type, samples, usage, tiling, &pPropertyCount, null);
 				if (pPropertyCount <= 0)
-					return new SparseImageFormatProperties[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (SparseImageFormatProperties));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
@@ -307,7 +307,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pPropertyCount <= 0)
-					return new DisplayPropertiesKhr[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.DisplayPropertiesKhr));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
@@ -335,7 +335,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pPropertyCount <= 0)
-					return new DisplayPlanePropertiesKhr[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.DisplayPlanePropertiesKhr));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
@@ -363,7 +363,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pDisplayCount <= 0)
-					return new DisplayKhr[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
 				var ptrpDisplays = Marshal.AllocHGlobal ((int)(size * pDisplayCount));
@@ -392,7 +392,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pPropertyCount <= 0)
-					return new DisplayModePropertiesKhr[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.DisplayModePropertiesKhr));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
@@ -479,7 +479,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pSurfaceFormatCount <= 0)
-					return new SurfaceFormatKhr[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (SurfaceFormatKhr));
 				var ptrpSurfaceFormats = Marshal.AllocHGlobal ((int)(size * pSurfaceFormatCount));
@@ -507,7 +507,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pPresentModeCount <= 0)
-					return new PresentModeKhr[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (PresentModeKhr));
 				var ptrpPresentModes = Marshal.AllocHGlobal ((int)(size * pPresentModeCount));
@@ -694,7 +694,7 @@ namespace Vulkan
 				UInt32 pSparseMemoryRequirementCount;
 				Interop.NativeMethods.vkGetImageSparseMemoryRequirements (this.m, image.m, &pSparseMemoryRequirementCount, null);
 				if (pSparseMemoryRequirementCount <= 0)
-					return new SparseImageMemoryRequirements[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (SparseImageMemoryRequirements));
 				var ptrpSparseMemoryRequirements = Marshal.AllocHGlobal ((int)(size * pSparseMemoryRequirementCount));
@@ -1416,7 +1416,7 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pSwapchainImageCount <= 0)
-					return new Image[0];
+					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
 				var ptrpSwapchainImages = Marshal.AllocHGlobal ((int)(size * pSwapchainImageCount));
