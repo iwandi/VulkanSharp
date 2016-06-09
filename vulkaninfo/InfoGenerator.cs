@@ -99,18 +99,22 @@ namespace vulkaninfo
 
             // Scan layers
             List<LayerExtensionList> layers = new List<LayerExtensionList>();
-            foreach (LayerProperties layer in gpu.Obj.EnumerateDeviceLayerProperties())
+            LayerProperties[] layerProperties = gpu.Obj.EnumerateDeviceLayerProperties();
+            if (layerProperties != null)
             {
-                LayerExtensionList layerExtList = new LayerExtensionList
+                foreach (LayerProperties layer in layerProperties)
                 {
-                    LayerProperties = layer,
-                    ExtensionProperties = gpu.Obj.EnumerateDeviceExtensionProperties(layer.LayerName),
-                };
-                if (layerExtList.ExtensionProperties == null)
-                {
-                    layerExtList.ExtensionProperties = new ExtensionProperties[0];
+                    LayerExtensionList layerExtList = new LayerExtensionList
+                    {
+                        LayerProperties = layer,
+                        ExtensionProperties = gpu.Obj.EnumerateDeviceExtensionProperties(layer.LayerName),
+                    };
+                    if (layerExtList.ExtensionProperties == null)
+                    {
+                        layerExtList.ExtensionProperties = new ExtensionProperties[0];
+                    }
+                    layers.Add(layerExtList);
                 }
-                layers.Add(layerExtList);
             }
 
             ExtensionProperties[] extensions = gpu.Obj.EnumerateDeviceExtensionProperties("");
@@ -176,21 +180,29 @@ namespace vulkaninfo
 
             // Scan layers
             List<LayerExtensionList> layers = new List<LayerExtensionList>();
-            foreach (LayerProperties layer in Commands.EnumerateInstanceLayerProperties())
+            LayerProperties[] layerProperties = Commands.EnumerateInstanceLayerProperties();
+            if (layerProperties != null)
             {
-                LayerExtensionList layerExtList = new LayerExtensionList
+                foreach (LayerProperties layer in layerProperties)
                 {
-                    LayerProperties = layer,
-                    ExtensionProperties = Commands.EnumerateInstanceExtensionProperties(layer.LayerName),
-                };
-                if(layerExtList.ExtensionProperties == null)
-                {
-                    layerExtList.ExtensionProperties = new ExtensionProperties[0];
+                    LayerExtensionList layerExtList = new LayerExtensionList
+                    {
+                        LayerProperties = layer,
+                        ExtensionProperties = Commands.EnumerateInstanceExtensionProperties(layer.LayerName),
+                    };
+                    if (layerExtList.ExtensionProperties == null)
+                    {
+                        layerExtList.ExtensionProperties = new ExtensionProperties[0];
+                    }
+                    layers.Add(layerExtList);
                 }
-                layers.Add(layerExtList);
             }
 
             ExtensionProperties[] extensions = Commands.EnumerateInstanceExtensionProperties("");
+            if(extensions == null)
+            {
+                extensions = new ExtensionProperties[0];
+            }
 
             foreach (string knownExtName in KnownExtensions)
             {
