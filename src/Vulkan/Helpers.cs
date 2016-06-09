@@ -20,7 +20,12 @@ namespace Vulkan
 		{
 			return bValue.value == 0 ? false : true;
 		}
-	}
+
+        public override string ToString()
+        {
+            return value.ToString();
+        }
+    }
 
 	public struct DeviceSize
 	{
@@ -34,8 +39,13 @@ namespace Vulkan
 		public static implicit operator UInt64 (DeviceSize size)
 		{
 			return size.value;
-		}
-	}
+        }
+
+        public override string ToString()
+        {
+            return value.ToString();
+        }
+    }
 
 	public class ResultException : Exception
 	{
