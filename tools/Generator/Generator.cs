@@ -1373,432 +1373,466 @@ namespace VulkanSharp.Generator
 					}
                     // TODO : add code that handles arrays in params as non return type
 
-                    // TODO : add a function that extract all array params 
-                    // check <param len="<paramName>"> if it is referening a param in the call
-                }
-            }
-
-			IndentWrite ("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
-			WriteCommandParameters (commandElement, ignoredParameters, null, null, isForHandle && !isExtension, false, paramsDict, isExtension);
-			WriteLine (")");
-			IndentWriteLine ("{");
-			IndentLevel++;
-			if (hasResult)
-				IndentWriteLine ("Result result;");
-			if (firstOutParam != null)
-				IndentWriteLine ("{0} {1};", csType, firstOutParam.csName);
-			IndentWriteLine ("unsafe {");
-			IndentLevel++;
-
-			bool isInInterop = false;
-			if (createArray) {
-				isInInterop = dataParam.isStruct && dataParam.needsMarshalling;
-
-				IndentWriteLine ("UInt32 {0};", intParam.csName);
-				IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", function);
-				WriteCommandParameters (commandElement, null, dataParam, null, isForHandle && !isExtension, true, paramsDict, isExtension);
-				WriteLine (");");
-				CommandHandleResult (hasResult);
-                IndentWriteLine("if ({0} <= 0)", intParam.csName);
-                IndentLevel++;
-                IndentWriteLine("return null;");
-                IndentLevel--;
-                WriteLine();
-				IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
-				IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, intParam.csName);
-			}
-
-			if (fixedCount > 0) {
-				int count = 0;
-				foreach (var param in paramsDict) {
-					if (param.Value.isFixed && param.Value.isHandle && !param.Value.isConst) {
-						IndentWriteLine ("{0} = new {1} ();", param.Key, param.Value.csType);
-						count++;
-					}
-				}
-				if (count > 0)
-					WriteLine ();
-
-				foreach (var param in paramsDict) {
-					if (param.Value.isFixed) {
-						IndentWriteLine ("fixed ({0}* ptr{1} = &{2}{3}) {{", GetManagedType (param.Value.csType), param.Key, param.Key, param.Value.isHandle ? ".m" : "");
-						IndentLevel++;
-					}
-				}
-			}
-			if (outCount > 0)
-				foreach (var param in paramsDict) {
-					var info = param.Value;
-					if (info.isOut && !info.isFixed) // && (ignoredParameters == null || !ignoredParameters.Contains (info)))
-						IndentWriteLine ("{0} = new {1} ();", param.Key, info.csType);
-				}
-
-			IndentWrite ("{0}{1}{2}.NativeMethods.{3} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", InteropNamespace, function);
-			WriteCommandParameters (commandElement, null, null, dataParam, isForHandle && !isExtension, true, paramsDict, isExtension);
-			WriteLine (");");
-
-			if (fixedCount > 0) {
-				foreach (var param in paramsDict) {
-					if (param.Value.isFixed) {
-						IndentLevel--;
-						IndentWriteLine ("}");
-					}
-				}
-			}
-
-			CommandHandleResult (hasResult);
-			if (firstOutParam != null) {
-				WriteLine ();
-				IndentWriteLine ("return {0};", firstOutParam.csName);
-			} else if (createArray) {
-				WriteLine ();
-				IndentWriteLine ("if ({0} <= 0)", intParam.csName);
-				IndentLevel++;
-				IndentWriteLine ("return null;");
-				IndentLevel--;
-				IndentWriteLine ("var arr = new {0} [{1}];", dataParam.csType, intParam.csName);
-				IndentWriteLine ("for (int i = 0; i < {0}; i++) {{", intParam.csName);
-				IndentLevel++;
-				if (isInInterop || !dataParam.isStruct) {
-					if (dataParam.isStruct)
-						IndentWriteLine ("arr [i] = new {0} ({1}(({2}{3}*)ptr{4}) [i]);", dataParam.csType, dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
-					else {
-						IndentWriteLine ("arr [i] = new {0} ();", dataParam.csType);
-						IndentWriteLine ("arr [i]{0} = {1}(({2}{3}*)ptr{4}) [i];", (dataParam.isStruct || dataParam.isHandle) ? ".m" : "", dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
-					}
-				} else
-					IndentWriteLine ("arr [i] = ((({0}*)ptr{1}) [i]);", dataParam.csType, dataParam.csName);
-				IndentLevel--;
-				IndentWriteLine ("}");
-				WriteLine ();
-				IndentWriteLine ("return arr;");
-			}
-
-			IndentLevel--;
-			IndentWriteLine ("}");
-			IndentLevel--;
-			IndentWriteLine ("}");
-
-			return true;
-		}
-
-		string GetHandleType (HandleInfo info)
-		{
-			switch (info.type) {
-			case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
-				return "UInt64";
-			case "VK_DEFINE_HANDLE":
-				return "IntPtr";
-			default:
-				throw new Exception ("unknown handle type: " + info.type);
-			}
-		}
-
-		bool WriteHandle (XElement handleElement)
-		{
-			string csName = GetTypeCsName (handleElement.Element ("name").Value, "handle");
-			HandleInfo info = handles [csName];
-			bool isRequired = false;
-
-			if (requiredCommands != null) {
-				foreach (var commandElement in info.commands)
-					if (requiredCommands.Contains (commandElement.Element ("proto").Element ("name").Value)) {
-						isRequired = true;
-						break;
-					}
-
-				if (!isRequired)
-					return false;
-			}
-
-			IndentWriteLine ("public {0} class {1}{2}", isRequired ? "static" : "partial", csName, isRequired ? "Extension" : "");
-			IndentWriteLine ("{");
-			IndentLevel++;
-
-			//// todo: implement marshalling
-			bool written = false;
-			if (requiredCommands == null) {
-				IndentWriteLine ("internal {0} m;", GetHandleType (info));
-				written = true;
-			}
-
-			if (info.commands.Count > 0) {
-				foreach (var element in info.commands) {
-					written = WriteCommand (element, written, true, csName, isRequired);
-				}
-			}
-
-			IndentLevel--;
-			IndentWriteLine ("}");
-
-			return true;
-		}
-
-		void GenerateHandles ()
-		{
-			CreateFile ("Handles", UsingNamespaceFlags.Interop | UsingNamespaceFlags.Collections, Namespace);
-			GenerateType ("handle", WriteHandle);
-			FinalizeFile ();
-		}
-
-		HashSet<string> keywords = new HashSet<string> {
-			"event",
-			"object",
-		};
-
-		void WriteUnmanagedCommandParameters (XElement commandElement)
-		{
-			bool first = true;
-			bool previous = false;
-			foreach (var param in commandElement.Elements ("param")) {
-				string type = param.Element ("type").Value;
-				string name = param.Element ("name").Value;
-				string csType = GetTypeCsName (type);
-
-				bool isPointer = param.Value.Contains (type + "*");
-				if (handles.ContainsKey (csType)) {
-					var handle = handles [csType];
-					if (first && !isPointer)
-						handle.commands.Add (commandElement);
-					csType = handle.type == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
-				}
-				bool isStruct = structures.ContainsKey (csType);
-				bool isRequired = requiredTypes != null && requiredTypes.Contains (type);
-				if (isPointer) {
-					switch (csType) {
-					case "void":
-						csType = "IntPtr";
-						break;
-					case "char":
-						csType = "string";
-						isPointer = false;
-						break;
-					default:
-						csType += "*";
-						break;
-					}
-				} else if (first && handles.ContainsKey (csType))
-					handles [csType].commands.Add (commandElement);
-
-				name = GetParamName (param);
-
-				if (previous)
-					Write (", ");
-				else
-					previous = true;
-
-				if (param.Value.Contains (type + "**"))
-					csType += "*";
-
-				Write ("{0}{1} {2}", (isStruct && requiredCommands != null && !isRequired) ? "Vulkan.Interop." : "", csType, keywords.Contains (name) ? "@" + name : name);
-				first = false;
-			}
-		}
-
-		HashSet<string> disabledUnmanagedCommands = new HashSet<string> {
-			"vkGetPhysicalDeviceXcbPresentationSupportKHR",
-			"vkCreateMirSurfaceKHR",
-			"vkGetPhysicalDeviceMirPresentationSupportKHR",
-			"vkCreateWaylandSurfaceKHR",
-			"vkGetPhysicalDeviceWaylandPresentationSupportKHR",
-			"vkCreateWin32SurfaceKHR",
-			"vkGetPhysicalDeviceWin32PresentationSupportKHR",
-			"vkCreateXlibSurfaceKHR",
-			"vkGetPhysicalDeviceXlibPresentationSupportKHR",
-			"vkCreateXcbSurfaceKHR",
-			"vkCreateAndroidSurfaceKHR"
-		};
-
-		bool WriteUnmanagedCommand (XElement commandElement)
-		{
-			string function = commandElement.Element ("proto").Element ("name").Value;
-			string type = commandElement.Element ("proto").Element ("type").Value;
-			string csType = GetTypeCsName (type);
-
-			// todo: extensions support
-			if (requiredCommands != null) {
-				if (!requiredCommands.Contains (function))
-					return false;
-			} else if (disabledUnmanagedCommands.Contains (function))
-				return false;
-
-			// todo: function pointers
-			if (csType.StartsWith ("PFN_"))
-				csType = "IntPtr";
-
-			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
-			IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
-			WriteUnmanagedCommandParameters (commandElement);
-			WriteLine (");");
-
-			return true;
-		}
-
-		string InteropNamespace {
-			get {
-				return string.Format ("{0}Interop", platform == null ? "" : (platform + "."));
-			}
-		}
-
-		string Namespace {
-			get {
-				return string.Format ("Vulkan{0}", platform == null ? "" : ("." + platform));
-			}
-		}
-
-		void GenerateCommands ()
-		{
-			CreateFile ("ImportedCommands", UsingNamespaceFlags.Interop | (requiredCommands == null ? 0 : UsingNamespaceFlags.VulkanInterop), "Vulkan." + InteropNamespace, "Interop");
-
-			IndentWriteLine ("internal static class NativeMethods");
-			IndentWriteLine ("{");
-			IndentLevel++;
-			IndentWriteLine ("const string VulkanLibrary = \"{0}\";\n", (platform == null || platform == "Windows") ? "vulkan-1" : "vulkan");
-
-			bool written = false;
-			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
-				if (written)
-					WriteLine ();
-				written = WriteUnmanagedCommand (command);
-			}
-
-			IndentLevel--;
-			IndentWriteLine ("}");
-
-			FinalizeFile ();
-		}
-
-		void GenerateRemainingCommands ()
-		{
-			CreateFile ("Commands", UsingNamespaceFlags.Interop | UsingNamespaceFlags.Collections);
-
-			IndentWriteLine ("public static partial class Commands");
-			IndentWriteLine ("{");
-			IndentLevel++;
-
-			var handlesCommands = new HashSet<string> ();
-			foreach (var handle in handles)
-				foreach (var command in handle.Value.commands)
-					handlesCommands.Add (command.Element ("proto").Element ("name").Value);
-
-			bool written = false;
-			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
-				if (handlesCommands.Contains (command.Element ("proto").Element ("name").Value))
-					continue;
-
-				written = WriteCommand (command, written);
-			}
-
-			IndentLevel--;
-			IndentWriteLine ("}");
-
-			FinalizeFile ();
-		}
-
-		string EnumExtensionValue (XElement element, int number, ref string csEnumName)
-		{
-			var offsetAttribute = element.Attribute ("offset");
-			if (offsetAttribute != null) {
-				int direction = 1;
-				var dirAttr = element.Attribute ("dir");
-				if (dirAttr != null && dirAttr.Value == "-")
-					direction = -1;
-				int offset = Int32.Parse (offsetAttribute.Value);
-
-				return (direction*(1000000000 + (number - 1)*1000 + offset)).ToString ();
-			}
-			var valueAttribute = element.Attribute ("value");
-			if (valueAttribute != null)
-				return valueAttribute.Value;
-
-			var bitposAttribute = element.Attribute ("bitpos");
-			if (bitposAttribute != null) {
-				if (csEnumName.EndsWith ("FlagBits"))
-					csEnumName = csEnumName.Substring (0, csEnumName.Length - 4) + "s";
-
-				return FormatFlagValue (Int32.Parse (bitposAttribute.Value));
-			}
-
-			throw new Exception (string.Format ("unexpected extension enum value in: {0}", element));
-		}
-
-		void LearnExtension (XElement extensionElement)
-		{
-			var extensions = from e in extensionElement.Element ("require").Elements ("enum") where e.Attribute ("extends") != null select e;
-			int number = Int32.Parse (extensionElement.Attribute ("number").Value);
-			foreach (var element in extensions) {
-				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
-				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number, ref enumName) };
-				if (!enumExtensions.ContainsKey (enumName))
-					enumExtensions [enumName] = new List<EnumExtensionInfo> ();
-
-				enumExtensions [enumName].Add (info);
-			}
-		}
-
-		void LearnExtensions ()
-		{
-			var elements = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("supported").Value != "disabled" select e;
-
-			foreach (var element in elements)
-				LearnExtension (element);
-		}
-
-		void PrepareExtensionSets (string[] extensionNames)
-		{
-			requiredTypes = new HashSet<string> ();
-			requiredCommands = new HashSet<string> ();
-
-			foreach (var name in extensionNames)
-				PrepareExtensionSets (name);
-		}
-
-		void PrepareExtensionSets (string extensionName)
-		{
-			var elements = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("name").Value == extensionName select e.Element ("require");
-
-			foreach (var element in elements.Elements ()) {
-				switch (element.Name.ToString ()) {
-				case "type":
-					requiredTypes.Add (element.Attribute ("name").Value);
-					break;
-				case "command":
-					requiredCommands.Add (element.Attribute ("name").Value);
-					break;
-				}
-			}
-		}
-
-		void GeneratePlatformExtension (string name, string extensionName)
-		{
-			GeneratePlatformExtension (name, new string [] { extensionName });
-		}
-
-		void GeneratePlatformExtension (string name, string[] extensionNames)
-		{
-			platform = name;
-			var currentPath = outputPath;
-			outputPath += string.Format ("{0}..{0}Platforms{0}{1}", Path.DirectorySeparatorChar, name);
-
-			PrepareExtensionSets (extensionNames);
-
-			LearnStructsAndUnions ();
-			GenerateStructs ();
-			GenerateCommands ();
-			GenerateHandles ();
-
-			outputPath = currentPath;
-		}
-
-		void GenerateExtensions ()
-		{
-			GeneratePlatformExtension ("Android", "VK_KHR_android_surface");
-			GeneratePlatformExtension ("Linux", new string[] {
-				"VK_KHR_xlib_surface",
-				"VK_KHR_xcb_surface",
-				"VK_KHR_wayland_surface",
-				"VK_KHR_mir_surface" } );
-			GeneratePlatformExtension ("Windows", "VK_KHR_win32_surface");
-		}
-	}
+// TODO : add a function that extract all array params 
+// check <param len="<paramName>"> if it is referening a param in the call
+
+/*
+public void CmdPipelineBarrier (PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, DependencyFlags dependencyFlags, MemoryBarrier[] memoryBarriers, BufferMemoryBarrier[] bufferMemoryBarriers, ImageMemoryBarrier[] imageMemoryBarriers[])
+{
+unsafe {
+uint memoryBarriersCount = 0;
+Interop.MemoryBarrier* pMemoryBarriers = null;
+if(memoryBarriers != null && memoryBarriers.Length > 0)
+{
+memoryBarriersCount = (uint)memoryBarriers.Length;
+pMemoryBarriers = memoryBarriers[0].m;
+}
+
+uint bufferMemoryBarriersCount = 0;
+Interop.BufferMemoryBarrier* pBufferMemoryBarriers = null;
+if (memoryBarriers != null && bufferMemoryBarriers.Length > 0)
+{
+bufferMemoryBarriersCount = (uint)bufferMemoryBarriers.Length;
+pBufferMemoryBarriers = bufferMemoryBarriers[0].m;
+}
+
+uint imageMemoryBarriersCount = 0;
+Interop.ImageMemoryBarrier* pImageMemoryBarriers = null;
+if (memoryBarriers != null && imageMemoryBarriers.Length > 0)
+{
+imageMemoryBarriersCount = (uint)imageMemoryBarriers.Length;
+pImageMemoryBarriers = imageMemoryBarriers[0].m;
+}
+
+Interop.NativeMethods.vkCmdPipelineBarrier (this.m, srcStageMask, dstStageMask, 
+dependencyFlags, memoryBarriersCount, pMemoryBarriers, bufferMemoryBarriersCount, 
+pBufferMemoryBarriers, imageMemoryBarriersCount, pImageMemoryBarriers);
+}
+}
+}
+}*/
+
+IndentWrite ("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
+WriteCommandParameters (commandElement, ignoredParameters, null, null, isForHandle && !isExtension, false, paramsDict, isExtension);
+WriteLine (")");
+IndentWriteLine ("{");
+IndentLevel++;
+if (hasResult)
+IndentWriteLine ("Result result;");
+if (firstOutParam != null)
+IndentWriteLine ("{0} {1};", csType, firstOutParam.csName);
+IndentWriteLine ("unsafe {");
+IndentLevel++;
+
+bool isInInterop = false;
+if (createArray) {
+isInInterop = dataParam.isStruct && dataParam.needsMarshalling;
+
+IndentWriteLine ("UInt32 {0};", intParam.csName);
+IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", function);
+WriteCommandParameters (commandElement, null, dataParam, null, isForHandle && !isExtension, true, paramsDict, isExtension);
+WriteLine (");");
+CommandHandleResult (hasResult);
+IndentWriteLine("if ({0} <= 0)", intParam.csName);
+IndentLevel++;
+IndentWriteLine("return null;");
+IndentLevel--;
+WriteLine();
+IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
+IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, intParam.csName);
+}
+
+if (fixedCount > 0) {
+int count = 0;
+foreach (var param in paramsDict) {
+    if (param.Value.isFixed && param.Value.isHandle && !param.Value.isConst) {
+        IndentWriteLine ("{0} = new {1} ();", param.Key, param.Value.csType);
+        count++;
+    }
+}
+if (count > 0)
+    WriteLine ();
+
+foreach (var param in paramsDict) {
+    if (param.Value.isFixed) {
+        IndentWriteLine ("fixed ({0}* ptr{1} = &{2}{3}) {{", GetManagedType (param.Value.csType), param.Key, param.Key, param.Value.isHandle ? ".m" : "");
+        IndentLevel++;
+    }
+}
+}
+if (outCount > 0)
+foreach (var param in paramsDict) {
+    var info = param.Value;
+    if (info.isOut && !info.isFixed) // && (ignoredParameters == null || !ignoredParameters.Contains (info)))
+        IndentWriteLine ("{0} = new {1} ();", param.Key, info.csType);
+}
+
+IndentWrite ("{0}{1}{2}.NativeMethods.{3} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", InteropNamespace, function);
+WriteCommandParameters (commandElement, null, null, dataParam, isForHandle && !isExtension, true, paramsDict, isExtension);
+WriteLine (");");
+
+if (fixedCount > 0) {
+foreach (var param in paramsDict) {
+    if (param.Value.isFixed) {
+        IndentLevel--;
+        IndentWriteLine ("}");
+    }
+}
+}
+
+CommandHandleResult (hasResult);
+if (firstOutParam != null) {
+WriteLine ();
+IndentWriteLine ("return {0};", firstOutParam.csName);
+} else if (createArray) {
+WriteLine ();
+IndentWriteLine ("if ({0} <= 0)", intParam.csName);
+IndentLevel++;
+IndentWriteLine ("return null;");
+IndentLevel--;
+IndentWriteLine ("var arr = new {0} [{1}];", dataParam.csType, intParam.csName);
+IndentWriteLine ("for (int i = 0; i < {0}; i++) {{", intParam.csName);
+IndentLevel++;
+if (isInInterop || !dataParam.isStruct) {
+    if (dataParam.isStruct)
+        IndentWriteLine ("arr [i] = new {0} ({1}(({2}{3}*)ptr{4}) [i]);", dataParam.csType, dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
+    else {
+        IndentWriteLine ("arr [i] = new {0} ();", dataParam.csType);
+        IndentWriteLine ("arr [i]{0} = {1}(({2}{3}*)ptr{4}) [i];", (dataParam.isStruct || dataParam.isHandle) ? ".m" : "", dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
+    }
+} else
+    IndentWriteLine ("arr [i] = ((({0}*)ptr{1}) [i]);", dataParam.csType, dataParam.csName);
+IndentLevel--;
+IndentWriteLine ("}");
+WriteLine ();
+IndentWriteLine ("return arr;");
+}
+
+IndentLevel--;
+IndentWriteLine ("}");
+IndentLevel--;
+IndentWriteLine ("}");
+
+return true;
+}
+
+string GetHandleType (HandleInfo info)
+{
+switch (info.type) {
+case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
+return "UInt64";
+case "VK_DEFINE_HANDLE":
+return "IntPtr";
+default:
+throw new Exception ("unknown handle type: " + info.type);
+}
+}
+
+bool WriteHandle (XElement handleElement)
+{
+string csName = GetTypeCsName (handleElement.Element ("name").Value, "handle");
+HandleInfo info = handles [csName];
+bool isRequired = false;
+
+if (requiredCommands != null) {
+foreach (var commandElement in info.commands)
+    if (requiredCommands.Contains (commandElement.Element ("proto").Element ("name").Value)) {
+        isRequired = true;
+        break;
+    }
+
+if (!isRequired)
+    return false;
+}
+
+IndentWriteLine ("public {0} class {1}{2}", isRequired ? "static" : "partial", csName, isRequired ? "Extension" : "");
+IndentWriteLine ("{");
+IndentLevel++;
+
+//// todo: implement marshalling
+bool written = false;
+if (requiredCommands == null) {
+IndentWriteLine ("internal {0} m;", GetHandleType (info));
+written = true;
+}
+
+if (info.commands.Count > 0) {
+foreach (var element in info.commands) {
+    written = WriteCommand (element, written, true, csName, isRequired);
+}
+}
+
+IndentLevel--;
+IndentWriteLine ("}");
+
+return true;
+}
+
+void GenerateHandles ()
+{
+CreateFile ("Handles", UsingNamespaceFlags.Interop | UsingNamespaceFlags.Collections, Namespace);
+GenerateType ("handle", WriteHandle);
+FinalizeFile ();
+}
+
+HashSet<string> keywords = new HashSet<string> {
+"event",
+"object",
+};
+
+void WriteUnmanagedCommandParameters (XElement commandElement)
+{
+bool first = true;
+bool previous = false;
+foreach (var param in commandElement.Elements ("param")) {
+string type = param.Element ("type").Value;
+string name = param.Element ("name").Value;
+string csType = GetTypeCsName (type);
+
+bool isPointer = param.Value.Contains (type + "*");
+if (handles.ContainsKey (csType)) {
+    var handle = handles [csType];
+    if (first && !isPointer)
+        handle.commands.Add (commandElement);
+    csType = handle.type == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
+}
+bool isStruct = structures.ContainsKey (csType);
+bool isRequired = requiredTypes != null && requiredTypes.Contains (type);
+if (isPointer) {
+    switch (csType) {
+    case "void":
+        csType = "IntPtr";
+        break;
+    case "char":
+        csType = "string";
+        isPointer = false;
+        break;
+    default:
+        csType += "*";
+        break;
+    }
+} else if (first && handles.ContainsKey (csType))
+    handles [csType].commands.Add (commandElement);
+
+name = GetParamName (param);
+
+if (previous)
+    Write (", ");
+else
+    previous = true;
+
+if (param.Value.Contains (type + "**"))
+    csType += "*";
+
+Write ("{0}{1} {2}", (isStruct && requiredCommands != null && !isRequired) ? "Vulkan.Interop." : "", csType, keywords.Contains (name) ? "@" + name : name);
+first = false;
+}
+}
+
+HashSet<string> disabledUnmanagedCommands = new HashSet<string> {
+"vkGetPhysicalDeviceXcbPresentationSupportKHR",
+"vkCreateMirSurfaceKHR",
+"vkGetPhysicalDeviceMirPresentationSupportKHR",
+"vkCreateWaylandSurfaceKHR",
+"vkGetPhysicalDeviceWaylandPresentationSupportKHR",
+"vkCreateWin32SurfaceKHR",
+"vkGetPhysicalDeviceWin32PresentationSupportKHR",
+"vkCreateXlibSurfaceKHR",
+"vkGetPhysicalDeviceXlibPresentationSupportKHR",
+"vkCreateXcbSurfaceKHR",
+"vkCreateAndroidSurfaceKHR"
+};
+
+bool WriteUnmanagedCommand (XElement commandElement)
+{
+string function = commandElement.Element ("proto").Element ("name").Value;
+string type = commandElement.Element ("proto").Element ("type").Value;
+string csType = GetTypeCsName (type);
+
+// todo: extensions support
+if (requiredCommands != null) {
+if (!requiredCommands.Contains (function))
+    return false;
+} else if (disabledUnmanagedCommands.Contains (function))
+return false;
+
+// todo: function pointers
+if (csType.StartsWith ("PFN_"))
+csType = "IntPtr";
+
+IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
+IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
+WriteUnmanagedCommandParameters (commandElement);
+WriteLine (");");
+
+return true;
+}
+
+string InteropNamespace {
+get {
+return string.Format ("{0}Interop", platform == null ? "" : (platform + "."));
+}
+}
+
+string Namespace {
+get {
+return string.Format ("Vulkan{0}", platform == null ? "" : ("." + platform));
+}
+}
+
+void GenerateCommands ()
+{
+CreateFile ("ImportedCommands", UsingNamespaceFlags.Interop | (requiredCommands == null ? 0 : UsingNamespaceFlags.VulkanInterop), "Vulkan." + InteropNamespace, "Interop");
+
+IndentWriteLine ("internal static class NativeMethods");
+IndentWriteLine ("{");
+IndentLevel++;
+IndentWriteLine ("const string VulkanLibrary = \"{0}\";\n", (platform == null || platform == "Windows") ? "vulkan-1" : "vulkan");
+
+bool written = false;
+foreach (var command in specTree.Elements ("commands").Elements ("command")) {
+if (written)
+    WriteLine ();
+written = WriteUnmanagedCommand (command);
+}
+
+IndentLevel--;
+IndentWriteLine ("}");
+
+FinalizeFile ();
+}
+
+void GenerateRemainingCommands ()
+{
+CreateFile ("Commands", UsingNamespaceFlags.Interop | UsingNamespaceFlags.Collections);
+
+IndentWriteLine ("public static partial class Commands");
+IndentWriteLine ("{");
+IndentLevel++;
+
+var handlesCommands = new HashSet<string> ();
+foreach (var handle in handles)
+foreach (var command in handle.Value.commands)
+    handlesCommands.Add (command.Element ("proto").Element ("name").Value);
+
+bool written = false;
+foreach (var command in specTree.Elements ("commands").Elements ("command")) {
+if (handlesCommands.Contains (command.Element ("proto").Element ("name").Value))
+    continue;
+
+written = WriteCommand (command, written);
+}
+
+IndentLevel--;
+IndentWriteLine ("}");
+
+FinalizeFile ();
+}
+
+string EnumExtensionValue (XElement element, int number, ref string csEnumName)
+{
+var offsetAttribute = element.Attribute ("offset");
+if (offsetAttribute != null) {
+int direction = 1;
+var dirAttr = element.Attribute ("dir");
+if (dirAttr != null && dirAttr.Value == "-")
+    direction = -1;
+int offset = Int32.Parse (offsetAttribute.Value);
+
+return (direction*(1000000000 + (number - 1)*1000 + offset)).ToString ();
+}
+var valueAttribute = element.Attribute ("value");
+if (valueAttribute != null)
+return valueAttribute.Value;
+
+var bitposAttribute = element.Attribute ("bitpos");
+if (bitposAttribute != null) {
+if (csEnumName.EndsWith ("FlagBits"))
+    csEnumName = csEnumName.Substring (0, csEnumName.Length - 4) + "s";
+
+return FormatFlagValue (Int32.Parse (bitposAttribute.Value));
+}
+
+throw new Exception (string.Format ("unexpected extension enum value in: {0}", element));
+}
+
+void LearnExtension (XElement extensionElement)
+{
+var extensions = from e in extensionElement.Element ("require").Elements ("enum") where e.Attribute ("extends") != null select e;
+int number = Int32.Parse (extensionElement.Attribute ("number").Value);
+foreach (var element in extensions) {
+string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
+var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number, ref enumName) };
+if (!enumExtensions.ContainsKey (enumName))
+    enumExtensions [enumName] = new List<EnumExtensionInfo> ();
+
+enumExtensions [enumName].Add (info);
+}
+}
+
+void LearnExtensions ()
+{
+var elements = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("supported").Value != "disabled" select e;
+
+foreach (var element in elements)
+LearnExtension (element);
+}
+
+void PrepareExtensionSets (string[] extensionNames)
+{
+requiredTypes = new HashSet<string> ();
+requiredCommands = new HashSet<string> ();
+
+foreach (var name in extensionNames)
+PrepareExtensionSets (name);
+}
+
+void PrepareExtensionSets (string extensionName)
+{
+var elements = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("name").Value == extensionName select e.Element ("require");
+
+foreach (var element in elements.Elements ()) {
+switch (element.Name.ToString ()) {
+case "type":
+    requiredTypes.Add (element.Attribute ("name").Value);
+    break;
+case "command":
+    requiredCommands.Add (element.Attribute ("name").Value);
+    break;
+}
+}
+}
+
+void GeneratePlatformExtension (string name, string extensionName)
+{
+GeneratePlatformExtension (name, new string [] { extensionName });
+}
+
+void GeneratePlatformExtension (string name, string[] extensionNames)
+{
+platform = name;
+var currentPath = outputPath;
+outputPath += string.Format ("{0}..{0}Platforms{0}{1}", Path.DirectorySeparatorChar, name);
+
+PrepareExtensionSets (extensionNames);
+
+LearnStructsAndUnions ();
+GenerateStructs ();
+GenerateCommands ();
+GenerateHandles ();
+
+outputPath = currentPath;
+}
+
+void GenerateExtensions ()
+{
+GeneratePlatformExtension ("Android", "VK_KHR_android_surface");
+GeneratePlatformExtension ("Linux", new string[] {
+"VK_KHR_xlib_surface",
+"VK_KHR_xcb_surface",
+"VK_KHR_wayland_surface",
+"VK_KHR_mir_surface" } );
+GeneratePlatformExtension ("Windows", "VK_KHR_win32_surface");
+}
+}
 }
