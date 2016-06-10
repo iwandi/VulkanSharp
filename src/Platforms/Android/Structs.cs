@@ -24,6 +24,9 @@ namespace Vulkan
 			get { return m->Window; }
 			set { m->Window = value; }
 		}
+
+		public static AndroidSurfaceCreateInfoKhr Null = new AndroidSurfaceCreateInfoKhr(null,false);
+
 		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m;
 
 		public AndroidSurfaceCreateInfoKhr ()
@@ -36,6 +39,15 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
+		}
+
+		internal AndroidSurfaceCreateInfoKhr (Android.Interop.AndroidSurfaceCreateInfoKhr* ptr, bool init)
+		{
+			m = ptr;
+			if(init)
+			{
+				Initialize ();
+			}
 		}
 
 

@@ -29,6 +29,9 @@ namespace Vulkan
 			get { return m->Hwnd; }
 			set { m->Hwnd = value; }
 		}
+
+		public static Win32SurfaceCreateInfoKhr Null = new Win32SurfaceCreateInfoKhr(null,false);
+
 		internal Windows.Interop.Win32SurfaceCreateInfoKhr* m;
 
 		public Win32SurfaceCreateInfoKhr ()
@@ -41,6 +44,15 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
+		}
+
+		internal Win32SurfaceCreateInfoKhr (Windows.Interop.Win32SurfaceCreateInfoKhr* ptr, bool init)
+		{
+			m = ptr;
+			if(init)
+			{
+				Initialize ();
+			}
 		}
 
 
