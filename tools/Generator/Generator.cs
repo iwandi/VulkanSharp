@@ -917,7 +917,7 @@ namespace VulkanSharp.Generator
 			GenerateMembers (structElement, WriteMember);
 
 			if (!isInterop) {
-				bool hasSType = false;
+                bool hasSType = false;
 				var values = from el in structElement.Elements ("member")
 						where (string)el.Element ("name") == "sType"
 					select el;
@@ -928,7 +928,12 @@ namespace VulkanSharp.Generator
 				}
 
 				if (info.needsMarshalling) {
-					var needsInitialize = hasSType || initializeMembers.Count > 0;
+                    var needsInitialize = hasSType || initializeMembers.Count > 0;
+                    if (needsInitialize) {
+                        WriteLine("");
+                        IndentWriteLine("public static {0} Null = new {0}(null,false);\n", csName);
+                    }
+
 					IndentWriteLine ("internal {0}.{1}* m;\n", InteropNamespace, csName);
 					IndentWriteLine ("public {0} ()", csName);
 					IndentWriteLine ("{");
@@ -947,6 +952,21 @@ namespace VulkanSharp.Generator
 						IndentWriteLine ("Initialize ();");
 					IndentLevel--;
 					IndentWriteLine ("}\n");
+
+                    if(needsInitialize) {
+                        IndentWriteLine("internal {0} ({1}.{0}* ptr, bool init)", csName, InteropNamespace);
+                        IndentWriteLine("{");
+                        IndentLevel++;
+                        IndentWriteLine("m = ptr;");
+                        IndentWriteLine("if(init)");
+                        IndentWriteLine("{");
+                        IndentLevel++;
+                        IndentWriteLine("Initialize ();");
+                        IndentLevel--;
+                        IndentWriteLine("}");
+                        IndentLevel--;
+                        IndentWriteLine("}\n");
+                    }
 
 					if (needsInitialize)
 						WriteStructureInitializeMethod (initializeMembers, csName, hasSType);
@@ -1261,6 +1281,12 @@ namespace VulkanSharp.Generator
 			return false;
 		}
 
+        // TODO : give this a better name
+        /*bool CommandParamsHasArrays(XElement commandElement, )
+        {
+
+        }*/
+
 		void CommandHandleResult (bool hasResult)
 		{
 			if (hasResult) {
@@ -1345,8 +1371,12 @@ namespace VulkanSharp.Generator
 						dataParam.isOut = false;
 						csType = string.Format ("{0}[]", dataParam.csType);
 					}
-				}
-			}
+                    // TODO : add code that handles arrays in params as non return type
+
+                    // TODO : add a function that extract all array params 
+                    // check <param len="<paramName>"> if it is referening a param in the call
+                }
+            }
 
 			IndentWrite ("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
 			WriteCommandParameters (commandElement, ignoredParameters, null, null, isForHandle && !isExtension, false, paramsDict, isExtension);
