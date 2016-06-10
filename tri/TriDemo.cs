@@ -13,6 +13,8 @@ namespace tri
     {
         const string AppName = "tri";
         const uint AppVersion = 1;
+        const uint WindowWidth = 800;
+        const uint WindowHeight = 600;
 
         readonly string[] InstanceValidationLayersAlt1 = {
             "VK_LAYER_LUNARG_standard_validation",
@@ -36,31 +38,101 @@ namespace tri
             "VK_KHR_swapchain",
         };
 
+        bool run;
+
+        CommandBuffer cmdDraw;
+
         public void RunDemo()
         {
             RenderSystem renderSys = new RenderSystem();
-            if(!renderSys.TryInit(AppName, AppVersion, InstanceValidationLayersAlt1, InstanceExtentions))
+            renderSys.WindowClosed += RenderWindowClosed;
+
+            if (!renderSys.TryInit(AppName, AppVersion, InstanceValidationLayersAlt1, InstanceExtentions))
             {
                 renderSys.TryInit(AppName, AppVersion, InstanceValidationLayersAlt2, InstanceExtentions);
             }
             renderSys.TryCreateDevice(DeviceExtentions);
-            renderSys.CreateWindow();
-            renderSys.CreateSwapChain();
-            
+            renderSys.CreateWindow(WindowWidth, WindowHeight);
+            renderSys.CreateSwapChain(PresentModeKhr.Fifo, 1);
+            renderSys.CreateDepth();
+
             Prepare(renderSys);
-            Run(renderSys);
+
+            run = true;
+            while (run)
+            {
+                renderSys.HandleEvents();
+
+                RenderFrame(renderSys);
+
+                renderSys.Present();
+            }
 
             renderSys.ShutDown();
         }
 
         void Prepare(RenderSystem renderSys)
         {
+            cmdDraw = renderSys.CreateCommandBuffer(QueueFlags.Graphics);
+
+            PrepareTextures(renderSys);
+            PrepareVertices(renderSys);
+            PrepareDescriptorLayout(renderSys);
+            PrepareRenderPass(renderSys);
+            PreparePipeline(renderSys);
+            PrepareDescriptorPool(renderSys);
+            PrepareDescriptorSet(renderSys);
+            PrepareFrameBuffer(renderSys);
+        }
+
+        void PrepareTextures(RenderSystem renderSys)
+        {
 
         }
 
-        void Run(RenderSystem renderSys)
+        void PrepareVertices(RenderSystem renderSys)
         {
 
+        }
+
+        void PrepareDescriptorLayout(RenderSystem renderSys)
+        {
+
+        }
+
+        void PrepareRenderPass(RenderSystem renderSys)
+        {
+
+        }
+
+        void PreparePipeline(RenderSystem renderSys)
+        {
+
+        }
+
+        void PrepareDescriptorPool(RenderSystem renderSys)
+        {
+
+        }
+
+        void PrepareDescriptorSet(RenderSystem renderSys)
+        {
+
+        }
+
+        void PrepareFrameBuffer(RenderSystem renderSys)
+        {
+
+        }
+
+        void RenderFrame(RenderSystem renderSys)
+        {
+
+        }
+
+        void RenderWindowClosed()
+        {
+            run = false;
         }
     }
 }
