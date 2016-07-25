@@ -4646,11 +4646,43 @@ namespace Vulkan
 		public UInt32 Stencil;
 	}
 
-	unsafe public partial struct ClearAttachment
+	unsafe public partial class ClearAttachment
 	{
-		public ImageAspectFlags AspectMask;
-		public UInt32 ColorAttachment;
-		public IntPtr ClearValue;
+		public ImageAspectFlags AspectMask {
+			get { return m->AspectMask; }
+			set { m->AspectMask = value; }
+		}
+
+		public UInt32 ColorAttachment {
+			get { return m->ColorAttachment; }
+			set { m->ColorAttachment = value; }
+		}
+
+		ClearValue lClearValue;
+		public ClearValue ClearValue {
+			get { return lClearValue; }
+			set { lClearValue = value; m->ClearValue = *value.m; }
+		}
+		internal Interop.ClearAttachment* m;
+
+		public ClearAttachment ()
+		{
+			m = (Interop.ClearAttachment*) Interop.Structure.Allocate (typeof (Interop.ClearAttachment));
+			Initialize ();
+		}
+
+		internal ClearAttachment (Interop.ClearAttachment* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			lClearValue = new ClearValue (&m->ClearValue);
+		}
+
 	}
 
 	unsafe public partial struct AttachmentDescription
@@ -7111,6 +7143,97 @@ namespace Vulkan
 		internal void Initialize ()
 		{
 			m->SType = StructureType.DebugMarkerMarkerInfoExt;
+		}
+
+	}
+
+	unsafe public partial class DedicatedAllocationImageCreateInfoNv
+	{
+		public bool DedicatedAllocation {
+			get { return m->DedicatedAllocation; }
+			set { m->DedicatedAllocation = value; }
+		}
+		internal Interop.DedicatedAllocationImageCreateInfoNv* m;
+
+		public DedicatedAllocationImageCreateInfoNv ()
+		{
+			m = (Interop.DedicatedAllocationImageCreateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationImageCreateInfoNv));
+			Initialize ();
+		}
+
+		internal DedicatedAllocationImageCreateInfoNv (Interop.DedicatedAllocationImageCreateInfoNv* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DedicatedAllocationImageCreateInfoNv;
+		}
+
+	}
+
+	unsafe public partial class DedicatedAllocationBufferCreateInfoNv
+	{
+		public bool DedicatedAllocation {
+			get { return m->DedicatedAllocation; }
+			set { m->DedicatedAllocation = value; }
+		}
+		internal Interop.DedicatedAllocationBufferCreateInfoNv* m;
+
+		public DedicatedAllocationBufferCreateInfoNv ()
+		{
+			m = (Interop.DedicatedAllocationBufferCreateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationBufferCreateInfoNv));
+			Initialize ();
+		}
+
+		internal DedicatedAllocationBufferCreateInfoNv (Interop.DedicatedAllocationBufferCreateInfoNv* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DedicatedAllocationBufferCreateInfoNv;
+		}
+
+	}
+
+	unsafe public partial class DedicatedAllocationMemoryAllocateInfoNv
+	{
+		Image lImage;
+		public Image Image {
+			get { return lImage; }
+			set { lImage = value; m->Image = (UInt64)value.m; }
+		}
+
+		Buffer lBuffer;
+		public Buffer Buffer {
+			get { return lBuffer; }
+			set { lBuffer = value; m->Buffer = (UInt64)value.m; }
+		}
+		internal Interop.DedicatedAllocationMemoryAllocateInfoNv* m;
+
+		public DedicatedAllocationMemoryAllocateInfoNv ()
+		{
+			m = (Interop.DedicatedAllocationMemoryAllocateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationMemoryAllocateInfoNv));
+			Initialize ();
+		}
+
+		internal DedicatedAllocationMemoryAllocateInfoNv (Interop.DedicatedAllocationMemoryAllocateInfoNv* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DedicatedAllocationMemoryAllocateInfoNv;
 		}
 
 	}
