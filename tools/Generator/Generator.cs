@@ -20,6 +20,7 @@ namespace VulkanSharp.Generator
 		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
+        List<string> enums = new List<string>();
 
 		string platform;
 		HashSet<string> requiredTypes = null;
@@ -255,6 +256,8 @@ namespace VulkanSharp.Generator
 		{
 			string name = enumElement.Attribute ("name").Value;
 			string csName = GetTypeCsName (name, "enum");
+
+            enums.Add(csName);
 
 			var values = from el in specTree.Elements ("enums")
 					where (string)el.Attribute ("name") == name
@@ -1107,14 +1110,16 @@ namespace VulkanSharp.Generator
 			public bool needsMarshalling;
 			public ParamInfo lenArray;
 			public bool isArray;
+            public bool isEnum;
 		}
 
-		string GetParamCsType (string type, ref bool isPointer, out bool isHandle)
+		string GetParamCsType (string type, ref bool isPointer, out bool isHandle, out bool isEnum)
 		{
 			string csType = GetTypeCsName (type);
 			isHandle = handles.ContainsKey (csType);
+            isEnum = enums.Contains(csType);
 
-			if (!isPointer)
+            if (!isPointer)
 				return csType;
 
 			if (!isHandle) {
@@ -1151,7 +1156,7 @@ namespace VulkanSharp.Generator
 					info.len = lenAttr.Value;
 				string type = param.Element ("type").Value;
 				bool isPointer = param.Value.Contains (type + "*");
-				info.csType = GetParamCsType (type, ref isPointer, out info.isHandle);
+				info.csType = GetParamCsType (type, ref isPointer, out info.isHandle, out info.isEnum);
 				paramsDict.Add (csName, info);
 				info.isPointer = isPointer;
 				info.isConst = info.isPointer && param.Value.Contains ("const ");
@@ -1500,8 +1505,13 @@ namespace VulkanSharp.Generator
 				IndentWriteLine ("return null;");
 				IndentLevel--;
 				WriteLine ();
-				IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
-				IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, outLen);
+                if (dataParam.isEnum) {
+                    IndentWriteLine("int size = Marshal.SizeOf (Enum.GetUnderlyingType(typeof ({0}{1})));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType(handles[dataParam.csType]) : dataParam.csType);
+                }
+                else {
+                    IndentWriteLine("int size = Marshal.SizeOf (typeof ({0}{1}));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType(handles[dataParam.csType]) : dataParam.csType);
+                }
+                IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, outLen);
 			}
 
 			if (fixedCount > 0) {
