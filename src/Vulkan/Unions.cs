@@ -94,9 +94,6 @@ namespace Vulkan
 			get { return m->DepthStencil; }
 			set { m->DepthStencil = value; }
 		}
-
-		public static ClearValue Null = new ClearValue(null,false);
-
 		internal Interop.ClearValue* m;
 
 		public ClearValue ()
@@ -109,15 +106,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal ClearValue (Interop.ClearValue* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 

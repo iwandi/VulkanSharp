@@ -16,7 +16,7 @@ namespace Vulkan.Linux
 {
 	public static class InstanceExtension
 	{
-		public static SurfaceKhr CreateMirSurfaceKHR (this Instance instance, MirSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator)
+		public static SurfaceKhr CreateMirSurfaceKHR (this Instance instance, MirSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
 			SurfaceKhr pSurface;
@@ -33,7 +33,7 @@ namespace Vulkan.Linux
 			}
 		}
 
-		public static SurfaceKhr CreateWaylandSurfaceKHR (this Instance instance, WaylandSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator)
+		public static SurfaceKhr CreateWaylandSurfaceKHR (this Instance instance, WaylandSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
 			SurfaceKhr pSurface;
@@ -50,7 +50,7 @@ namespace Vulkan.Linux
 			}
 		}
 
-		public static SurfaceKhr CreateXlibSurfaceKHR (this Instance instance, XlibSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator)
+		public static SurfaceKhr CreateXlibSurfaceKHR (this Instance instance, XlibSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
 			SurfaceKhr pSurface;
@@ -67,7 +67,7 @@ namespace Vulkan.Linux
 			}
 		}
 
-		public static SurfaceKhr CreateXcbSurfaceKHR (this Instance instance, XcbSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator)
+		public static SurfaceKhr CreateXcbSurfaceKHR (this Instance instance, XcbSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
 			SurfaceKhr pSurface;

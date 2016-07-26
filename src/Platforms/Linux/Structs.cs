@@ -29,9 +29,6 @@ namespace Vulkan
 			get { return m->MirSurface; }
 			set { m->MirSurface = value; }
 		}
-
-		public static MirSurfaceCreateInfoKhr Null = new MirSurfaceCreateInfoKhr(null,false);
-
 		internal Linux.Interop.MirSurfaceCreateInfoKhr* m;
 
 		public MirSurfaceCreateInfoKhr ()
@@ -44,15 +41,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal MirSurfaceCreateInfoKhr (Linux.Interop.MirSurfaceCreateInfoKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -79,9 +67,6 @@ namespace Vulkan
 			get { return m->Surface; }
 			set { m->Surface = value; }
 		}
-
-		public static WaylandSurfaceCreateInfoKhr Null = new WaylandSurfaceCreateInfoKhr(null,false);
-
 		internal Linux.Interop.WaylandSurfaceCreateInfoKhr* m;
 
 		public WaylandSurfaceCreateInfoKhr ()
@@ -94,15 +79,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal WaylandSurfaceCreateInfoKhr (Linux.Interop.WaylandSurfaceCreateInfoKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -129,9 +105,6 @@ namespace Vulkan
 			get { return m->Window; }
 			set { m->Window = value; }
 		}
-
-		public static XlibSurfaceCreateInfoKhr Null = new XlibSurfaceCreateInfoKhr(null,false);
-
 		internal Linux.Interop.XlibSurfaceCreateInfoKhr* m;
 
 		public XlibSurfaceCreateInfoKhr ()
@@ -144,15 +117,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal XlibSurfaceCreateInfoKhr (Linux.Interop.XlibSurfaceCreateInfoKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -179,9 +143,6 @@ namespace Vulkan
 			get { return m->Window; }
 			set { m->Window = value; }
 		}
-
-		public static XcbSurfaceCreateInfoKhr Null = new XcbSurfaceCreateInfoKhr(null,false);
-
 		internal Linux.Interop.XcbSurfaceCreateInfoKhr* m;
 
 		public XcbSurfaceCreateInfoKhr ()
@@ -194,15 +155,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal XcbSurfaceCreateInfoKhr (Linux.Interop.XcbSurfaceCreateInfoKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 

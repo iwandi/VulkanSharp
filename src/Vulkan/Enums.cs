@@ -673,7 +673,6 @@ namespace Vulkan
 		ErrorIncompatibleDriver = -9,
 		ErrorTooManyObjects = -10,
 		ErrorFormatNotSupported = -11,
-		ErrorFragmentedPool = -12,
 		ErrorSurfaceLostKhr = -1000000000,
 		ErrorNativeWindowInUseKhr = -1000000001,
 		SuboptimalKhr = 1000001003,
@@ -789,9 +788,6 @@ namespace Vulkan
 		DebugMarkerObjectNameInfoExt = 1000022000,
 		DebugMarkerObjectTagInfoExt = 1000022001,
 		DebugMarkerMarkerInfoExt = 1000022002,
-		DedicatedAllocationImageCreateInfoNv = 1000026000,
-		DedicatedAllocationBufferCreateInfoNv = 1000026001,
-		DedicatedAllocationMemoryAllocateInfoNv = 1000026002,
 	}
 
 	public enum SystemAllocationScope : int

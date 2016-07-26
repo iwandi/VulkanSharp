@@ -509,7 +509,7 @@ namespace Vulkan
 				if (pPresentModeCount <= 0)
 					return null;
 
-				int size = Marshal.SizeOf (typeof (PresentModeKhr));
+				int size = Marshal.SizeOf (Enum.GetUnderlyingType(typeof (PresentModeKhr)));
 				var ptrpPresentModes = Marshal.AllocHGlobal ((int)(size * pPresentModeCount));
 				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfacePresentModesKHR (this.m, surface.m, &pPresentModeCount, (PresentModeKhr*)ptrpPresentModes);
 				if (result != Result.Success)
@@ -1906,10 +1906,10 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdUpdateBuffer (Buffer dstBuffer, DeviceSize dstOffset, DeviceSize dataSize, IntPtr pData)
+		public void CmdUpdateBuffer (Buffer dstBuffer, DeviceSize dstOffset, DeviceSize dataSize, UInt32 pData)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdUpdateBuffer (this.m, dstBuffer.m, dstOffset, dataSize, pData);
+				Interop.NativeMethods.vkCmdUpdateBuffer (this.m, dstBuffer.m, dstOffset, dataSize, &pData);
 			}
 		}
 

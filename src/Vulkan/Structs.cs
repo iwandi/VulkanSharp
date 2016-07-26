@@ -136,9 +136,6 @@ namespace Vulkan
 			get { return m->SparseProperties; }
 			set { m->SparseProperties = value; }
 		}
-
-		public static PhysicalDeviceProperties Null = new PhysicalDeviceProperties(null,false);
-
 		internal Interop.PhysicalDeviceProperties* m;
 
 		public PhysicalDeviceProperties ()
@@ -151,15 +148,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PhysicalDeviceProperties (Interop.PhysicalDeviceProperties* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -256,9 +244,6 @@ namespace Vulkan
 			get { return m->ApiVersion; }
 			set { m->ApiVersion = value; }
 		}
-
-		public static ApplicationInfo Null = new ApplicationInfo(null,false);
-
 		internal Interop.ApplicationInfo* m;
 
 		public ApplicationInfo ()
@@ -271,15 +256,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal ApplicationInfo (Interop.ApplicationInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -382,9 +358,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static DeviceQueueCreateInfo Null = new DeviceQueueCreateInfo(null,false);
-
 		internal Interop.DeviceQueueCreateInfo* m;
 
 		public DeviceQueueCreateInfo ()
@@ -397,15 +370,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DeviceQueueCreateInfo (Interop.DeviceQueueCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -537,9 +501,6 @@ namespace Vulkan
 			get { return (PhysicalDeviceFeatures)Interop.Structure.MarshalPointerToObject (m->EnabledFeatures, typeof (PhysicalDeviceFeatures)); }
 			set { m->EnabledFeatures = Interop.Structure.MarshalObjectToPointer (m->EnabledFeatures, value); }
 		}
-
-		public static DeviceCreateInfo Null = new DeviceCreateInfo(null,false);
-
 		internal Interop.DeviceCreateInfo* m;
 
 		public DeviceCreateInfo ()
@@ -552,15 +513,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DeviceCreateInfo (Interop.DeviceCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -655,9 +607,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static InstanceCreateInfo Null = new InstanceCreateInfo(null,false);
-
 		internal Interop.InstanceCreateInfo* m;
 
 		public InstanceCreateInfo ()
@@ -670,15 +619,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal InstanceCreateInfo (Interop.InstanceCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -779,9 +719,6 @@ namespace Vulkan
 			get { return m->MemoryTypeIndex; }
 			set { m->MemoryTypeIndex = value; }
 		}
-
-		public static MemoryAllocateInfo Null = new MemoryAllocateInfo(null,false);
-
 		internal Interop.MemoryAllocateInfo* m;
 
 		public MemoryAllocateInfo ()
@@ -794,15 +731,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal MemoryAllocateInfo (Interop.MemoryAllocateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -865,9 +793,6 @@ namespace Vulkan
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
-
-		public static MappedMemoryRange Null = new MappedMemoryRange(null,false);
-
 		internal Interop.MappedMemoryRange* m;
 
 		public MappedMemoryRange ()
@@ -880,15 +805,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal MappedMemoryRange (Interop.MappedMemoryRange* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -932,9 +848,6 @@ namespace Vulkan
 			get { return m->Range; }
 			set { m->Range = value; }
 		}
-
-		public static DescriptorBufferInfo Null = new DescriptorBufferInfo(null,false);
-
 		internal Interop.DescriptorBufferInfo* m;
 
 		public DescriptorBufferInfo ()
@@ -947,15 +860,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DescriptorBufferInfo (Interop.DescriptorBufferInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -983,9 +887,6 @@ namespace Vulkan
 			get { return m->ImageLayout; }
 			set { m->ImageLayout = value; }
 		}
-
-		public static DescriptorImageInfo Null = new DescriptorImageInfo(null,false);
-
 		internal Interop.DescriptorImageInfo* m;
 
 		public DescriptorImageInfo ()
@@ -998,15 +899,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DescriptorImageInfo (Interop.DescriptorImageInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1142,9 +1034,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static WriteDescriptorSet Null = new WriteDescriptorSet(null,false);
-
 		internal Interop.WriteDescriptorSet* m;
 
 		public WriteDescriptorSet ()
@@ -1157,15 +1046,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal WriteDescriptorSet (Interop.WriteDescriptorSet* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1214,9 +1094,6 @@ namespace Vulkan
 			get { return m->DescriptorCount; }
 			set { m->DescriptorCount = value; }
 		}
-
-		public static CopyDescriptorSet Null = new CopyDescriptorSet(null,false);
-
 		internal Interop.CopyDescriptorSet* m;
 
 		public CopyDescriptorSet ()
@@ -1229,15 +1106,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal CopyDescriptorSet (Interop.CopyDescriptorSet* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1305,9 +1173,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static BufferCreateInfo Null = new BufferCreateInfo(null,false);
-
 		internal Interop.BufferCreateInfo* m;
 
 		public BufferCreateInfo ()
@@ -1320,15 +1185,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal BufferCreateInfo (Interop.BufferCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1366,9 +1222,6 @@ namespace Vulkan
 			get { return m->Range; }
 			set { m->Range = value; }
 		}
-
-		public static BufferViewCreateInfo Null = new BufferViewCreateInfo(null,false);
-
 		internal Interop.BufferViewCreateInfo* m;
 
 		public BufferViewCreateInfo ()
@@ -1381,15 +1234,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal BufferViewCreateInfo (Interop.BufferViewCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1435,9 +1279,6 @@ namespace Vulkan
 			get { return m->DstAccessMask; }
 			set { m->DstAccessMask = value; }
 		}
-
-		public static MemoryBarrier Null = new MemoryBarrier(null,false);
-
 		internal Interop.MemoryBarrier* m;
 
 		public MemoryBarrier ()
@@ -1450,15 +1291,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal MemoryBarrier (Interop.MemoryBarrier* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1506,9 +1338,6 @@ namespace Vulkan
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
-
-		public static BufferMemoryBarrier Null = new BufferMemoryBarrier(null,false);
-
 		internal Interop.BufferMemoryBarrier* m;
 
 		public BufferMemoryBarrier ()
@@ -1521,15 +1350,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal BufferMemoryBarrier (Interop.BufferMemoryBarrier* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1582,9 +1402,6 @@ namespace Vulkan
 			get { return m->SubresourceRange; }
 			set { m->SubresourceRange = value; }
 		}
-
-		public static ImageMemoryBarrier Null = new ImageMemoryBarrier(null,false);
-
 		internal Interop.ImageMemoryBarrier* m;
 
 		public ImageMemoryBarrier ()
@@ -1597,15 +1414,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal ImageMemoryBarrier (Interop.ImageMemoryBarrier* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1708,9 +1516,6 @@ namespace Vulkan
 			get { return m->InitialLayout; }
 			set { m->InitialLayout = value; }
 		}
-
-		public static ImageCreateInfo Null = new ImageCreateInfo(null,false);
-
 		internal Interop.ImageCreateInfo* m;
 
 		public ImageCreateInfo ()
@@ -1723,15 +1528,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal ImageCreateInfo (Interop.ImageCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1783,9 +1579,6 @@ namespace Vulkan
 			get { return m->SubresourceRange; }
 			set { m->SubresourceRange = value; }
 		}
-
-		public static ImageViewCreateInfo Null = new ImageViewCreateInfo(null,false);
-
 		internal Interop.ImageViewCreateInfo* m;
 
 		public ImageViewCreateInfo ()
@@ -1798,15 +1591,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal ImageViewCreateInfo (Interop.ImageViewCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1851,9 +1635,6 @@ namespace Vulkan
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-
-		public static SparseMemoryBind Null = new SparseMemoryBind(null,false);
-
 		internal Interop.SparseMemoryBind* m;
 
 		public SparseMemoryBind ()
@@ -1866,15 +1647,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal SparseMemoryBind (Interop.SparseMemoryBind* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1916,9 +1688,6 @@ namespace Vulkan
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-
-		public static SparseImageMemoryBind Null = new SparseImageMemoryBind(null,false);
-
 		internal Interop.SparseImageMemoryBind* m;
 
 		public SparseImageMemoryBind ()
@@ -1931,15 +1700,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal SparseImageMemoryBind (Interop.SparseImageMemoryBind* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -1994,9 +1754,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static SparseBufferMemoryBindInfo Null = new SparseBufferMemoryBindInfo(null,false);
-
 		internal Interop.SparseBufferMemoryBindInfo* m;
 
 		public SparseBufferMemoryBindInfo ()
@@ -2009,15 +1766,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal SparseBufferMemoryBindInfo (Interop.SparseBufferMemoryBindInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -2072,9 +1820,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static SparseImageOpaqueMemoryBindInfo Null = new SparseImageOpaqueMemoryBindInfo(null,false);
-
 		internal Interop.SparseImageOpaqueMemoryBindInfo* m;
 
 		public SparseImageOpaqueMemoryBindInfo ()
@@ -2087,15 +1832,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal SparseImageOpaqueMemoryBindInfo (Interop.SparseImageOpaqueMemoryBindInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -2150,9 +1886,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static SparseImageMemoryBindInfo Null = new SparseImageMemoryBindInfo(null,false);
-
 		internal Interop.SparseImageMemoryBindInfo* m;
 
 		public SparseImageMemoryBindInfo ()
@@ -2165,15 +1898,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal SparseImageMemoryBindInfo (Interop.SparseImageMemoryBindInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -2374,9 +2098,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static BindSparseInfo Null = new BindSparseInfo(null,false);
-
 		internal Interop.BindSparseInfo* m;
 
 		public BindSparseInfo ()
@@ -2389,15 +2110,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal BindSparseInfo (Interop.BindSparseInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -2547,9 +2259,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static ShaderModuleCreateInfo Null = new ShaderModuleCreateInfo(null,false);
-
 		internal Interop.ShaderModuleCreateInfo* m;
 
 		public ShaderModuleCreateInfo ()
@@ -2562,15 +2271,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal ShaderModuleCreateInfo (Interop.ShaderModuleCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -2693,9 +2393,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static DescriptorSetLayoutCreateInfo Null = new DescriptorSetLayoutCreateInfo(null,false);
-
 		internal Interop.DescriptorSetLayoutCreateInfo* m;
 
 		public DescriptorSetLayoutCreateInfo ()
@@ -2708,15 +2405,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DescriptorSetLayoutCreateInfo (Interop.DescriptorSetLayoutCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -2780,9 +2468,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static DescriptorPoolCreateInfo Null = new DescriptorPoolCreateInfo(null,false);
-
 		internal Interop.DescriptorPoolCreateInfo* m;
 
 		public DescriptorPoolCreateInfo ()
@@ -2795,15 +2480,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DescriptorPoolCreateInfo (Interop.DescriptorPoolCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -2859,9 +2535,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static DescriptorSetAllocateInfo Null = new DescriptorSetAllocateInfo(null,false);
-
 		internal Interop.DescriptorSetAllocateInfo* m;
 
 		public DescriptorSetAllocateInfo ()
@@ -2874,15 +2547,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DescriptorSetAllocateInfo (Interop.DescriptorSetAllocateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -2989,9 +2653,6 @@ namespace Vulkan
 			get { return lSpecializationInfo; }
 			set { lSpecializationInfo = value; m->SpecializationInfo = (IntPtr)value.m; }
 		}
-
-		public static PipelineShaderStageCreateInfo Null = new PipelineShaderStageCreateInfo(null,false);
-
 		internal Interop.PipelineShaderStageCreateInfo* m;
 
 		public PipelineShaderStageCreateInfo ()
@@ -3004,15 +2665,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineShaderStageCreateInfo (Interop.PipelineShaderStageCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3052,9 +2704,6 @@ namespace Vulkan
 			get { return m->BasePipelineIndex; }
 			set { m->BasePipelineIndex = value; }
 		}
-
-		public static ComputePipelineCreateInfo Null = new ComputePipelineCreateInfo(null,false);
-
 		internal Interop.ComputePipelineCreateInfo* m;
 
 		public ComputePipelineCreateInfo ()
@@ -3067,15 +2716,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal ComputePipelineCreateInfo (Interop.ComputePipelineCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3180,9 +2820,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static PipelineVertexInputStateCreateInfo Null = new PipelineVertexInputStateCreateInfo(null,false);
-
 		internal Interop.PipelineVertexInputStateCreateInfo* m;
 
 		public PipelineVertexInputStateCreateInfo ()
@@ -3195,15 +2832,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineVertexInputStateCreateInfo (Interop.PipelineVertexInputStateCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3230,9 +2858,6 @@ namespace Vulkan
 			get { return m->PrimitiveRestartEnable; }
 			set { m->PrimitiveRestartEnable = value; }
 		}
-
-		public static PipelineInputAssemblyStateCreateInfo Null = new PipelineInputAssemblyStateCreateInfo(null,false);
-
 		internal Interop.PipelineInputAssemblyStateCreateInfo* m;
 
 		public PipelineInputAssemblyStateCreateInfo ()
@@ -3245,15 +2870,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineInputAssemblyStateCreateInfo (Interop.PipelineInputAssemblyStateCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3275,9 +2891,6 @@ namespace Vulkan
 			get { return m->PatchControlPoints; }
 			set { m->PatchControlPoints = value; }
 		}
-
-		public static PipelineTessellationStateCreateInfo Null = new PipelineTessellationStateCreateInfo(null,false);
-
 		internal Interop.PipelineTessellationStateCreateInfo* m;
 
 		public PipelineTessellationStateCreateInfo ()
@@ -3290,15 +2903,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineTessellationStateCreateInfo (Interop.PipelineTessellationStateCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3387,9 +2991,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static PipelineViewportStateCreateInfo Null = new PipelineViewportStateCreateInfo(null,false);
-
 		internal Interop.PipelineViewportStateCreateInfo* m;
 
 		public PipelineViewportStateCreateInfo ()
@@ -3402,15 +3003,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineViewportStateCreateInfo (Interop.PipelineViewportStateCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3477,9 +3069,6 @@ namespace Vulkan
 			get { return m->LineWidth; }
 			set { m->LineWidth = value; }
 		}
-
-		public static PipelineRasterizationStateCreateInfo Null = new PipelineRasterizationStateCreateInfo(null,false);
-
 		internal Interop.PipelineRasterizationStateCreateInfo* m;
 
 		public PipelineRasterizationStateCreateInfo ()
@@ -3492,15 +3081,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineRasterizationStateCreateInfo (Interop.PipelineRasterizationStateCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3573,9 +3153,6 @@ namespace Vulkan
 			get { return m->AlphaToOneEnable; }
 			set { m->AlphaToOneEnable = value; }
 		}
-
-		public static PipelineMultisampleStateCreateInfo Null = new PipelineMultisampleStateCreateInfo(null,false);
-
 		internal Interop.PipelineMultisampleStateCreateInfo* m;
 
 		public PipelineMultisampleStateCreateInfo ()
@@ -3588,15 +3165,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineMultisampleStateCreateInfo (Interop.PipelineMultisampleStateCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3689,9 +3257,6 @@ namespace Vulkan
 					m->BlendConstants [i] = 0;
 			}
 		}
-
-		public static PipelineColorBlendStateCreateInfo Null = new PipelineColorBlendStateCreateInfo(null,false);
-
 		internal Interop.PipelineColorBlendStateCreateInfo* m;
 
 		public PipelineColorBlendStateCreateInfo ()
@@ -3704,15 +3269,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineColorBlendStateCreateInfo (Interop.PipelineColorBlendStateCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3765,9 +3321,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static PipelineDynamicStateCreateInfo Null = new PipelineDynamicStateCreateInfo(null,false);
-
 		internal Interop.PipelineDynamicStateCreateInfo* m;
 
 		public PipelineDynamicStateCreateInfo ()
@@ -3780,15 +3333,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineDynamicStateCreateInfo (Interop.PipelineDynamicStateCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -3861,9 +3405,6 @@ namespace Vulkan
 			get { return m->MaxDepthBounds; }
 			set { m->MaxDepthBounds = value; }
 		}
-
-		public static PipelineDepthStencilStateCreateInfo Null = new PipelineDepthStencilStateCreateInfo(null,false);
-
 		internal Interop.PipelineDepthStencilStateCreateInfo* m;
 
 		public PipelineDepthStencilStateCreateInfo ()
@@ -3876,15 +3417,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineDepthStencilStateCreateInfo (Interop.PipelineDepthStencilStateCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -4021,9 +3553,6 @@ namespace Vulkan
 			get { return m->BasePipelineIndex; }
 			set { m->BasePipelineIndex = value; }
 		}
-
-		public static GraphicsPipelineCreateInfo Null = new GraphicsPipelineCreateInfo(null,false);
-
 		internal Interop.GraphicsPipelineCreateInfo* m;
 
 		public GraphicsPipelineCreateInfo ()
@@ -4036,15 +3565,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal GraphicsPipelineCreateInfo (Interop.GraphicsPipelineCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -4071,9 +3591,6 @@ namespace Vulkan
 			get { return m->InitialData; }
 			set { m->InitialData = value; }
 		}
-
-		public static PipelineCacheCreateInfo Null = new PipelineCacheCreateInfo(null,false);
-
 		internal Interop.PipelineCacheCreateInfo* m;
 
 		public PipelineCacheCreateInfo ()
@@ -4086,15 +3603,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineCacheCreateInfo (Interop.PipelineCacheCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -4192,9 +3700,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static PipelineLayoutCreateInfo Null = new PipelineLayoutCreateInfo(null,false);
-
 		internal Interop.PipelineLayoutCreateInfo* m;
 
 		public PipelineLayoutCreateInfo ()
@@ -4207,15 +3712,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineLayoutCreateInfo (Interop.PipelineLayoutCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -4307,9 +3803,6 @@ namespace Vulkan
 			get { return m->UnnormalizedCoordinates; }
 			set { m->UnnormalizedCoordinates = value; }
 		}
-
-		public static SamplerCreateInfo Null = new SamplerCreateInfo(null,false);
-
 		internal Interop.SamplerCreateInfo* m;
 
 		public SamplerCreateInfo ()
@@ -4322,15 +3815,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal SamplerCreateInfo (Interop.SamplerCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -4352,9 +3836,6 @@ namespace Vulkan
 			get { return m->QueueFamilyIndex; }
 			set { m->QueueFamilyIndex = value; }
 		}
-
-		public static CommandPoolCreateInfo Null = new CommandPoolCreateInfo(null,false);
-
 		internal Interop.CommandPoolCreateInfo* m;
 
 		public CommandPoolCreateInfo ()
@@ -4367,15 +3848,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal CommandPoolCreateInfo (Interop.CommandPoolCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -4403,9 +3875,6 @@ namespace Vulkan
 			get { return m->CommandBufferCount; }
 			set { m->CommandBufferCount = value; }
 		}
-
-		public static CommandBufferAllocateInfo Null = new CommandBufferAllocateInfo(null,false);
-
 		internal Interop.CommandBufferAllocateInfo* m;
 
 		public CommandBufferAllocateInfo ()
@@ -4418,15 +3887,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal CommandBufferAllocateInfo (Interop.CommandBufferAllocateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -4470,9 +3930,6 @@ namespace Vulkan
 			get { return m->PipelineStatistics; }
 			set { m->PipelineStatistics = value; }
 		}
-
-		public static CommandBufferInheritanceInfo Null = new CommandBufferInheritanceInfo(null,false);
-
 		internal Interop.CommandBufferInheritanceInfo* m;
 
 		public CommandBufferInheritanceInfo ()
@@ -4485,15 +3942,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal CommandBufferInheritanceInfo (Interop.CommandBufferInheritanceInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -4516,9 +3964,6 @@ namespace Vulkan
 			get { return lInheritanceInfo; }
 			set { lInheritanceInfo = value; m->InheritanceInfo = (IntPtr)value.m; }
 		}
-
-		public static CommandBufferBeginInfo Null = new CommandBufferBeginInfo(null,false);
-
 		internal Interop.CommandBufferBeginInfo* m;
 
 		public CommandBufferBeginInfo ()
@@ -4531,15 +3976,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal CommandBufferBeginInfo (Interop.CommandBufferBeginInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -4606,9 +4042,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static RenderPassBeginInfo Null = new RenderPassBeginInfo(null,false);
-
 		internal Interop.RenderPassBeginInfo* m;
 
 		public RenderPassBeginInfo ()
@@ -4621,15 +4054,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal RenderPassBeginInfo (Interop.RenderPassBeginInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -5000,9 +4424,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static RenderPassCreateInfo Null = new RenderPassCreateInfo(null,false);
-
 		internal Interop.RenderPassCreateInfo* m;
 
 		public RenderPassCreateInfo ()
@@ -5015,15 +4436,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal RenderPassCreateInfo (Interop.RenderPassCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -5040,9 +4452,6 @@ namespace Vulkan
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-
-		public static EventCreateInfo Null = new EventCreateInfo(null,false);
-
 		internal Interop.EventCreateInfo* m;
 
 		public EventCreateInfo ()
@@ -5055,15 +4464,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal EventCreateInfo (Interop.EventCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -5080,9 +4480,6 @@ namespace Vulkan
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-
-		public static FenceCreateInfo Null = new FenceCreateInfo(null,false);
-
 		internal Interop.FenceCreateInfo* m;
 
 		public FenceCreateInfo ()
@@ -5095,15 +4492,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal FenceCreateInfo (Interop.FenceCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -5811,9 +5199,6 @@ namespace Vulkan
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-
-		public static SemaphoreCreateInfo Null = new SemaphoreCreateInfo(null,false);
-
 		internal Interop.SemaphoreCreateInfo* m;
 
 		public SemaphoreCreateInfo ()
@@ -5826,15 +5211,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal SemaphoreCreateInfo (Interop.SemaphoreCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -5866,9 +5242,6 @@ namespace Vulkan
 			get { return m->PipelineStatistics; }
 			set { m->PipelineStatistics = value; }
 		}
-
-		public static QueryPoolCreateInfo Null = new QueryPoolCreateInfo(null,false);
-
 		internal Interop.QueryPoolCreateInfo* m;
 
 		public QueryPoolCreateInfo ()
@@ -5881,15 +5254,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal QueryPoolCreateInfo (Interop.QueryPoolCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -5965,9 +5329,6 @@ namespace Vulkan
 			get { return m->Layers; }
 			set { m->Layers = value; }
 		}
-
-		public static FramebufferCreateInfo Null = new FramebufferCreateInfo(null,false);
-
 		internal Interop.FramebufferCreateInfo* m;
 
 		public FramebufferCreateInfo ()
@@ -5980,15 +5341,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal FramebufferCreateInfo (Interop.FramebufferCreateInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6169,9 +5521,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static SubmitInfo Null = new SubmitInfo(null,false);
-
 		internal Interop.SubmitInfo* m;
 
 		public SubmitInfo ()
@@ -6184,15 +5533,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal SubmitInfo (Interop.SubmitInfo* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6240,9 +5580,6 @@ namespace Vulkan
 			get { return m->PersistentContent; }
 			set { m->PersistentContent = value; }
 		}
-
-		public static DisplayPropertiesKhr Null = new DisplayPropertiesKhr(null,false);
-
 		internal Interop.DisplayPropertiesKhr* m;
 
 		public DisplayPropertiesKhr ()
@@ -6255,15 +5592,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DisplayPropertiesKhr (Interop.DisplayPropertiesKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6285,9 +5613,6 @@ namespace Vulkan
 			get { return m->CurrentStackIndex; }
 			set { m->CurrentStackIndex = value; }
 		}
-
-		public static DisplayPlanePropertiesKhr Null = new DisplayPlanePropertiesKhr(null,false);
-
 		internal Interop.DisplayPlanePropertiesKhr* m;
 
 		public DisplayPlanePropertiesKhr ()
@@ -6300,15 +5625,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DisplayPlanePropertiesKhr (Interop.DisplayPlanePropertiesKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6336,9 +5652,6 @@ namespace Vulkan
 			get { return m->Parameters; }
 			set { m->Parameters = value; }
 		}
-
-		public static DisplayModePropertiesKhr Null = new DisplayModePropertiesKhr(null,false);
-
 		internal Interop.DisplayModePropertiesKhr* m;
 
 		public DisplayModePropertiesKhr ()
@@ -6351,15 +5664,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DisplayModePropertiesKhr (Interop.DisplayModePropertiesKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6380,9 +5684,6 @@ namespace Vulkan
 			get { return m->Parameters; }
 			set { m->Parameters = value; }
 		}
-
-		public static DisplayModeCreateInfoKhr Null = new DisplayModeCreateInfoKhr(null,false);
-
 		internal Interop.DisplayModeCreateInfoKhr* m;
 
 		public DisplayModeCreateInfoKhr ()
@@ -6395,15 +5696,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DisplayModeCreateInfoKhr (Interop.DisplayModeCreateInfoKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6469,9 +5761,6 @@ namespace Vulkan
 			get { return m->ImageExtent; }
 			set { m->ImageExtent = value; }
 		}
-
-		public static DisplaySurfaceCreateInfoKhr Null = new DisplaySurfaceCreateInfoKhr(null,false);
-
 		internal Interop.DisplaySurfaceCreateInfoKhr* m;
 
 		public DisplaySurfaceCreateInfoKhr ()
@@ -6484,15 +5773,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DisplaySurfaceCreateInfoKhr (Interop.DisplaySurfaceCreateInfoKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6519,9 +5799,6 @@ namespace Vulkan
 			get { return m->Persistent; }
 			set { m->Persistent = value; }
 		}
-
-		public static DisplayPresentInfoKhr Null = new DisplayPresentInfoKhr(null,false);
-
 		internal Interop.DisplayPresentInfoKhr* m;
 
 		public DisplayPresentInfoKhr ()
@@ -6534,15 +5811,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DisplayPresentInfoKhr (Interop.DisplayPresentInfoKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6682,9 +5950,6 @@ namespace Vulkan
 			get { return lOldSwapchain; }
 			set { lOldSwapchain = value; m->OldSwapchain = (UInt64)value.m; }
 		}
-
-		public static SwapchainCreateInfoKhr Null = new SwapchainCreateInfoKhr(null,false);
-
 		internal Interop.SwapchainCreateInfoKhr* m;
 
 		public SwapchainCreateInfoKhr ()
@@ -6697,15 +5962,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal SwapchainCreateInfoKhr (Interop.SwapchainCreateInfoKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6855,9 +6111,6 @@ namespace Vulkan
 				}
 			}
 		}
-
-		public static PresentInfoKhr Null = new PresentInfoKhr(null,false);
-
 		internal Interop.PresentInfoKhr* m;
 
 		public PresentInfoKhr ()
@@ -6870,15 +6123,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PresentInfoKhr (Interop.PresentInfoKhr* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6905,9 +6149,6 @@ namespace Vulkan
 			get { return m->UserData; }
 			set { m->UserData = value; }
 		}
-
-		public static DebugReportCallbackCreateInfoExt Null = new DebugReportCallbackCreateInfoExt(null,false);
-
 		internal Interop.DebugReportCallbackCreateInfoExt* m;
 
 		public DebugReportCallbackCreateInfoExt ()
@@ -6920,15 +6161,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DebugReportCallbackCreateInfoExt (Interop.DebugReportCallbackCreateInfoExt* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6945,9 +6177,6 @@ namespace Vulkan
 			get { return m->RasterizationOrder; }
 			set { m->RasterizationOrder = value; }
 		}
-
-		public static PipelineRasterizationStateRasterizationOrderAmd Null = new PipelineRasterizationStateRasterizationOrderAmd(null,false);
-
 		internal Interop.PipelineRasterizationStateRasterizationOrderAmd* m;
 
 		public PipelineRasterizationStateRasterizationOrderAmd ()
@@ -6960,15 +6189,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal PipelineRasterizationStateRasterizationOrderAmd (Interop.PipelineRasterizationStateRasterizationOrderAmd* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -6995,9 +6215,6 @@ namespace Vulkan
 			get { return Marshal.PtrToStringAnsi (m->ObjectName); }
 			set { m->ObjectName = Marshal.StringToHGlobalAnsi (value); }
 		}
-
-		public static DebugMarkerObjectNameInfoExt Null = new DebugMarkerObjectNameInfoExt(null,false);
-
 		internal Interop.DebugMarkerObjectNameInfoExt* m;
 
 		public DebugMarkerObjectNameInfoExt ()
@@ -7010,15 +6227,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DebugMarkerObjectNameInfoExt (Interop.DebugMarkerObjectNameInfoExt* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -7055,9 +6263,6 @@ namespace Vulkan
 			get { return m->Tag; }
 			set { m->Tag = value; }
 		}
-
-		public static DebugMarkerObjectTagInfoExt Null = new DebugMarkerObjectTagInfoExt(null,false);
-
 		internal Interop.DebugMarkerObjectTagInfoExt* m;
 
 		public DebugMarkerObjectTagInfoExt ()
@@ -7070,15 +6275,6 @@ namespace Vulkan
 		{
 			m = ptr;
 			Initialize ();
-		}
-
-		internal DebugMarkerObjectTagInfoExt (Interop.DebugMarkerObjectTagInfoExt* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
 		}
 
 
@@ -7113,9 +6309,6 @@ namespace Vulkan
 					m->Color [i] = 0;
 			}
 		}
-
-		public static DebugMarkerMarkerInfoExt Null = new DebugMarkerMarkerInfoExt(null,false);
-
 		internal Interop.DebugMarkerMarkerInfoExt* m;
 
 		public DebugMarkerMarkerInfoExt ()
@@ -7130,110 +6323,10 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		internal DebugMarkerMarkerInfoExt (Interop.DebugMarkerMarkerInfoExt* ptr, bool init)
-		{
-			m = ptr;
-			if(init)
-			{
-				Initialize ();
-			}
-		}
-
 
 		internal void Initialize ()
 		{
 			m->SType = StructureType.DebugMarkerMarkerInfoExt;
-		}
-
-	}
-
-	unsafe public partial class DedicatedAllocationImageCreateInfoNv
-	{
-		public bool DedicatedAllocation {
-			get { return m->DedicatedAllocation; }
-			set { m->DedicatedAllocation = value; }
-		}
-		internal Interop.DedicatedAllocationImageCreateInfoNv* m;
-
-		public DedicatedAllocationImageCreateInfoNv ()
-		{
-			m = (Interop.DedicatedAllocationImageCreateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationImageCreateInfoNv));
-			Initialize ();
-		}
-
-		internal DedicatedAllocationImageCreateInfoNv (Interop.DedicatedAllocationImageCreateInfoNv* ptr)
-		{
-			m = ptr;
-			Initialize ();
-		}
-
-
-		internal void Initialize ()
-		{
-			m->SType = StructureType.DedicatedAllocationImageCreateInfoNv;
-		}
-
-	}
-
-	unsafe public partial class DedicatedAllocationBufferCreateInfoNv
-	{
-		public bool DedicatedAllocation {
-			get { return m->DedicatedAllocation; }
-			set { m->DedicatedAllocation = value; }
-		}
-		internal Interop.DedicatedAllocationBufferCreateInfoNv* m;
-
-		public DedicatedAllocationBufferCreateInfoNv ()
-		{
-			m = (Interop.DedicatedAllocationBufferCreateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationBufferCreateInfoNv));
-			Initialize ();
-		}
-
-		internal DedicatedAllocationBufferCreateInfoNv (Interop.DedicatedAllocationBufferCreateInfoNv* ptr)
-		{
-			m = ptr;
-			Initialize ();
-		}
-
-
-		internal void Initialize ()
-		{
-			m->SType = StructureType.DedicatedAllocationBufferCreateInfoNv;
-		}
-
-	}
-
-	unsafe public partial class DedicatedAllocationMemoryAllocateInfoNv
-	{
-		Image lImage;
-		public Image Image {
-			get { return lImage; }
-			set { lImage = value; m->Image = (UInt64)value.m; }
-		}
-
-		Buffer lBuffer;
-		public Buffer Buffer {
-			get { return lBuffer; }
-			set { lBuffer = value; m->Buffer = (UInt64)value.m; }
-		}
-		internal Interop.DedicatedAllocationMemoryAllocateInfoNv* m;
-
-		public DedicatedAllocationMemoryAllocateInfoNv ()
-		{
-			m = (Interop.DedicatedAllocationMemoryAllocateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationMemoryAllocateInfoNv));
-			Initialize ();
-		}
-
-		internal DedicatedAllocationMemoryAllocateInfoNv (Interop.DedicatedAllocationMemoryAllocateInfoNv* ptr)
-		{
-			m = ptr;
-			Initialize ();
-		}
-
-
-		internal void Initialize ()
-		{
-			m->SType = StructureType.DedicatedAllocationMemoryAllocateInfoNv;
 		}
 
 	}
