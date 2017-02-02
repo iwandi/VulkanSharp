@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PipelineRasterizationStateCreateInfo" FullName="Vulkan.PipelineRasterizationStateCreateInfo">
   <TypeSignature Language="C#" Value="public class PipelineRasterizationStateCreateInfo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PipelineRasterizationStateCreateInfo extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying parameters of a newly created pipeline rasterization state</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -20,6 +28,13 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -33,14 +48,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the triangle facing direction used for primitive culling. See elink:VkCullModeFlagBits.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DepthBiasClamp">
@@ -49,14 +71,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the maximum (or minimum) depth bias of a fragment.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DepthBiasConstantFactor">
@@ -65,14 +94,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a scalar factor controlling the constant depth value added to each fragment.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DepthBiasEnable">
@@ -81,14 +117,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>controls whether to bias fragment depth values.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DepthBiasSlopeFactor">
@@ -97,14 +140,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a scalar factor applied to a fragment's slope in depth bias calculations.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DepthClampEnable">
@@ -113,14 +163,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>controls whether to clamp the fragment's depth values instead of clipping primitives to the z planes of the frustum, as described in &lt;&lt;vertexpostproc-clipping,Primitive Clipping&gt;&gt;.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Flags">
@@ -129,14 +186,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is reserved for future use.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="FrontFace">
@@ -145,14 +209,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.FrontFace</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the front-facing triangle orientation to be used for culling. See elink:VkFrontFace.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="LineWidth">
@@ -161,14 +232,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the width of rasterized line segments.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="PolygonMode">
@@ -177,14 +255,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PolygonMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the triangle rendering mode. See elink:VkPolygonMode.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="RasterizerDiscardEnable">
@@ -193,14 +278,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>controls whether primitives are discarded immediately before the rasterization stage.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

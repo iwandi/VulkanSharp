@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="SparseMemoryBind" FullName="Vulkan.SparseMemoryBind">
   <TypeSignature Language="C#" Value="public class SparseMemoryBind" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SparseMemoryBind extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying a sparse memory bind operation</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -20,6 +28,13 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -33,6 +48,13 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -49,14 +71,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceMemory</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the sname:VkDeviceMemory object that the range of the resource is bound to. If pname:memory is dlink:VK_NULL_HANDLE, the range is unbound.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="MemoryOffset">
@@ -65,14 +94,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the offset into the sname:VkDeviceMemory object to bind the resource range to. If pname:memory is dlink:VK_NULL_HANDLE, this value is ignored.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResourceOffset">
@@ -81,14 +117,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the offset into the resource.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Size">
@@ -97,14 +140,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the size of the memory region to be bound.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

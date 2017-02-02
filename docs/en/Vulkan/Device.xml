@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="Device" FullName="Vulkan.Device">
   <TypeSignature Language="C#" Value="public class Device" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Device extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Opaque handle to a device object</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,6 +41,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -73,6 +88,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="AllocateCommandBuffers">
+      <MemberSignature Language="C#" Value="public Vulkan.CommandBuffer[] AllocateCommandBuffers (Vulkan.CommandBufferAllocateInfo pAllocateInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.CommandBuffer[] AllocateCommandBuffers(class Vulkan.CommandBufferAllocateInfo pAllocateInfo) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.CommandBuffer[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pAllocateInfo" Type="Vulkan.CommandBufferAllocateInfo" />
+      </Parameters>
+      <Docs>
+        <param name="pAllocateInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="AllocateDescriptorSets">
       <MemberSignature Language="C#" Value="public Vulkan.DescriptorSet AllocateDescriptorSets (Vulkan.DescriptorSetAllocateInfo pAllocateInfo);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DescriptorSet AllocateDescriptorSets(class Vulkan.DescriptorSetAllocateInfo pAllocateInfo) cil managed" />
@@ -93,12 +134,45 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="AllocateDescriptorSets">
+      <MemberSignature Language="C#" Value="public Vulkan.DescriptorSet[] AllocateDescriptorSets (Vulkan.DescriptorSetAllocateInfo pAllocateInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DescriptorSet[] AllocateDescriptorSets(class Vulkan.DescriptorSetAllocateInfo pAllocateInfo) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorSet[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pAllocateInfo" Type="Vulkan.DescriptorSetAllocateInfo" />
+      </Parameters>
+      <Docs>
+        <param name="pAllocateInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="AllocateMemory">
       <MemberSignature Language="C#" Value="public Vulkan.DeviceMemory AllocateMemory (Vulkan.MemoryAllocateInfo pAllocateInfo, Vulkan.AllocationCallbacks pAllocator);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DeviceMemory AllocateMemory(class Vulkan.MemoryAllocateInfo pAllocateInfo, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceMemory</ReturnType>
@@ -121,6 +195,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -144,6 +225,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -167,6 +255,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Buffer</ReturnType>
@@ -189,6 +284,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.BufferView</ReturnType>
@@ -211,6 +313,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.CommandPool</ReturnType>
@@ -228,6 +337,36 @@
       </Docs>
     </Member>
     <Member MemberName="CreateComputePipelines">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Pipeline[] CreateComputePipelines (Vulkan.PipelineCache pipelineCache, Vulkan.ComputePipelineCreateInfo[] pCreateInfos, Vulkan.AllocationCallbacks pAllocator = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.Pipeline[] CreateComputePipelines(class Vulkan.PipelineCache pipelineCache, class Vulkan.ComputePipelineCreateInfo[] pCreateInfos, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Pipeline[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pipelineCache" Type="Vulkan.PipelineCache" />
+        <Parameter Name="pCreateInfos" Type="Vulkan.ComputePipelineCreateInfo[]" />
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="pipelineCache">To be added.</param>
+        <param name="pCreateInfos">To be added.</param>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateComputePipelines">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Pipeline CreateComputePipelines (Vulkan.PipelineCache pipelineCache, uint createInfoCount, Vulkan.ComputePipelineCreateInfo pCreateInfos, Vulkan.AllocationCallbacks pAllocator);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.Pipeline CreateComputePipelines(class Vulkan.PipelineCache pipelineCache, unsigned int32 createInfoCount, class Vulkan.ComputePipelineCreateInfo pCreateInfos, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
       <MemberType>Method</MemberType>
@@ -259,6 +398,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DescriptorPool</ReturnType>
@@ -281,6 +427,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DescriptorSetLayout</ReturnType>
@@ -303,6 +456,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Event</ReturnType>
@@ -325,6 +485,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Fence</ReturnType>
@@ -347,6 +514,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Framebuffer</ReturnType>
@@ -364,6 +538,36 @@
       </Docs>
     </Member>
     <Member MemberName="CreateGraphicsPipelines">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Pipeline[] CreateGraphicsPipelines (Vulkan.PipelineCache pipelineCache, Vulkan.GraphicsPipelineCreateInfo[] pCreateInfos, Vulkan.AllocationCallbacks pAllocator = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.Pipeline[] CreateGraphicsPipelines(class Vulkan.PipelineCache pipelineCache, class Vulkan.GraphicsPipelineCreateInfo[] pCreateInfos, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Pipeline[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pipelineCache" Type="Vulkan.PipelineCache" />
+        <Parameter Name="pCreateInfos" Type="Vulkan.GraphicsPipelineCreateInfo[]" />
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="pipelineCache">To be added.</param>
+        <param name="pCreateInfos">To be added.</param>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateGraphicsPipelines">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Pipeline CreateGraphicsPipelines (Vulkan.PipelineCache pipelineCache, uint createInfoCount, Vulkan.GraphicsPipelineCreateInfo pCreateInfos, Vulkan.AllocationCallbacks pAllocator);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.Pipeline CreateGraphicsPipelines(class Vulkan.PipelineCache pipelineCache, unsigned int32 createInfoCount, class Vulkan.GraphicsPipelineCreateInfo pCreateInfos, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
       <MemberType>Method</MemberType>
@@ -395,6 +599,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Image</ReturnType>
@@ -417,6 +628,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ImageView</ReturnType>
@@ -439,6 +657,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PipelineCache</ReturnType>
@@ -461,6 +686,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PipelineLayout</ReturnType>
@@ -483,6 +715,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.QueryPool</ReturnType>
@@ -505,6 +744,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.RenderPass</ReturnType>
@@ -527,6 +773,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Sampler</ReturnType>
@@ -549,6 +802,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Semaphore</ReturnType>
@@ -571,6 +831,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ShaderModule</ReturnType>
@@ -587,6 +854,61 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="CreateShaderModule">
+      <MemberSignature Language="C#" Value="public Vulkan.ShaderModule CreateShaderModule (byte[] shaderCode, uint flags = 0, Vulkan.AllocationCallbacks allocator = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.ShaderModule CreateShaderModule(unsigned int8[] shaderCode, unsigned int32 flags, class Vulkan.AllocationCallbacks allocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ShaderModule</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="shaderCode" Type="System.Byte[]" />
+        <Parameter Name="flags" Type="System.UInt32" />
+        <Parameter Name="allocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="shaderCode">To be added.</param>
+        <param name="flags">To be added.</param>
+        <param name="allocator">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateSharedSwapchainsKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.SwapchainKhr[] CreateSharedSwapchainsKHR (Vulkan.SwapchainCreateInfoKhr[] pCreateInfos, Vulkan.AllocationCallbacks pAllocator = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.SwapchainKhr[] CreateSharedSwapchainsKHR(class Vulkan.SwapchainCreateInfoKhr[] pCreateInfos, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SwapchainKhr[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pCreateInfos" Type="Vulkan.SwapchainCreateInfoKhr[]" />
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="pCreateInfos">To be added.</param>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="CreateSharedSwapchainsKHR">
       <MemberSignature Language="C#" Value="public Vulkan.SwapchainKhr CreateSharedSwapchainsKHR (uint swapchainCount, Vulkan.SwapchainCreateInfoKhr pCreateInfos, Vulkan.AllocationCallbacks pAllocator);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.SwapchainKhr CreateSharedSwapchainsKHR(unsigned int32 swapchainCount, class Vulkan.SwapchainCreateInfoKhr pCreateInfos, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
@@ -617,6 +939,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.SwapchainKhr</ReturnType>
@@ -633,12 +962,60 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="DebugMarkerSetObjectNameEXT">
+      <MemberSignature Language="C#" Value="public Vulkan.DebugMarkerObjectNameInfoExt DebugMarkerSetObjectNameEXT ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DebugMarkerObjectNameInfoExt DebugMarkerSetObjectNameEXT() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugMarkerObjectNameInfoExt</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DebugMarkerSetObjectTagEXT">
+      <MemberSignature Language="C#" Value="public Vulkan.DebugMarkerObjectTagInfoExt DebugMarkerSetObjectTagEXT ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DebugMarkerObjectTagInfoExt DebugMarkerSetObjectTagEXT() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugMarkerObjectTagInfoExt</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="Destroy">
       <MemberSignature Language="C#" Value="public void Destroy (Vulkan.AllocationCallbacks pAllocator);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Destroy(class Vulkan.AllocationCallbacks pAllocator) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -658,6 +1035,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -679,6 +1063,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -700,6 +1091,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -721,6 +1119,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -742,6 +1147,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -763,6 +1175,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -784,6 +1203,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -805,6 +1231,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -826,6 +1259,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -847,6 +1287,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -868,6 +1315,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -889,6 +1343,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -910,6 +1371,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -931,6 +1399,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -952,6 +1427,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -973,6 +1455,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -994,6 +1483,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1015,6 +1511,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1036,6 +1539,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1051,6 +1561,53 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="FlushMappedMemoryRange">
+      <MemberSignature Language="C#" Value="public void FlushMappedMemoryRange (Vulkan.MappedMemoryRange pMemoryRange);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FlushMappedMemoryRange(class Vulkan.MappedMemoryRange pMemoryRange) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pMemoryRange" Type="Vulkan.MappedMemoryRange" />
+      </Parameters>
+      <Docs>
+        <param name="pMemoryRange">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FlushMappedMemoryRanges">
+      <MemberSignature Language="C#" Value="public void FlushMappedMemoryRanges (Vulkan.MappedMemoryRange[] pMemoryRanges);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FlushMappedMemoryRanges(class Vulkan.MappedMemoryRange[] pMemoryRanges) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pMemoryRanges" Type="Vulkan.MappedMemoryRange[]" />
+      </Parameters>
+      <Docs>
+        <param name="pMemoryRanges">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="FlushMappedMemoryRanges">
       <MemberSignature Language="C#" Value="public void FlushMappedMemoryRanges (uint memoryRangeCount, Vulkan.MappedMemoryRange pMemoryRanges);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FlushMappedMemoryRanges(unsigned int32 memoryRangeCount, class Vulkan.MappedMemoryRange pMemoryRanges) cil managed" />
@@ -1072,6 +1629,57 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="FreeCommandBuffer">
+      <MemberSignature Language="C#" Value="public void FreeCommandBuffer (Vulkan.CommandPool commandPool, Vulkan.CommandBuffer pCommandBuffer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FreeCommandBuffer(class Vulkan.CommandPool commandPool, class Vulkan.CommandBuffer pCommandBuffer) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="commandPool" Type="Vulkan.CommandPool" />
+        <Parameter Name="pCommandBuffer" Type="Vulkan.CommandBuffer" />
+      </Parameters>
+      <Docs>
+        <param name="commandPool">To be added.</param>
+        <param name="pCommandBuffer">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FreeCommandBuffers">
+      <MemberSignature Language="C#" Value="public void FreeCommandBuffers (Vulkan.CommandPool commandPool, Vulkan.CommandBuffer[] pCommandBuffers);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FreeCommandBuffers(class Vulkan.CommandPool commandPool, class Vulkan.CommandBuffer[] pCommandBuffers) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="commandPool" Type="Vulkan.CommandPool" />
+        <Parameter Name="pCommandBuffers" Type="Vulkan.CommandBuffer[]" />
+      </Parameters>
+      <Docs>
+        <param name="commandPool">To be added.</param>
+        <param name="pCommandBuffers">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="FreeCommandBuffers">
       <MemberSignature Language="C#" Value="public void FreeCommandBuffers (Vulkan.CommandPool commandPool, uint commandBufferCount, Vulkan.CommandBuffer pCommandBuffers);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FreeCommandBuffers(class Vulkan.CommandPool commandPool, unsigned int32 commandBufferCount, class Vulkan.CommandBuffer pCommandBuffers) cil managed" />
@@ -1095,6 +1703,57 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="FreeDescriptorSet">
+      <MemberSignature Language="C#" Value="public void FreeDescriptorSet (Vulkan.DescriptorPool descriptorPool, Vulkan.DescriptorSet pDescriptorSet);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FreeDescriptorSet(class Vulkan.DescriptorPool descriptorPool, class Vulkan.DescriptorSet pDescriptorSet) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="descriptorPool" Type="Vulkan.DescriptorPool" />
+        <Parameter Name="pDescriptorSet" Type="Vulkan.DescriptorSet" />
+      </Parameters>
+      <Docs>
+        <param name="descriptorPool">To be added.</param>
+        <param name="pDescriptorSet">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FreeDescriptorSets">
+      <MemberSignature Language="C#" Value="public void FreeDescriptorSets (Vulkan.DescriptorPool descriptorPool, Vulkan.DescriptorSet[] pDescriptorSets);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FreeDescriptorSets(class Vulkan.DescriptorPool descriptorPool, class Vulkan.DescriptorSet[] pDescriptorSets) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="descriptorPool" Type="Vulkan.DescriptorPool" />
+        <Parameter Name="pDescriptorSets" Type="Vulkan.DescriptorSet[]" />
+      </Parameters>
+      <Docs>
+        <param name="descriptorPool">To be added.</param>
+        <param name="pDescriptorSets">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="FreeDescriptorSets">
       <MemberSignature Language="C#" Value="public void FreeDescriptorSets (Vulkan.DescriptorPool descriptorPool, uint descriptorSetCount, Vulkan.DescriptorSet pDescriptorSets);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FreeDescriptorSets(class Vulkan.DescriptorPool descriptorPool, unsigned int32 descriptorSetCount, class Vulkan.DescriptorSet pDescriptorSets) cil managed" />
@@ -1124,6 +1783,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1145,6 +1811,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.MemoryRequirements</ReturnType>
@@ -1165,6 +1838,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1184,6 +1864,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1203,6 +1890,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.MemoryRequirements</ReturnType>
@@ -1237,12 +1931,45 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetImageSparseMemoryRequirements">
+      <MemberSignature Language="C#" Value="public Vulkan.SparseImageMemoryRequirements[] GetImageSparseMemoryRequirements (Vulkan.Image image);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.SparseImageMemoryRequirements[] GetImageSparseMemoryRequirements(class Vulkan.Image image) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SparseImageMemoryRequirements[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="Vulkan.Image" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetImageSubresourceLayout">
       <MemberSignature Language="C#" Value="public Vulkan.SubresourceLayout GetImageSubresourceLayout (Vulkan.Image image, Vulkan.ImageSubresource pSubresource);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.SubresourceLayout GetImageSubresourceLayout(class Vulkan.Image image, class Vulkan.ImageSubresource pSubresource) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.SubresourceLayout</ReturnType>
@@ -1265,6 +1992,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceSize</ReturnType>
@@ -1285,6 +2019,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1308,6 +2049,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
@@ -1328,6 +2076,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
@@ -1358,6 +2113,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Queue</ReturnType>
@@ -1380,6 +2142,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Extent2D</ReturnType>
@@ -1414,6 +2183,76 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetSwapchainImagesKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.Image[] GetSwapchainImagesKHR (Vulkan.SwapchainKhr swapchain);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.Image[] GetSwapchainImagesKHR(class Vulkan.SwapchainKhr swapchain) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Image[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="swapchain" Type="Vulkan.SwapchainKhr" />
+      </Parameters>
+      <Docs>
+        <param name="swapchain">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InvalidateMappedMemoryRange">
+      <MemberSignature Language="C#" Value="public void InvalidateMappedMemoryRange (Vulkan.MappedMemoryRange pMemoryRange);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InvalidateMappedMemoryRange(class Vulkan.MappedMemoryRange pMemoryRange) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pMemoryRange" Type="Vulkan.MappedMemoryRange" />
+      </Parameters>
+      <Docs>
+        <param name="pMemoryRange">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InvalidateMappedMemoryRanges">
+      <MemberSignature Language="C#" Value="public void InvalidateMappedMemoryRanges (Vulkan.MappedMemoryRange[] pMemoryRanges);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InvalidateMappedMemoryRanges(class Vulkan.MappedMemoryRange[] pMemoryRanges) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pMemoryRanges" Type="Vulkan.MappedMemoryRange[]" />
+      </Parameters>
+      <Docs>
+        <param name="pMemoryRanges">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="InvalidateMappedMemoryRanges">
       <MemberSignature Language="C#" Value="public void InvalidateMappedMemoryRanges (uint memoryRangeCount, Vulkan.MappedMemoryRange pMemoryRanges);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InvalidateMappedMemoryRanges(unsigned int32 memoryRangeCount, class Vulkan.MappedMemoryRange pMemoryRanges) cil managed" />
@@ -1441,6 +2280,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
@@ -1461,6 +2307,57 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="MergePipelineCache">
+      <MemberSignature Language="C#" Value="public void MergePipelineCache (Vulkan.PipelineCache dstCache, Vulkan.PipelineCache pSrcCache);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MergePipelineCache(class Vulkan.PipelineCache dstCache, class Vulkan.PipelineCache pSrcCache) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dstCache" Type="Vulkan.PipelineCache" />
+        <Parameter Name="pSrcCache" Type="Vulkan.PipelineCache" />
+      </Parameters>
+      <Docs>
+        <param name="dstCache">To be added.</param>
+        <param name="pSrcCache">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MergePipelineCaches">
+      <MemberSignature Language="C#" Value="public void MergePipelineCaches (Vulkan.PipelineCache dstCache, Vulkan.PipelineCache[] pSrcCaches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MergePipelineCaches(class Vulkan.PipelineCache dstCache, class Vulkan.PipelineCache[] pSrcCaches) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dstCache" Type="Vulkan.PipelineCache" />
+        <Parameter Name="pSrcCaches" Type="Vulkan.PipelineCache[]" />
+      </Parameters>
+      <Docs>
+        <param name="dstCache">To be added.</param>
+        <param name="pSrcCaches">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="MergePipelineCaches">
       <MemberSignature Language="C#" Value="public void MergePipelineCaches (Vulkan.PipelineCache dstCache, uint srcCacheCount, Vulkan.PipelineCache pSrcCaches);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MergePipelineCaches(class Vulkan.PipelineCache dstCache, unsigned int32 srcCacheCount, class Vulkan.PipelineCache pSrcCaches) cil managed" />
@@ -1490,6 +2387,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1511,6 +2415,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1532,6 +2443,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1545,6 +2463,53 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="ResetFence">
+      <MemberSignature Language="C#" Value="public void ResetFence (Vulkan.Fence pFence);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResetFence(class Vulkan.Fence pFence) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pFence" Type="Vulkan.Fence" />
+      </Parameters>
+      <Docs>
+        <param name="pFence">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetFences">
+      <MemberSignature Language="C#" Value="public void ResetFences (Vulkan.Fence[] pFences);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResetFences(class Vulkan.Fence[] pFences) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pFences" Type="Vulkan.Fence[]" />
+      </Parameters>
+      <Docs>
+        <param name="pFences">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="ResetFences">
       <MemberSignature Language="C#" Value="public void ResetFences (uint fenceCount, Vulkan.Fence pFences);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResetFences(unsigned int32 fenceCount, class Vulkan.Fence pFences) cil managed" />
@@ -1572,6 +2537,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1591,6 +2563,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1604,6 +2583,57 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="UpdateDescriptorSet">
+      <MemberSignature Language="C#" Value="public void UpdateDescriptorSet (Vulkan.WriteDescriptorSet pDescriptorWrite, Vulkan.CopyDescriptorSet pDescriptorCopie);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateDescriptorSet(class Vulkan.WriteDescriptorSet pDescriptorWrite, class Vulkan.CopyDescriptorSet pDescriptorCopie) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDescriptorWrite" Type="Vulkan.WriteDescriptorSet" />
+        <Parameter Name="pDescriptorCopie" Type="Vulkan.CopyDescriptorSet" />
+      </Parameters>
+      <Docs>
+        <param name="pDescriptorWrite">To be added.</param>
+        <param name="pDescriptorCopie">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateDescriptorSets">
+      <MemberSignature Language="C#" Value="public void UpdateDescriptorSets (Vulkan.WriteDescriptorSet[] pDescriptorWrites, Vulkan.CopyDescriptorSet[] pDescriptorCopies);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateDescriptorSets(class Vulkan.WriteDescriptorSet[] pDescriptorWrites, class Vulkan.CopyDescriptorSet[] pDescriptorCopies) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDescriptorWrites" Type="Vulkan.WriteDescriptorSet[]" />
+        <Parameter Name="pDescriptorCopies" Type="Vulkan.CopyDescriptorSet[]" />
+      </Parameters>
+      <Docs>
+        <param name="pDescriptorWrites">To be added.</param>
+        <param name="pDescriptorCopies">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="UpdateDescriptorSets">
       <MemberSignature Language="C#" Value="public void UpdateDescriptorSets (uint descriptorWriteCount, Vulkan.WriteDescriptorSet pDescriptorWrites, uint descriptorCopyCount, Vulkan.CopyDescriptorSet pDescriptorCopies);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateDescriptorSets(unsigned int32 descriptorWriteCount, class Vulkan.WriteDescriptorSet pDescriptorWrites, unsigned int32 descriptorCopyCount, class Vulkan.CopyDescriptorSet pDescriptorCopies) cil managed" />
@@ -1629,6 +2659,80 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="Vulkan.IMarshalling.Handle">
+      <MemberSignature Language="C#" Value="IntPtr Vulkan.IMarshalling.Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Vulkan.IMarshalling.Handle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WaitForFence">
+      <MemberSignature Language="C#" Value="public void WaitForFence (Vulkan.Fence pFence, Vulkan.Bool32 waitAll, ulong timeout);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WaitForFence(class Vulkan.Fence pFence, valuetype Vulkan.Bool32 waitAll, unsigned int64 timeout) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pFence" Type="Vulkan.Fence" />
+        <Parameter Name="waitAll" Type="Vulkan.Bool32" />
+        <Parameter Name="timeout" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="pFence">To be added.</param>
+        <param name="waitAll">To be added.</param>
+        <param name="timeout">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WaitForFences">
+      <MemberSignature Language="C#" Value="public void WaitForFences (Vulkan.Fence[] pFences, Vulkan.Bool32 waitAll, ulong timeout);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WaitForFences(class Vulkan.Fence[] pFences, valuetype Vulkan.Bool32 waitAll, unsigned int64 timeout) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pFences" Type="Vulkan.Fence[]" />
+        <Parameter Name="waitAll" Type="Vulkan.Bool32" />
+        <Parameter Name="timeout" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="pFences">To be added.</param>
+        <param name="waitAll">To be added.</param>
+        <param name="timeout">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="WaitForFences">
       <MemberSignature Language="C#" Value="public void WaitForFences (uint fenceCount, Vulkan.Fence pFences, Vulkan.Bool32 waitAll, ulong timeout);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WaitForFences(unsigned int32 fenceCount, class Vulkan.Fence pFences, valuetype Vulkan.Bool32 waitAll, unsigned int64 timeout) cil managed" />
@@ -1660,6 +2764,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

@@ -4,6 +4,13 @@
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -28,6 +35,27 @@
       </Docs>
     </Member>
     <Member MemberName="Extent">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Extent3D Extent;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent3D Extent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Extent">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Extent3D Extent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent3D Extent" />
       <MemberType>Property</MemberType>
@@ -44,6 +72,27 @@
       </Docs>
     </Member>
     <Member MemberName="Offset">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Offset3D Offset;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Offset3D Offset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Offset">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Offset3D Offset { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset3D Offset" />
       <MemberType>Property</MemberType>

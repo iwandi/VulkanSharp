@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PhysicalDeviceProperties" FullName="Vulkan.PhysicalDeviceProperties">
   <TypeSignature Language="C#" Value="public class PhysicalDeviceProperties" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PhysicalDeviceProperties extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying physical device properties</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -20,6 +28,13 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -33,14 +48,40 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the version of Vulkan supported by the device, encoded as described in the &lt;&lt;fundamentals-versionnum,API Version Numbers and Semantics&gt;&gt; section.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DeviceId">
+      <MemberSignature Language="C#" Value="public uint DeviceId { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DeviceId" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is a unique identifier for the physical device among devices available from the vendor.</summary>
+        <value>To be added.</value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DeviceID">
@@ -65,14 +106,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Char</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a null-terminated UTF-8 string containing the name of the device.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DeviceType">
@@ -81,14 +129,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a elink:VkPhysicalDeviceType specifying the type of device.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DriverVersion">
@@ -97,14 +152,21 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the vendor-specified version of the driver.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Limits">
@@ -113,16 +175,45 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceLimits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the slink:VkPhysicalDeviceLimits structure which specifies device-specific limits of the physical device. See &lt;&lt;features-limits,Limits&gt;&gt; for details.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="PipelineCacheUuid">
+      <MemberSignature Language="C#" Value="public byte[] PipelineCacheUuid { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] PipelineCacheUuid" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is an array of size ename:VK_UUID_SIZE, containing 8-bit values that represent a universally unique identifier for the device.</summary>
+        <value>To be added.</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="PipelineCacheUUID">
       <MemberSignature Language="C#" Value="public byte PipelineCacheUUID { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 PipelineCacheUUID" />
@@ -145,16 +236,45 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceSparseProperties</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the slink:VkPhysicalDeviceSparseProperties structure which specifies various sparse related properties of the physical device. See &lt;&lt;sparsememory-physicalprops,Sparse Properties&gt;&gt; for details.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="VendorId">
+      <MemberSignature Language="C#" Value="public uint VendorId { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 VendorId" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is a unique identifier for the _vendor_ (see below) of the physical device.</summary>
+        <value>To be added.</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="VendorID">
       <MemberSignature Language="C#" Value="public uint VendorID { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 VendorID" />

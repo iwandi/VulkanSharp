@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="StencilOpState" FullName="Vulkan.StencilOpState">
   <TypeSignature Language="C#" Value="public class StencilOpState" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit StencilOpState extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying stencil operation state</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="CompareMask">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint CompareMask;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 CompareMask" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>selects the bits of the unsigned integer stencil values participating in the stencil test.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CompareMask">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint CompareMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 CompareMask" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>selects the bits of the unsigned integer stencil values participating in the stencil test.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="CompareOp">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.CompareOp CompareOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.CompareOp CompareOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.CompareOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the comparison operator used in the stencil test.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CompareOp">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.CompareOp CompareOp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.CompareOp CompareOp" />
       <MemberType>Property</MemberType>
@@ -54,12 +104,33 @@
         <ReturnType>Vulkan.CompareOp</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the comparison operator used in the stencil test.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DepthFailOp">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.StencilOp DepthFailOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.StencilOp DepthFailOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StencilOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the action performed on samples that pass the stencil test and fail the depth test.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthFailOp">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.StencilOp DepthFailOp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.StencilOp DepthFailOp" />
       <MemberType>Property</MemberType>
@@ -70,12 +141,33 @@
         <ReturnType>Vulkan.StencilOp</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the action performed on samples that pass the stencil test and fail the depth test.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="FailOp">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.StencilOp FailOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.StencilOp FailOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StencilOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the action performed on samples that fail the stencil test.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FailOp">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.StencilOp FailOp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.StencilOp FailOp" />
       <MemberType>Property</MemberType>
@@ -86,12 +178,33 @@
         <ReturnType>Vulkan.StencilOp</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the action performed on samples that fail the stencil test.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="PassOp">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.StencilOp PassOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.StencilOp PassOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StencilOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the action performed on samples that pass both the depth and stencil tests.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PassOp">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.StencilOp PassOp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.StencilOp PassOp" />
       <MemberType>Property</MemberType>
@@ -102,12 +215,33 @@
         <ReturnType>Vulkan.StencilOp</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the action performed on samples that pass both the depth and stencil tests.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Reference">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint Reference;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 Reference" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is an integer reference value that is used in the unsigned stencil comparison.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reference">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint Reference { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Reference" />
       <MemberType>Property</MemberType>
@@ -118,12 +252,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is an integer reference value that is used in the unsigned stencil comparison.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteMask">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint WriteMask;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 WriteMask" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>selects the bits of the unsigned integer stencil values updated by the stencil test in the stencil framebuffer attachment.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteMask">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint WriteMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 WriteMask" />
       <MemberType>Property</MemberType>
@@ -134,9 +289,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>selects the bits of the unsigned integer stencil values updated by the stencil test in the stencil framebuffer attachment.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

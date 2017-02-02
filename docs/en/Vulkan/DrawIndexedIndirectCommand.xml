@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="DrawIndexedIndirectCommand" FullName="Vulkan.DrawIndexedIndirectCommand">
   <TypeSignature Language="C#" Value="public class DrawIndexedIndirectCommand" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DrawIndexedIndirectCommand extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying a draw indexed indirect command</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="FirstIndex">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint FirstIndex;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 FirstIndex" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the base index within the index buffer.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FirstIndex">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint FirstIndex { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FirstIndex" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the base index within the index buffer.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="FirstInstance">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint FirstInstance;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 FirstInstance" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the instance ID of the first instance to draw.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FirstInstance">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint FirstInstance { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FirstInstance" />
       <MemberType>Property</MemberType>
@@ -54,12 +104,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the instance ID of the first instance to draw.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="IndexCount">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint IndexCount;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 IndexCount" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the number of vertices to draw.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IndexCount">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint IndexCount { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 IndexCount" />
       <MemberType>Property</MemberType>
@@ -70,12 +141,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the number of vertices to draw.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="InstanceCount">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint InstanceCount;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 InstanceCount" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the number of instances to draw.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InstanceCount">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint InstanceCount { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 InstanceCount" />
       <MemberType>Property</MemberType>
@@ -86,12 +178,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the number of instances to draw.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="VertexOffset">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public int VertexOffset;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 VertexOffset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the value added to the vertex index before indexing into the vertex buffer.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexOffset">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public int VertexOffset { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 VertexOffset" />
       <MemberType>Property</MemberType>
@@ -102,9 +215,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the value added to the vertex index before indexing into the vertex buffer.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

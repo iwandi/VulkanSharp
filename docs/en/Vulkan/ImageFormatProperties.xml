@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="ImageFormatProperties" FullName="Vulkan.ImageFormatProperties">
   <TypeSignature Language="C#" Value="public class ImageFormatProperties" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ImageFormatProperties extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying a image format properties</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="MaxArrayLayers">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint MaxArrayLayers;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 MaxArrayLayers" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the maximum number of array layers. pname:maxArrayLayers must: either be equal to 1 or be greater than or equal to the pname:maxImageArrayLayers member of slink:VkPhysicalDeviceLimits. A value of 1 is valid only if pname:tiling is ename:VK_IMAGE_TILING_LINEAR or if pname:type is ename:VK_IMAGE_TYPE_3D.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxArrayLayers">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint MaxArrayLayers { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxArrayLayers" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the maximum number of array layers. pname:maxArrayLayers must: either be equal to 1 or be greater than or equal to the pname:maxImageArrayLayers member of slink:VkPhysicalDeviceLimits. A value of 1 is valid only if pname:tiling is ename:VK_IMAGE_TILING_LINEAR or if pname:type is ename:VK_IMAGE_TYPE_3D.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="MaxExtent">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Extent3D MaxExtent;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent3D MaxExtent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>are the maximum image dimensions. See the &lt;&lt;features-extentperimagetype,Allowed Extent Values&gt;&gt; section below for how these values are constrained by pname:type.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxExtent">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Extent3D MaxExtent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent3D MaxExtent" />
       <MemberType>Property</MemberType>
@@ -54,12 +104,33 @@
         <ReturnType>Vulkan.Extent3D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>are the maximum image dimensions. See the &lt;&lt;features-extentperimagetype,Allowed Extent Values&gt;&gt; section below for how these values are constrained by pname:type.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="MaxMipLevels">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint MaxMipLevels;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 MaxMipLevels" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the maximum number of mipmap levels. pname:maxMipLevels must: either be equal to 1 (valid only if pname:tiling is ename:VK_IMAGE_TILING_LINEAR) or be equal to [eq]#{lceil}log~2~(max(pname:width, pname:height, pname:depth)){rceil} {plus} 1#. [eq]#pname:width#, [eq]#pname:height#, and [eq]#pname:depth# are taken from the corresponding members of pname:maxExtent.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxMipLevels">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint MaxMipLevels { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxMipLevels" />
       <MemberType>Property</MemberType>
@@ -70,12 +141,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the maximum number of mipmap levels. pname:maxMipLevels must: either be equal to 1 (valid only if pname:tiling is ename:VK_IMAGE_TILING_LINEAR) or be equal to [eq]#{lceil}log~2~(max(pname:width, pname:height, pname:depth)){rceil} {plus} 1#. [eq]#pname:width#, [eq]#pname:height#, and [eq]#pname:depth# are taken from the corresponding members of pname:maxExtent.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="MaxResourceSize">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize MaxResourceSize;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize MaxResourceSize" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is an upper bound on the total image size in bytes, inclusive of all image subresources. Implementations may: have an address space limit on total size of a resource, which is advertised by this property. pname:maxResourceSize must: be at least 2^31^.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxResourceSize">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.DeviceSize MaxResourceSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize MaxResourceSize" />
       <MemberType>Property</MemberType>
@@ -86,12 +178,33 @@
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is an upper bound on the total image size in bytes, inclusive of all image subresources. Implementations may: have an address space limit on total size of a resource, which is advertised by this property. pname:maxResourceSize must: be at least 2^31^.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SampleCounts">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.SampleCountFlags SampleCounts;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.SampleCountFlags SampleCounts" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SampleCountFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is a bitmask of elink:VkSampleCountFlagBits specifying all the supported sample counts for this image as described &lt;&lt;features-supported-sample-counts, below&gt;&gt;.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SampleCounts">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint SampleCounts { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SampleCounts" />
       <MemberType>Property</MemberType>
@@ -102,9 +215,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a bitmask of elink:VkSampleCountFlagBits specifying all the supported sample counts for this image as described &lt;&lt;features-supported-sample-counts, below&gt;&gt;.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

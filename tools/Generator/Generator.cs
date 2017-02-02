@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace VulkanSharp.Generator
 {
-	public class Generator
+	public class Generator : GeneratorBase
 	{
 		XElement specTree;
 		string specXMLFile;
@@ -16,11 +17,20 @@ namespace VulkanSharp.Generator
 		bool isInterop;
 		bool needsMarshalling;
 
+<<<<<<< HEAD
 		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }, { "HWND", "IntPtr" }, { "HINSTANCE", "IntPtr" } };
 		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
+=======
+		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> () { { "SecurityAttributes", new StructInfo { name = "SecurityAttributes", csName = "SECURITY_ATTRIBUTES", needsMarshalling = false } } };
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
+		Dictionary<string, EnumInfo> enums = new Dictionary<string, EnumInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
+<<<<<<< HEAD
         List<string> enums = new List<string>();
+=======
+		//HashSet<string> enums = new HashSet<string> ();
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
 
 		string platform;
 		HashSet<string> requiredTypes = null;
@@ -35,12 +45,26 @@ namespace VulkanSharp.Generator
 			VulkanInterop = 8
 		}
 
-		class StructInfo
+		class TypeInfo
+		{
+			public string name;
+			public string csName;
+			public Dictionary<string, string> members;
+		}
+
+		class StructInfo : TypeInfo
 		{
 			public XElement element;
-			public string name;
 			public bool needsMarshalling;
 		}
+
+		StructInfo currentStructInfo;
+
+		class EnumInfo : TypeInfo
+		{
+		}
+
+		EnumInfo currentEnumInfo;
 
 		class HandleInfo
 		{
@@ -77,6 +101,8 @@ namespace VulkanSharp.Generator
 			GenerateHandles ();
 			GenerateRemainingCommands ();
 			GenerateExtensions ();
+
+			WriteTypeInformation ();
 		}
 
 		void LoadSpecification ()
@@ -89,6 +115,7 @@ namespace VulkanSharp.Generator
 			Console.WriteLine ("Specification file {0} loaded", specXMLFile);
 		}
 
+<<<<<<< HEAD
 		static Dictionary<string, string> specialParts = new Dictionary<string, string> {
 			{ "AMD", "Amd" },
 			{ "API", "Api" },
@@ -177,6 +204,8 @@ namespace VulkanSharp.Generator
 			{ "NV", "Nv" }
 		};
 
+=======
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
 		void WriteEnumField (string name, string value, string csEnumName)
 		{
 			string fName = TranslateCName (name);
@@ -225,6 +254,8 @@ namespace VulkanSharp.Generator
 					fName = fName.Substring (0, fName.Length - suffix.Length - extension.Length) + extension;
 			}
 			IndentWriteLine ("{0} = {1},", fName, value);
+
+			currentEnumInfo.members [fName] = name;
 		}
 
 		string FormatFlagValue (int pos)
@@ -255,7 +286,9 @@ namespace VulkanSharp.Generator
 		bool WriteEnum (XElement enumElement)
 		{
 			string name = enumElement.Attribute ("name").Value;
-			string csName = GetTypeCsName (name, "enum");
+
+			currentEnumInfo = new EnumInfo { name = name };
+			currentEnumInfo.members = new Dictionary<string, string> ();
 
             enums.Add(csName);
 
@@ -264,11 +297,12 @@ namespace VulkanSharp.Generator
 				select el;
 
 			if (values.Count () < 1) {
-				Console.WriteLine ("warning: not adding empty enum {0}", csName);
+				Console.WriteLine ("warning: not adding empty enum {0}", name);
 				return false;
 			}
 
 			var enumsElement = values.First ();
+<<<<<<< HEAD
 			if (enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask") {
 				string suffix = null;
 				foreach (var ext in extensions)
@@ -276,14 +310,17 @@ namespace VulkanSharp.Generator
 						suffix = ext.Value + suffix;
 						csName = csName.Substring (0, csName.Length - ext.Value.Length);
 					}
+=======
+			var bitmask = enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask";
+			if (bitmask || knownBitmaps.Contains (name))
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
 				IndentWriteLine ("[Flags]");
-				if (csName.EndsWith ("FlagBits"))
-					csName = csName.Substring (0, csName.Length - 4) + "s";
-				if (suffix != null)
-					csName += suffix;
-			}
+
+			string csName = GetEnumCsName (name, bitmask);
 
 			typesTranslation [name] = csName;
+			currentEnumInfo.csName = csName;
+			enums [csName] = currentEnumInfo;
 			IndentWriteLine ("public enum {0} : int", csName);
 			IndentWriteLine ("{");
 			IndentLevel++;
@@ -798,6 +835,8 @@ namespace VulkanSharp.Generator
 				// temporarily disable arrays csMemberType += "[]";
 			}
 
+			currentStructInfo.members [csMemberName] = nameElement.Value;
+
 			var isCharArray = false;
 			if (csMemberType == "char" && memberElement.Value.EndsWith ("]"))
 				isCharArray = true;
@@ -922,6 +961,12 @@ namespace VulkanSharp.Generator
 			IndentLevel++;
 
 			initializeMembers = new List<StructMemberInfo> ();
+<<<<<<< HEAD
+=======
+			arrayMembers = new List<string> ();
+			currentStructInfo = info;
+			currentStructInfo.members = new Dictionary<string, string> ();
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
 			GenerateMembers (structElement, WriteMember);
 
 			if (!isInterop) {
@@ -1013,7 +1058,7 @@ namespace VulkanSharp.Generator
 				return false;
 
 			typesTranslation [name] = csName;
-			structures [csName] = new StructInfo () { name = name, needsMarshalling = LearnStructureMembers (structElement), element = structElement };
+			structures [csName] = new StructInfo () { name = name, csName = csName, needsMarshalling = LearnStructureMembers (structElement), element = structElement };
 
 			return false;
 		}
@@ -1110,7 +1155,22 @@ namespace VulkanSharp.Generator
 			public bool needsMarshalling;
 			public ParamInfo lenArray;
 			public bool isArray;
+<<<<<<< HEAD
             public bool isEnum;
+=======
+			public bool isNullable;
+			public string constValue;
+
+			public string MarshalSizeSource (Generator generator, bool isInInterop)
+			{
+				if (generator.enums.ContainsKey (csType))
+					return "4"; // int enum
+
+				return string.Format ("Marshal.SizeOf (typeof ({0}{1}))",
+				                      isInInterop ? "Interop." : "",
+				                      isHandle ? generator.GetHandleType (generator.handles [csType]) : csType);
+			}
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
 		}
 
 		string GetParamCsType (string type, ref bool isPointer, out bool isHandle, out bool isEnum)
@@ -1926,6 +1986,39 @@ namespace VulkanSharp.Generator
 				"VK_KHR_wayland_surface",
 				"VK_KHR_mir_surface" } );
 			GeneratePlatformExtension ("Windows", "VK_KHR_win32_surface");
+		}
+
+		void WriteTypes (XmlDocument doc, XmlElement types, string elementName, TypeInfo[] typeInfo)
+		{
+			foreach (var info in typeInfo) {
+				var element = doc.CreateElement (elementName);
+				element.SetAttribute ("name", info.name);
+				element.SetAttribute ("csName", info.csName);
+				types.AppendChild (element);
+
+				if (info.members == null)
+					continue;
+
+				foreach (var member in info.members) {
+					var memberElement = doc.CreateElement ("member");
+					memberElement.SetAttribute ("name", member.Value);
+					memberElement.SetAttribute ("csName", member.Key);
+					element.AppendChild (memberElement);
+				}
+			}
+		}
+
+		void WriteTypeInformation ()
+		{
+			var doc = new XmlDocument ();
+
+			XmlElement types = doc.CreateElement ("types");
+			doc.AppendChild (types);
+
+			WriteTypes (doc, types, "enum", enums.Values.ToArray ());
+			WriteTypes (doc, types, "structure", structures.Values.ToArray ());
+
+			doc.Save (outputPath + Path.DirectorySeparatorChar + "types.xml");
 		}
 	}
 }

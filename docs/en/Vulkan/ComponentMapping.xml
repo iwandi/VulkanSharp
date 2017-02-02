@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="ComponentMapping" FullName="Vulkan.ComponentMapping">
   <TypeSignature Language="C#" Value="public class ComponentMapping" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ComponentMapping extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying a color component mapping</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="A">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle A;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ComponentSwizzle A" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>determines the component value placed in the A component of the output vector.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="A">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle A { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.ComponentSwizzle A" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>determines the component value placed in the A component of the output vector.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="B">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle B;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ComponentSwizzle B" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>determines the component value placed in the B component of the output vector.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="B">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle B { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.ComponentSwizzle B" />
       <MemberType>Property</MemberType>
@@ -54,12 +104,33 @@
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>determines the component value placed in the B component of the output vector.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="G">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle G;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ComponentSwizzle G" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>determines the component value placed in the G component of the output vector.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="G">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle G { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.ComponentSwizzle G" />
       <MemberType>Property</MemberType>
@@ -70,12 +141,33 @@
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>determines the component value placed in the G component of the output vector.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="R">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle R;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ComponentSwizzle R" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>determines the component value placed in the R component of the output vector.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="R">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle R { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.ComponentSwizzle R" />
       <MemberType>Property</MemberType>
@@ -86,9 +178,9 @@
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>determines the component value placed in the R component of the output vector.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

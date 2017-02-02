@@ -1,17 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="BindSparseInfo" FullName="Vulkan.BindSparseInfo">
-  <TypeSignature Language="C#" Value="public class BindSparseInfo" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BindSparseInfo extends System.Object" />
+  <TypeSignature Language="C#" Value="public class BindSparseInfo : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BindSparseInfo extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying a sparse binding operation</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -20,6 +25,10 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -33,29 +42,57 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the number of sparse buffer bindings to perform in the batch.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="BufferBinds">
-      <MemberSignature Language="C#" Value="public Vulkan.SparseBufferMemoryBindInfo BufferBinds { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SparseBufferMemoryBindInfo BufferBinds" />
+      <MemberSignature Language="C#" Value="public Vulkan.SparseBufferMemoryBindInfo[] BufferBinds { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SparseBufferMemoryBindInfo[] BufferBinds" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.SparseBufferMemoryBindInfo</ReturnType>
+        <ReturnType>Vulkan.SparseBufferMemoryBindInfo[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a pointer to an array of slink:VkSparseBufferMemoryBindInfo structures.</summary>
         <value>To be added.</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public override void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -65,30 +102,38 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the number of sparse image bindings to perform.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ImageBinds">
-      <MemberSignature Language="C#" Value="public Vulkan.SparseImageMemoryBindInfo ImageBinds { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SparseImageMemoryBindInfo ImageBinds" />
+      <MemberSignature Language="C#" Value="public Vulkan.SparseImageMemoryBindInfo[] ImageBinds { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SparseImageMemoryBindInfo[] ImageBinds" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.SparseImageMemoryBindInfo</ReturnType>
+        <ReturnType>Vulkan.SparseImageMemoryBindInfo[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a pointer to an array of slink:VkSparseImageMemoryBindInfo structures, indicating sparse image bindings to perform.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ImageOpaqueBindCount">
@@ -97,30 +142,38 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the number of opaque sparse image bindings to perform.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ImageOpaqueBinds">
-      <MemberSignature Language="C#" Value="public Vulkan.SparseImageOpaqueMemoryBindInfo ImageOpaqueBinds { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SparseImageOpaqueMemoryBindInfo ImageOpaqueBinds" />
+      <MemberSignature Language="C#" Value="public Vulkan.SparseImageOpaqueMemoryBindInfo[] ImageOpaqueBinds { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SparseImageOpaqueMemoryBindInfo[] ImageOpaqueBinds" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.SparseImageOpaqueMemoryBindInfo</ReturnType>
+        <ReturnType>Vulkan.SparseImageOpaqueMemoryBindInfo[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a pointer to an array of slink:VkSparseImageOpaqueMemoryBindInfo structures, indicating opaque sparse image bindings to perform.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SignalSemaphoreCount">
@@ -129,29 +182,54 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the number of semaphores to be signaled once the sparse binding operations specified by the structure have completed execution.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SignalSemaphores">
-      <MemberSignature Language="C#" Value="public Vulkan.Semaphore SignalSemaphores { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Semaphore SignalSemaphores" />
+      <MemberSignature Language="C#" Value="public Vulkan.Semaphore[] SignalSemaphores { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Semaphore[] SignalSemaphores" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.Semaphore</ReturnType>
+        <ReturnType>Vulkan.Semaphore[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a pointer to an array of semaphores which will be signaled when the sparse binding operations for this batch have completed execution. If semaphores to be signaled are provided, they define a &lt;&lt;synchronization-semaphores-signaling, semaphore signal operation&gt;&gt;.</summary>
         <value>To be added.</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VirtualDispose">
+      <MemberSignature Language="C#" Value="public override void VirtualDispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void VirtualDispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -161,30 +239,38 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the number of semaphores upon which to wait before executing the sparse binding operations for the batch.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="WaitSemaphores">
-      <MemberSignature Language="C#" Value="public Vulkan.Semaphore WaitSemaphores { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Semaphore WaitSemaphores" />
+      <MemberSignature Language="C#" Value="public Vulkan.Semaphore[] WaitSemaphores { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Semaphore[] WaitSemaphores" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.Semaphore</ReturnType>
+        <ReturnType>Vulkan.Semaphore[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a pointer to an array of semaphores upon which to wait on before the sparse binding operations for this batch begin execution. If semaphores to wait on are provided, they define a &lt;&lt;synchronization-semaphores-waiting, semaphore wait operation&gt;&gt;.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

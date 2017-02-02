@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="SparseImageFormatProperties" FullName="Vulkan.SparseImageFormatProperties">
   <TypeSignature Language="C#" Value="public class SparseImageFormatProperties" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SparseImageFormatProperties extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying sparse image format properties</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="AspectMask">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.ImageAspectFlags AspectMask;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ImageAspectFlags AspectMask" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageAspectFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is a bitmask of elink:VkImageAspectFlagBits specifying which aspects of the image the properties apply to.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AspectMask">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint AspectMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 AspectMask" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a bitmask of elink:VkImageAspectFlagBits specifying which aspects of the image the properties apply to.</summary>
         <value>To be added.</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Flags">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.SparseImageFormatFlags Flags;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.SparseImageFormatFlags Flags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SparseImageFormatFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Flags">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint Flags { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Flags" />
       <MemberType>Property</MemberType>
@@ -60,6 +110,27 @@
       </Docs>
     </Member>
     <Member MemberName="ImageGranularity">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Extent3D ImageGranularity;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent3D ImageGranularity" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the width, height, and depth of the sparse image block in texels or compressed texel blocks.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageGranularity">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Extent3D ImageGranularity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent3D ImageGranularity" />
       <MemberType>Property</MemberType>
@@ -70,9 +141,9 @@
         <ReturnType>Vulkan.Extent3D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the width, height, and depth of the sparse image block in texels or compressed texel blocks.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

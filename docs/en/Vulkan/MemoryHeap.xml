@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="MemoryHeap" FullName="Vulkan.MemoryHeap">
   <TypeSignature Language="C#" Value="public class MemoryHeap" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MemoryHeap extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying a memory heap</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="Flags">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.MemoryHeapFlags Flags;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.MemoryHeapFlags Flags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.MemoryHeapFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Flags">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint Flags { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Flags" />
       <MemberType>Property</MemberType>
@@ -44,6 +73,27 @@
       </Docs>
     </Member>
     <Member MemberName="Size">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize Size;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize Size" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the total memory size in bytes in the heap.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Size">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.DeviceSize Size { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize Size" />
       <MemberType>Property</MemberType>
@@ -54,9 +104,9 @@
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the total memory size in bytes in the heap.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

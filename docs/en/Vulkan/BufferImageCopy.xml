@@ -1,17 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="BufferImageCopy" FullName="Vulkan.BufferImageCopy">
-  <TypeSignature Language="C#" Value="public class BufferImageCopy" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BufferImageCopy extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct BufferImageCopy" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit BufferImageCopy extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying a buffer image copy operation</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +33,24 @@
       </Docs>
     </Member>
     <Member MemberName="BufferImageHeight">
+      <MemberSignature Language="C#" Value="public uint BufferImageHeight;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 BufferImageHeight" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>must: be `0`, or greater than or equal to the pname:height member of pname:imageExtent</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferImageHeight">
       <MemberSignature Language="C#" Value="public uint BufferImageHeight { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 BufferImageHeight" />
       <MemberType>Property</MemberType>
@@ -38,9 +61,27 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>must: be `0`, or greater than or equal to the pname:height member of pname:imageExtent</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferOffset">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize BufferOffset;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize BufferOffset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>must: be a multiple of `4`</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="BufferOffset">
@@ -54,9 +95,27 @@
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>must: be a multiple of `4`</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferRowLength">
+      <MemberSignature Language="C#" Value="public uint BufferRowLength;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 BufferRowLength" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>must: be `0`, or greater than or equal to the pname:width member of pname:imageExtent</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="BufferRowLength">
@@ -70,9 +129,27 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>must: be `0`, or greater than or equal to the pname:width member of pname:imageExtent</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageExtent">
+      <MemberSignature Language="C#" Value="public Vulkan.Extent3D ImageExtent;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent3D ImageExtent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the size in texels of the image to copy in pname:width, pname:height and pname:depth.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ImageExtent">
@@ -86,9 +163,27 @@
         <ReturnType>Vulkan.Extent3D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the size in texels of the image to copy in pname:width, pname:height and pname:depth.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageOffset">
+      <MemberSignature Language="C#" Value="public Vulkan.Offset3D ImageOffset;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Offset3D ImageOffset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>selects the initial x, y, z offsets in texels of the sub-region of the source or destination image data.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ImageOffset">
@@ -102,9 +197,27 @@
         <ReturnType>Vulkan.Offset3D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>selects the initial x, y, z offsets in texels of the sub-region of the source or destination image data.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageSubresource">
+      <MemberSignature Language="C#" Value="public Vulkan.ImageSubresourceLayers ImageSubresource;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ImageSubresourceLayers ImageSubresource" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageSubresourceLayers</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is a slink:VkImageSubresourceLayers used to specify the specific image subresources of the image used for the source or destination image data.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ImageSubresource">
@@ -118,9 +231,9 @@
         <ReturnType>Vulkan.ImageSubresourceLayers</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a slink:VkImageSubresourceLayers used to specify the specific image subresources of the image used for the source or destination image data.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

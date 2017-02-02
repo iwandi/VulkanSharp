@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="SubresourceLayout" FullName="Vulkan.SubresourceLayout">
   <TypeSignature Language="C#" Value="public class SubresourceLayout" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SubresourceLayout extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying subresource layout</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="ArrayPitch">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize ArrayPitch;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize ArrayPitch" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>describes the number of bytes between each array layer of an image.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ArrayPitch">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.DeviceSize ArrayPitch { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize ArrayPitch" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>describes the number of bytes between each array layer of an image.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DepthPitch">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize DepthPitch;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize DepthPitch" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>describes the number of bytes between each slice of 3D image.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthPitch">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.DeviceSize DepthPitch { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize DepthPitch" />
       <MemberType>Property</MemberType>
@@ -54,12 +104,33 @@
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>describes the number of bytes between each slice of 3D image.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Offset">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize Offset;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize Offset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the byte offset from the start of the image where the image subresource begins.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Offset">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.DeviceSize Offset { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize Offset" />
       <MemberType>Property</MemberType>
@@ -70,12 +141,33 @@
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the byte offset from the start of the image where the image subresource begins.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="RowPitch">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize RowPitch;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize RowPitch" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>describes the number of bytes between each row of texels in an image.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RowPitch">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.DeviceSize RowPitch { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize RowPitch" />
       <MemberType>Property</MemberType>
@@ -86,12 +178,33 @@
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>describes the number of bytes between each row of texels in an image.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Size">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize Size;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize Size" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the size in bytes of the image subresource. pname:size includes any extra memory that is required based on pname:rowPitch.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Size">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.DeviceSize Size { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize Size" />
       <MemberType>Property</MemberType>
@@ -102,9 +215,9 @@
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the size in bytes of the image subresource. pname:size includes any extra memory that is required based on pname:rowPitch.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,17 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="BufferCreateInfo" FullName="Vulkan.BufferCreateInfo">
-  <TypeSignature Language="C#" Value="public class BufferCreateInfo" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BufferCreateInfo extends System.Object" />
+  <TypeSignature Language="C#" Value="public class BufferCreateInfo : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BufferCreateInfo extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying the parameters of a newly created buffer object</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -20,6 +25,10 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -27,20 +36,44 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public override void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Flags">
-      <MemberSignature Language="C#" Value="public uint Flags { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Flags" />
+      <MemberSignature Language="C#" Value="public Vulkan.BufferCreateFlags Flags { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.BufferCreateFlags Flags" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
+        <ReturnType>Vulkan.BufferCreateFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a bitmask describing additional parameters of the buffer. See elink:VkBufferCreateFlagBits below for a description of the supported bits.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="QueueFamilyIndexCount">
@@ -49,30 +82,38 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the number of entries in the pname:pQueueFamilyIndices array.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="QueueFamilyIndices">
-      <MemberSignature Language="C#" Value="public uint QueueFamilyIndices { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 QueueFamilyIndices" />
+      <MemberSignature Language="C#" Value="public uint[] QueueFamilyIndices { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32[] QueueFamilyIndices" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
+        <ReturnType>System.UInt32[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a list of queue families that will access this buffer (ignored if pname:sharingMode is not ename:VK_SHARING_MODE_CONCURRENT).</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SharingMode">
@@ -81,14 +122,18 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.SharingMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the sharing mode of the buffer when it will be accessed by multiple queue families, see elink:VkSharingMode in the &lt;&lt;resources-sharing,Resource Sharing&gt;&gt; section below for supported values.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Size">
@@ -97,29 +142,54 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the size in bytes of the buffer to be created.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Usage">
-      <MemberSignature Language="C#" Value="public uint Usage { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Usage" />
+      <MemberSignature Language="C#" Value="public Vulkan.BufferUsageFlags Usage { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.BufferUsageFlags Usage" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a bitmask describing the allowed usages of the buffer. See elink:VkBufferUsageFlagBits below for a description of the supported bits.</summary>
         <value>To be added.</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VirtualDispose">
+      <MemberSignature Language="C#" Value="public override void VirtualDispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void VirtualDispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

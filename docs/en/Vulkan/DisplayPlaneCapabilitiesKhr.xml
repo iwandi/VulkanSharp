@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="DisplayPlaneCapabilitiesKhr" FullName="Vulkan.DisplayPlaneCapabilitiesKhr">
   <TypeSignature Language="C#" Value="public class DisplayPlaneCapabilitiesKhr" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DisplayPlaneCapabilitiesKhr extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>- Structure describing capabilities of a mode and plane combination</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="MaxDstExtent">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Extent2D MaxDstExtent;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent2D MaxDstExtent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDstExtent">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Extent2D MaxDstExtent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent2D MaxDstExtent" />
       <MemberType>Property</MemberType>
@@ -44,6 +73,27 @@
       </Docs>
     </Member>
     <Member MemberName="MaxDstPosition">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Offset2D MaxDstPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Offset2D MaxDstPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDstPosition">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Offset2D MaxDstPosition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset2D MaxDstPosition" />
       <MemberType>Property</MemberType>
@@ -60,6 +110,27 @@
       </Docs>
     </Member>
     <Member MemberName="MaxSrcExtent">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Extent2D MaxSrcExtent;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent2D MaxSrcExtent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the maximum source rectangle size supported by this plane using the specified mode.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxSrcExtent">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Extent2D MaxSrcExtent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent2D MaxSrcExtent" />
       <MemberType>Property</MemberType>
@@ -70,12 +141,33 @@
         <ReturnType>Vulkan.Extent2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the maximum source rectangle size supported by this plane using the specified mode.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="MaxSrcPosition">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Offset2D MaxSrcPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Offset2D MaxSrcPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the maximum source rectangle offset supported by this plane using the specified mode. The pname:x and pname:y components of pname:maxSrcPosition must: each be greater than or equal to the pname:x and pname:y components of pname:minSrcPosition, respectively.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxSrcPosition">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Offset2D MaxSrcPosition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset2D MaxSrcPosition" />
       <MemberType>Property</MemberType>
@@ -86,12 +178,33 @@
         <ReturnType>Vulkan.Offset2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the maximum source rectangle offset supported by this plane using the specified mode. The pname:x and pname:y components of pname:maxSrcPosition must: each be greater than or equal to the pname:x and pname:y components of pname:minSrcPosition, respectively.</summary>
         <value>To be added.</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinDstExtent">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Extent2D MinDstExtent;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent2D MinDstExtent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MinDstExtent">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Extent2D MinDstExtent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent2D MinDstExtent" />
       <MemberType>Property</MemberType>
@@ -108,6 +221,27 @@
       </Docs>
     </Member>
     <Member MemberName="MinDstPosition">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Offset2D MinDstPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Offset2D MinDstPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinDstPosition">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Offset2D MinDstPosition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset2D MinDstPosition" />
       <MemberType>Property</MemberType>
@@ -124,6 +258,27 @@
       </Docs>
     </Member>
     <Member MemberName="MinSrcExtent">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Extent2D MinSrcExtent;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent2D MinSrcExtent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the minimum source rectangle size supported by this plane using the specified mode.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinSrcExtent">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Extent2D MinSrcExtent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent2D MinSrcExtent" />
       <MemberType>Property</MemberType>
@@ -134,12 +289,33 @@
         <ReturnType>Vulkan.Extent2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the minimum source rectangle size supported by this plane using the specified mode.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="MinSrcPosition">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Offset2D MinSrcPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Offset2D MinSrcPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the minimum source rectangle offset supported by this plane using the specified mode.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinSrcPosition">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Offset2D MinSrcPosition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset2D MinSrcPosition" />
       <MemberType>Property</MemberType>
@@ -150,12 +326,33 @@
         <ReturnType>Vulkan.Offset2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the minimum source rectangle offset supported by this plane using the specified mode.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SupportedAlpha">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.DisplayPlaneAlphaFlagsKhr SupportedAlpha;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DisplayPlaneAlphaFlagsKhr SupportedAlpha" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DisplayPlaneAlphaFlagsKhr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is a bitmask of elink:VkDisplayPlaneAlphaFlagBitsKHR describing the supported alpha blending modes.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SupportedAlpha">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.DisplayPlaneAlphaFlagsKhr SupportedAlpha { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DisplayPlaneAlphaFlagsKhr SupportedAlpha" />
       <MemberType>Property</MemberType>
@@ -166,9 +363,9 @@
         <ReturnType>Vulkan.DisplayPlaneAlphaFlagsKhr</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a bitmask of elink:VkDisplayPlaneAlphaFlagBitsKHR describing the supported alpha blending modes.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="DisplayModeParametersKhr" FullName="Vulkan.DisplayModeParametersKhr">
   <TypeSignature Language="C#" Value="public class DisplayModeParametersKhr" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DisplayModeParametersKhr extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>- Structure describing display parameters associated with a display mode</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="RefreshRate">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint RefreshRate;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 RefreshRate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is a code:uint32_t that is the number of times the display is refreshed each second multiplied by 1000.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RefreshRate">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint RefreshRate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 RefreshRate" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a code:uint32_t that is the number of times the display is refreshed each second multiplied by 1000.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="VisibleRegion">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Extent2D VisibleRegion;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent2D VisibleRegion" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the 2D extents of the visible region.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleRegion">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Extent2D VisibleRegion { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent2D VisibleRegion" />
       <MemberType>Property</MemberType>
@@ -54,9 +104,9 @@
         <ReturnType>Vulkan.Extent2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the 2D extents of the visible region.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

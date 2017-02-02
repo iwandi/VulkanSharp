@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="QueueFamilyProperties" FullName="Vulkan.QueueFamilyProperties">
   <TypeSignature Language="C#" Value="public class QueueFamilyProperties" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit QueueFamilyProperties extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure providing information about a queue family</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="MinImageTransferGranularity">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.Extent3D MinImageTransferGranularity;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent3D MinImageTransferGranularity" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the minimum granularity supported for image transfer operations on the queues in this queue family.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinImageTransferGranularity">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public Vulkan.Extent3D MinImageTransferGranularity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent3D MinImageTransferGranularity" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>Vulkan.Extent3D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the minimum granularity supported for image transfer operations on the queues in this queue family.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="QueueCount">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint QueueCount;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 QueueCount" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the unsigned integer count of queues in this queue family.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="QueueCount">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint QueueCount { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 QueueCount" />
       <MemberType>Property</MemberType>
@@ -54,12 +104,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the unsigned integer count of queues in this queue family.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="QueueFlags">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.QueueFlags QueueFlags;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.QueueFlags QueueFlags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueueFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>contains flags indicating the capabilities of the queues in this queue family.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="QueueFlags">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint QueueFlags { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 QueueFlags" />
       <MemberType>Property</MemberType>
@@ -70,12 +141,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>contains flags indicating the capabilities of the queues in this queue family.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="TimestampValidBits">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint TimestampValidBits;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 TimestampValidBits" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is the unsigned integer count of meaningful bits in the timestamps written via fname:vkCmdWriteTimestamp. The valid range for the count is 36..64 bits, or a value of 0, indicating no support for timestamps. Bits outside the valid range are guaranteed to be zeros.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TimestampValidBits">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint TimestampValidBits { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 TimestampValidBits" />
       <MemberType>Property</MemberType>
@@ -86,9 +178,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the unsigned integer count of meaningful bits in the timestamps written via fname:vkCmdWriteTimestamp. The valid range for the count is 36..64 bits, or a value of 0, indicating no support for timestamps. Bits outside the valid range are guaranteed to be zeros.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

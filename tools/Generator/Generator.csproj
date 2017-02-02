@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Generator.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="GeneratorBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xml.Linq" />

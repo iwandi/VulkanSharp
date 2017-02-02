@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PushConstantRange" FullName="Vulkan.PushConstantRange">
   <TypeSignature Language="C#" Value="public class PushConstantRange" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PushConstantRange extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying a push constant range</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="Offset">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint Offset;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 Offset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>must: be less than sname:VkPhysicalDeviceLimits::pname:maxPushConstantsSize</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Offset">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint Offset { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Offset" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>must: be less than sname:VkPhysicalDeviceLimits::pname:maxPushConstantsSize</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Size">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint Size;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 Size" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>must: be less than or equal to sname:VkPhysicalDeviceLimits::pname:maxPushConstantsSize minus pname:offset ****</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Size">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint Size { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Size" />
       <MemberType>Property</MemberType>
@@ -54,12 +104,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>must: be less than or equal to sname:VkPhysicalDeviceLimits::pname:maxPushConstantsSize minus pname:offset ****</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="StageFlags">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.ShaderStageFlags StageFlags;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ShaderStageFlags StageFlags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ShaderStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>is a set of stage flags describing the shader stages that will access a range of push constants. If a particular stage is not included in the range, then accessing members of that range of push constants from the corresponding shader stage will result in undefined data being read.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StageFlags">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint StageFlags { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 StageFlags" />
       <MemberType>Property</MemberType>
@@ -70,9 +141,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a set of stage flags describing the shader stages that will access a range of push constants. If a particular stage is not included in the range, then accessing members of that range of push constants from the corresponding shader stage will result in undefined data being read.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

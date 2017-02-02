@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="MemoryType" FullName="Vulkan.MemoryType">
   <TypeSignature Language="C#" Value="public class MemoryType" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MemoryType extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Structure specifying memory type</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +36,27 @@
       </Docs>
     </Member>
     <Member MemberName="HeapIndex">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public uint HeapIndex;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 HeapIndex" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>describes which memory heap this memory type corresponds to, and must: be less than pname:memoryHeapCount from the sname:VkPhysicalDeviceMemoryProperties structure.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HeapIndex">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint HeapIndex { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 HeapIndex" />
       <MemberType>Property</MemberType>
@@ -38,12 +67,33 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>describes which memory heap this memory type corresponds to, and must: be less than pname:memoryHeapCount from the sname:VkPhysicalDeviceMemoryProperties structure.</summary>
         <value>To be added.</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PropertyFlags">
+<<<<<<< HEAD
+=======
+      <MemberSignature Language="C#" Value="public Vulkan.MemoryPropertyFlags PropertyFlags;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.MemoryPropertyFlags PropertyFlags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.MemoryPropertyFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PropertyFlags">
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       <MemberSignature Language="C#" Value="public uint PropertyFlags { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 PropertyFlags" />
       <MemberType>Property</MemberType>

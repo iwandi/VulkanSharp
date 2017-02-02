@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PhysicalDevice" FullName="Vulkan.PhysicalDevice">
   <TypeSignature Language="C#" Value="public class PhysicalDevice" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PhysicalDevice extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+    <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Opaque handle to a physical device object</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,6 +41,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Device</ReturnType>
@@ -55,6 +70,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DisplayModeKhr</ReturnType>
@@ -93,6 +115,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="EnumerateDeviceExtensionProperties">
+      <MemberSignature Language="C#" Value="public Vulkan.ExtensionProperties[] EnumerateDeviceExtensionProperties (string pLayerName = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.ExtensionProperties[] EnumerateDeviceExtensionProperties(string pLayerName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ExtensionProperties[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pLayerName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pLayerName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="EnumerateDeviceLayerProperties">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.LayerProperties&gt; EnumerateDeviceLayerProperties ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.LayerProperties&gt; EnumerateDeviceLayerProperties() cil managed" />
@@ -110,6 +158,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="EnumerateDeviceLayerProperties">
+      <MemberSignature Language="C#" Value="public Vulkan.LayerProperties[] EnumerateDeviceLayerProperties ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.LayerProperties[] EnumerateDeviceLayerProperties() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.LayerProperties[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetDisplayModePropertiesKHR">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.DisplayModePropertiesKhr&gt; GetDisplayModePropertiesKHR (Vulkan.DisplayKhr display);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.DisplayModePropertiesKhr&gt; GetDisplayModePropertiesKHR(class Vulkan.DisplayKhr display) cil managed" />
@@ -130,12 +201,45 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetDisplayModePropertiesKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.DisplayModePropertiesKhr[] GetDisplayModePropertiesKHR (Vulkan.DisplayKhr display);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DisplayModePropertiesKhr[] GetDisplayModePropertiesKHR(class Vulkan.DisplayKhr display) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DisplayModePropertiesKhr[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="display" Type="Vulkan.DisplayKhr" />
+      </Parameters>
+      <Docs>
+        <param name="display">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetDisplayPlaneCapabilitiesKHR">
       <MemberSignature Language="C#" Value="public Vulkan.DisplayPlaneCapabilitiesKhr GetDisplayPlaneCapabilitiesKHR (Vulkan.DisplayModeKhr mode, uint planeIndex);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DisplayPlaneCapabilitiesKhr GetDisplayPlaneCapabilitiesKHR(class Vulkan.DisplayModeKhr mode, unsigned int32 planeIndex) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DisplayPlaneCapabilitiesKhr</ReturnType>
@@ -169,6 +273,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetDisplayPlanePropertiesKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.DisplayPlanePropertiesKhr[] GetDisplayPlanePropertiesKHR ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DisplayPlanePropertiesKhr[] GetDisplayPlanePropertiesKHR() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DisplayPlanePropertiesKhr[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetDisplayPlaneSupportedDisplaysKHR">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.DisplayKhr&gt; GetDisplayPlaneSupportedDisplaysKHR (uint planeIndex);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.DisplayKhr&gt; GetDisplayPlaneSupportedDisplaysKHR(unsigned int32 planeIndex) cil managed" />
@@ -189,6 +316,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetDisplayPlaneSupportedDisplaysKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.DisplayKhr[] GetDisplayPlaneSupportedDisplaysKHR (uint planeIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DisplayKhr[] GetDisplayPlaneSupportedDisplaysKHR(unsigned int32 planeIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DisplayKhr[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="planeIndex" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="planeIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetDisplayPropertiesKHR">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.DisplayPropertiesKhr&gt; GetDisplayPropertiesKHR ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.DisplayPropertiesKhr&gt; GetDisplayPropertiesKHR() cil managed" />
@@ -206,12 +359,74 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetDisplayPropertiesKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.DisplayPropertiesKhr[] GetDisplayPropertiesKHR ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DisplayPropertiesKhr[] GetDisplayPropertiesKHR() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DisplayPropertiesKhr[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetExternalImageFormatPropertiesNV">
+      <MemberSignature Language="C#" Value="public Vulkan.ExternalImageFormatPropertiesNv GetExternalImageFormatPropertiesNV (Vulkan.Format format, Vulkan.ImageType type, Vulkan.ImageTiling tiling, Vulkan.ImageUsageFlags usage, Vulkan.ImageCreateFlags flags, Vulkan.ExternalMemoryHandleTypeFlagsNv externalHandleType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.ExternalImageFormatPropertiesNv GetExternalImageFormatPropertiesNV(valuetype Vulkan.Format format, valuetype Vulkan.ImageType type, valuetype Vulkan.ImageTiling tiling, valuetype Vulkan.ImageUsageFlags usage, valuetype Vulkan.ImageCreateFlags flags, valuetype Vulkan.ExternalMemoryHandleTypeFlagsNv externalHandleType) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ExternalImageFormatPropertiesNv</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="Vulkan.Format" />
+        <Parameter Name="type" Type="Vulkan.ImageType" />
+        <Parameter Name="tiling" Type="Vulkan.ImageTiling" />
+        <Parameter Name="usage" Type="Vulkan.ImageUsageFlags" />
+        <Parameter Name="flags" Type="Vulkan.ImageCreateFlags" />
+        <Parameter Name="externalHandleType" Type="Vulkan.ExternalMemoryHandleTypeFlagsNv" />
+      </Parameters>
+      <Docs>
+        <param name="format">To be added.</param>
+        <param name="type">To be added.</param>
+        <param name="tiling">To be added.</param>
+        <param name="usage">To be added.</param>
+        <param name="flags">To be added.</param>
+        <param name="externalHandleType">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetFeatures">
       <MemberSignature Language="C#" Value="public Vulkan.PhysicalDeviceFeatures GetFeatures ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.PhysicalDeviceFeatures GetFeatures() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceFeatures</ReturnType>
@@ -229,6 +444,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.FormatProperties</ReturnType>
@@ -249,6 +471,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ImageFormatProperties</ReturnType>
@@ -277,6 +506,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceMemoryProperties</ReturnType>
@@ -294,6 +530,13 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceProperties</ReturnType>
@@ -322,6 +565,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetQueueFamilyProperties">
+      <MemberSignature Language="C#" Value="public Vulkan.QueueFamilyProperties[] GetQueueFamilyProperties ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.QueueFamilyProperties[] GetQueueFamilyProperties() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueueFamilyProperties[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetSparseImageFormatProperties">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.SparseImageFormatProperties&gt; GetSparseImageFormatProperties (Vulkan.Format format, Vulkan.ImageType type, Vulkan.SampleCountFlags samples, Vulkan.ImageUsageFlags usage, Vulkan.ImageTiling tiling);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.SparseImageFormatProperties&gt; GetSparseImageFormatProperties(valuetype Vulkan.Format format, valuetype Vulkan.ImageType type, valuetype Vulkan.SampleCountFlags samples, valuetype Vulkan.ImageUsageFlags usage, valuetype Vulkan.ImageTiling tiling) cil managed" />
@@ -350,12 +616,53 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetSparseImageFormatProperties">
+      <MemberSignature Language="C#" Value="public Vulkan.SparseImageFormatProperties[] GetSparseImageFormatProperties (Vulkan.Format format, Vulkan.ImageType type, Vulkan.SampleCountFlags samples, Vulkan.ImageUsageFlags usage, Vulkan.ImageTiling tiling);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.SparseImageFormatProperties[] GetSparseImageFormatProperties(valuetype Vulkan.Format format, valuetype Vulkan.ImageType type, valuetype Vulkan.SampleCountFlags samples, valuetype Vulkan.ImageUsageFlags usage, valuetype Vulkan.ImageTiling tiling) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SparseImageFormatProperties[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="Vulkan.Format" />
+        <Parameter Name="type" Type="Vulkan.ImageType" />
+        <Parameter Name="samples" Type="Vulkan.SampleCountFlags" />
+        <Parameter Name="usage" Type="Vulkan.ImageUsageFlags" />
+        <Parameter Name="tiling" Type="Vulkan.ImageTiling" />
+      </Parameters>
+      <Docs>
+        <param name="format">To be added.</param>
+        <param name="type">To be added.</param>
+        <param name="samples">To be added.</param>
+        <param name="usage">To be added.</param>
+        <param name="tiling">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetSurfaceCapabilitiesKHR">
       <MemberSignature Language="C#" Value="public Vulkan.SurfaceCapabilitiesKhr GetSurfaceCapabilitiesKHR (Vulkan.SurfaceKhr surface);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.SurfaceCapabilitiesKhr GetSurfaceCapabilitiesKHR(class Vulkan.SurfaceKhr surface) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.SurfaceCapabilitiesKhr</ReturnType>
@@ -390,6 +697,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetSurfaceFormatsKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.SurfaceFormatKhr[] GetSurfaceFormatsKHR (Vulkan.SurfaceKhr surface);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.SurfaceFormatKhr[] GetSurfaceFormatsKHR(class Vulkan.SurfaceKhr surface) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SurfaceFormatKhr[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="surface" Type="Vulkan.SurfaceKhr" />
+      </Parameters>
+      <Docs>
+        <param name="surface">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetSurfacePresentModesKHR">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.PresentModeKhr&gt; GetSurfacePresentModesKHR (Vulkan.SurfaceKhr surface);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;valuetype Vulkan.PresentModeKhr&gt; GetSurfacePresentModesKHR(class Vulkan.SurfaceKhr surface) cil managed" />
@@ -410,12 +743,45 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="GetSurfacePresentModesKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.PresentModeKhr[] GetSurfacePresentModesKHR (Vulkan.SurfaceKhr surface);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.PresentModeKhr[] GetSurfacePresentModesKHR(class Vulkan.SurfaceKhr surface) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PresentModeKhr[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="surface" Type="Vulkan.SurfaceKhr" />
+      </Parameters>
+      <Docs>
+        <param name="surface">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
     <Member MemberName="GetSurfaceSupportKHR">
       <MemberSignature Language="C#" Value="public Vulkan.Bool32 GetSurfaceSupportKHR (uint queueFamilyIndex, Vulkan.SurfaceKhr surface);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.Bool32 GetSurfaceSupportKHR(unsigned int32 queueFamilyIndex, class Vulkan.SurfaceKhr surface) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+<<<<<<< HEAD
+=======
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Bool32</ReturnType>
@@ -452,5 +818,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+<<<<<<< HEAD
+=======
+    <Member MemberName="Vulkan.IMarshalling.Handle">
+      <MemberSignature Language="C#" Value="IntPtr Vulkan.IMarshalling.Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Vulkan.IMarshalling.Handle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+        <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+>>>>>>> b653ddfa33e628c64586ed15620c3ad18bec190a
   </Members>
 </Type>
